@@ -1,3 +1,3 @@
 # Welcome to IPAC'27🍾🎉
 
-![Detroit Skyline](./resources/Gemini_Detroit.jpg "Detroit Skyline")
+![Detroit Skyline](./resources/Detroit-01.jpg "Detroit Skyline")
