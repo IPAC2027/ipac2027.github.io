@@ -1,6 +1,6 @@
 title: 18th International Particle Accelerator Conference
 description: IPAC'27, hosted by Facility Rare Isotope Beams at Michigan State Univeristy
-remote_theme: IPAC2027/hacker@v0.2.0
+remote_theme: IPAC2027/hacker@d6dde7f
 plugins:
 - jekyll-remote-them
 
