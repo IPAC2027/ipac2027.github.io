@@ -3,3 +3,5 @@ description: IPAC'27, hosted by Facility Rare Isotope Beams at Michigan State Un
 remote_theme: IPAC2027/hacker@v0.2.0
 plugins:
 - jekyll-remote-them
+
+view_on_github: false
