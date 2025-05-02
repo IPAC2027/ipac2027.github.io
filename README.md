@@ -4,4 +4,4 @@
      width=170
      style="display: block; margin: 0 auto" />
 
-![Detroit Skyline](./resources/Detroit-01.jpg "Detroit Skyline")
+![Detroit Skyline](./resources/IPAC27_final_v2_web.jpg "IPAC'27 Official Poster")
