@@ -1,5 +1,5 @@
 title: ipac27 --info
-description: Hosted by Facility Rare Isotope Beams (FRIB)
+description: Hosted by Facility Rare Isotope Beams
 # remote_theme: IPAC2027/hacker@d6dde7f
 remote_theme: pages-themes/hacker@e3c8d1ad288894be216002a5bc29fc611aeab9ac
 plugins:
