@@ -7,8 +7,33 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
     <link rel="shortcut icon" type="image/png" href="resources/ipac27.png">
-
 {% seo %}
+    <script>
+      const targetDate = new Date("2025-12-31T23:59:59");
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = Math.floor((targetDate - now) / 1000);
+
+        if (diff < 0) {
+          document.getElementById("countdown").textContent = "The date has passed.";
+          return;
+        }
+
+        const days = Math.floor(diff / 86400);
+        const hours = Math.floor((diff % 86400) / 3600);
+        const minutes = Math.floor((diff % 3600) / 60);
+        const seconds = diff % 60;
+
+        document.getElementById("countdown").textContent =
+          `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+      }
+
+      // Initial call
+      updateCountdown();
+      // Update every second
+      setInterval(updateCountdown, 1000);
+    </script>
   </head>
 
   <body>
@@ -19,6 +44,7 @@
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <p id="countdown">Loading countdown...</p>
 
         <section id="downloads">
           {% if site.show_downloads %}
