@@ -18,8 +18,9 @@
         <a id="a-title" href="{{ '/' | relative_url }}">
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-        <p id="countdown">Loading countdown...</p>
+        <h2>{{ site.description | default: site.github.project_tagline }}
+            <span style="display:block;font-size:1.2em;" id="countdown">...</span>
+        </h2>
 
         <script>
           const targetDate = new Date("2025-12-31T23:59:59");
@@ -39,7 +40,7 @@
             const seconds = diff % 60;
 
             document.getElementById("countdown").textContent =
-              `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+              `in ${days}d ${hours}h ${minutes}m ${seconds}s`;
           }
 
           // Initial call
