@@ -131,6 +131,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C6",
     featured: true
   },
+  {
+    id: "gold-007",
+    name: "Microwave Techniques LLC",
+    logo: "/images/logos/exhibitors/gold/microwave_tech_llc.png",
+    website: "https://www.microwavetechniques.com/",
+    description: "Gold tier exhibitor - placeholder",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C33",
+    featured: true
+  },
 ];
 
 // Helper functions
