@@ -142,6 +142,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C33",
     featured: true
   },
+  {
+    id: "gold-008",
+    name: "SYES",
+    logo: "/images/logos/exhibitors/gold/syes.png",
+    website: "https://syes.eu/",
+    description: "Gold tier exhibitor - placeholder",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C14",
+    featured: true
+  },
 ];
 
 // Helper functions
