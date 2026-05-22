@@ -19,13 +19,13 @@ export const exhibitors: Exhibitor[] = [
   // Diamond Tier
   {
     id: "diamond-1",
-    name: "Your Logo Here",
-    logo: "/images/logos/exhibitors/diamond/sample_1.jpg",
-    website: "#",
-    description: "Diamond tier exhibitor - placeholder",
+    name: "COSYLAB",
+    logo: "/images/logos/exhibitors/diamond/cosylab.png",
+    website: "https://cosylab.com/",
+    description: "N/A",
     category: "Industry Partner",
     tier: "diamond",
-    booth: "TBD",
+    booth: "A7",
     featured: true
   },
   // {
