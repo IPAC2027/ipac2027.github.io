@@ -20,7 +20,8 @@ export type ContentBlockType =
   | 'status' 
   | 'collapsible'
   | 'pdfpreview'
-  | 'table';
+  | 'table'
+  | 'video';
 
 /**
  * Status options for status blocks
@@ -142,6 +143,16 @@ export interface PdfPreviewContentBlock extends BaseContentBlock {
 }
 
 /**
+ * Content block for embedded video (e.g. Google Drive)
+ */
+export interface VideoContentBlock extends BaseContentBlock {
+  type: 'video';
+  content: string;
+  src: string;
+  title?: string;
+}
+
+/**
  * Union type of all possible content blocks
  */
 export type ContentBlock = 
@@ -154,7 +165,8 @@ export type ContentBlock =
   | StatusContentBlock
   | CardContentBlock
   | PdfPreviewContentBlock
-  | TableContentBlock;
+  | TableContentBlock
+  | VideoContentBlock;
 
 /**
  * Configuration for grid layouts

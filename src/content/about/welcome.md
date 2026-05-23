@@ -15,6 +15,8 @@ bannerBackground: "/images/banners/About/welcome.png"
 IPAC'27 brings together the global particle accelerator community again by the Great Lakes.  
 :::
 
+:::video{src="https://drive.google.com/file/d/1trbbmB3MZ2pR-fCy-oKHo3eAhzht0o6g/preview"}
+:::
 
 ## Conference Highlights
 

@@ -313,6 +313,14 @@ function parseDirective(type: string, content: string, props: Record<string, str
           title: props.title || 'Download PDF'
         };
 
+      case 'video':
+        return {
+          type: 'video',
+          content: content.trim(),
+          src: props.src || '',
+          title: props.title || ''
+        };
+
       case 'collapsible':
         // Check if the content contains nested directives
         const trimmedContent = content.trim();
