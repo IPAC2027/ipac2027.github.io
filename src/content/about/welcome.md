@@ -5,19 +5,18 @@ bannerText: "Welcome"
 bannerBackground: "/images/banners/About/welcome.png"
 ---
 
-# Welcome to IPAC'27
+## Welcome to IPAC'27
 
-Welcome to the 18th International Particle Accelerator Conference (IPAC'27), taking place May 23-28, 2027, at the Huntington Place in Detroit, Michigan, USA.
+- We are delighted to welcome you to IPAC’27 in Detroit, Michigan, where innovation meets collaboration. This conference stands at the forefront of accelerator science, bringing together the world’s leading researchers, industrial exhibitors, early-career scientists, and aspiring students to share advances that will shape the next generation of particle accelerator science, technology, and applications. 
+
+- As we look ahead to IPAC’27, we invite you to join a global community whose ideas, expertise, and collaborations continue to drive our field forward. We hope the conference will inspire new directions, spark meaningful connections, and celebrate the progress and innovation that define the accelerator community.
 
 :::highlight
-IPAC'27 brings together the global particle accelerator community to share the latest research, developments, and innovations in accelerator science and technology.
+IPAC'27 brings together the global particle accelerator community again by the Great Lakes.  
 :::
 
-## About IPAC'27
 
-The International Particle Accelerator Conference is the premier annual gathering for accelerator physicists, engineers, and industry professionals worldwide. IPAC'27 continues this tradition of excellence in Detroit, offering a platform for knowledge exchange and collaboration.
-
-### Conference Highlights
+## Conference Highlights
 
 - 1,000+ international participants
 - 70+ scientific talks

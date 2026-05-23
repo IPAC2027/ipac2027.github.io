@@ -136,7 +136,7 @@ export const exhibitors: Exhibitor[] = [
     name: "Microwave Techniques LLC",
     logo: "/images/logos/exhibitors/gold/microwave_tech_llc.png",
     website: "https://www.microwavetechniques.com/",
-    description: "Gold tier exhibitor - placeholder",
+    description: "Also bag logo sponsership",
     category: "Industry Partner",
     tier: "gold",
     booth: "C33",

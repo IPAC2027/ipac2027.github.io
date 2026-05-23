@@ -32,13 +32,19 @@ export const homeContent = {
     subtitle: "",
     dates: [
       {
-        period: "Oct 2026",
+        period: "May. 1, 2026",
+        title: "Exhibitor Registration Opened",
+        description: "",
+        colorScheme: "accent-primary"
+      },
+      {
+        period: "Oct. 1, 2026",
         title: "Abstract Submission Opens",
         description: "",
         colorScheme: "primary-accent"
       },
       {
-        period: "Nov 2026",
+        period: "Oct. 1, 2026",
         title: "Early Registration Opens",
         description: "",
         colorScheme: "accent-primary"
@@ -73,14 +79,14 @@ export const homeContent = {
   about: {
     title: "Welcome to IPAC' 27",
     description: [
-      "The 18th International Particle Accelerator Conference (IPAC' 27) will be held in Detroit, Michigan at Huntington Place. The IPAC'27 conference is sponsored by , financially and technically, by the IEEE Nuclear and Plasma Science Society (NPSS) and the American Physical Society (APS) Division of Physics of Beams (DPB) and hosted by the Facility for Rare Isotope Beams, Michigan State University.",
+      "The 18th International Particle Accelerator Conference (IPAC' 27) will be held in Detroit, Michigan at Huntington Place. The IPAC'27 conference is sponsored by the IEEE Nuclear and Plasma Science Society (NPSS) and the American Physical Society (APS) Division of Physics of Beams (DPB) and hosted by the Facility for Rare Isotope Beams, Michigan State University.",
     ],
     learnMoreLink: {
       text: "Learn more about IPAC27",
       href: "/about"
     },
     chairWelcome: {
-      message: "We are delighted to welcome you to IPAC’27 in Detroit, Michigan, where innovation meets collaboration. This conference stands at the forefront of accelerator science, bringing together the world’s leading researchers, industrial exhibitors, early-career scientists, and aspiring students to share advances that will shape the next generation of particle accelerator science, technology, and applications. \n\n As we look ahead to IPAC’27, we invite you to join a global community whose ideas, expertise, and collaborations continue to drive our field forward. We hope the conference will inspire new directions, spark meaningful connections, and celebrate the progress and innovation that define the accelerator community.",
+      message: "We are delighted to welcome you to IPAC’27 in Detroit, Michigan. Over the past decade, Detroit has been experiencing an extraordinary revival, from its renowned industrial legacy to today’s creativity, innovation, and energy. Every year, around 8.7 million people visit downtown Detroit, drawn by its revitalized waterfront and world-class venues. \n\n The world around us is changing rapidly. Environments continue to evolve in ways that are often hard to predict. Yet as scientists and engineers, we instinctively look for what remains unchanged and search for invariants. I hope the IPAC community and the collaboration spirit behind it, can be on the top list of invariants. \n\n So let us meet again in Detroit. Let us continue our conversations. Let us build new collaborations, and celebrate both changes and what remains constant. \n\n I look forward to seeing you at IPAC’27. ",
       chair: {
         name: "Prof. Wei, Jie",
         title: "Conference Chair",
