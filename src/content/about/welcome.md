@@ -5,17 +5,33 @@ bannerText: "Welcome"
 bannerBackground: "/images/banners/About/welcome.png"
 ---
 
-## Welcome to IPAC'27
+## Greetings from IPAC'27 Committee Chairs
 
 - We are delighted to welcome you to IPAC’27 in Detroit, Michigan, where innovation meets collaboration. This conference stands at the forefront of accelerator science, bringing together the world’s leading researchers, industrial exhibitors, early-career scientists, and aspiring students to share advances that will shape the next generation of particle accelerator science, technology, and applications. 
 
 - As we look ahead to IPAC’27, we invite you to join a global community whose ideas, expertise, and collaborations continue to drive our field forward. We hope the conference will inspire new directions, spark meaningful connections, and celebrate the progress and innovation that define the accelerator community.
 
-:::highlight
-IPAC'27 brings together the global particle accelerator community again by the Great Lakes.  
+:::grid{columns=3 borderless=true}
+:::card{title="International Organizating Committee"}
+**Jie Wei**, Chair
+FRIB, Michigan State University
 :::
 
-:::video{src="https://drive.google.com/file/d/1trbbmB3MZ2pR-fCy-oKHo3eAhzht0o6g/preview"}
+:::card{title="Scientific Program Committee"}
+**Sarah Cousineau**, Chair,
+Oak Ridge National Laboratory
+
+:::
+
+:::card{title="Local Organizating Committee"}
+**Yue Hao**, Chair
+FRIB, Michigan State University
+:::
+
+:::
+
+
+:::video{src="https://drive.google.com/file/d/1trbbmB3MZ2pR-fCy-oKHo3eAhzht0o6g/preview" title="Welcome to IPAC'27" bg="/images/banners/About/welcome.png"}
 :::
 
 ## Conference Highlights

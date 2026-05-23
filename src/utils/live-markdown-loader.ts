@@ -318,7 +318,8 @@ function parseDirective(type: string, content: string, props: Record<string, str
           type: 'video',
           content: content.trim(),
           src: props.src || '',
-          title: props.title || ''
+          title: props.title || '',
+          bg: props.bg || ''
         };
 
       case 'collapsible':
@@ -358,6 +359,7 @@ function parseDirective(type: string, content: string, props: Record<string, str
 function parseGridDirective(content: string, props: Record<string, string>): ContentBlock {
   try {
     const columns = parseInt(props.columns) || 2;
+    const borderless = props.borderless === 'true';
     
     // Validate column count
     if (columns < 1 || columns > 4) {
@@ -454,7 +456,7 @@ function parseGridDirective(content: string, props: Record<string, string>): Con
     
     return {
       type: 'grid',
-      content: { columns, items }
+      content: { columns, items, borderless }
     };
   } catch (error) {
     logError('Error parsing grid directive', error as Error);

@@ -150,6 +150,7 @@ export interface VideoContentBlock extends BaseContentBlock {
   content: string;
   src: string;
   title?: string;
+  bg?: string;
 }
 
 /**
@@ -176,6 +177,8 @@ export interface ContentGrid {
   columns: number;
   /** Array of grid items */
   items: GridItem[];
+  /** When true, removes card borders and shadows */
+  borderless?: boolean;
 }
 
 /**

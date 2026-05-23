@@ -267,7 +267,7 @@ const processMarkdown = (content: string): string => {
               const widthStyle = item.width ? `flex: 0 0 calc(${item.width === '1/3' ? '33.333%' : item.width === '2/3' ? '66.667%' : item.width === '1/2' ? '50%' : item.width === '1/4' ? '25%' : item.width === '3/4' ? '75%' : item.width === 'full' ? '100%' : item.width} - 12px); max-width: calc(${item.width === '1/3' ? '33.333%' : item.width === '2/3' ? '66.667%' : item.width === '1/2' ? '50%' : item.width === '1/4' ? '25%' : item.width === '3/4' ? '75%' : item.width === 'full' ? '100%' : item.width} - 12px);` : '';
               
               return (
-                <div class="bg-white dark:bg-primary-800 rounded-lg p-6 shadow-sm border" style={widthStyle}>
+                <div class={`${block.content.borderless ? '' : 'bg-white dark:bg-primary-800 rounded-lg p-6 shadow-sm border'} ${block.content.borderless ? 'px-2' : ''}`} style={widthStyle}>
                   <div class="flex items-center mb-3">
                     {item.icon && (
                       <div class={item.styledIcon ? "card-icon" : "text-2xl mr-3"}>{item.icon}</div>
@@ -397,20 +397,47 @@ const processMarkdown = (content: string): string => {
         </div>
       );
     
-    case 'video':
+    case 'video': {
+      const videoId = `video-${Math.random().toString(36).slice(2, 9)}`;
       return (
-        <div class="my-6 rounded-xl overflow-hidden shadow-md">
+        <div class="my-6 rounded-xl overflow-hidden shadow-md" id={videoId}>
           <div class="relative w-full" style="padding-top: 56.25%;">
+            {/* Click-to-play overlay */}
+            <div
+              class="video-overlay absolute inset-0 w-full h-full flex flex-col items-center justify-center cursor-pointer rounded-xl z-10 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900"
+              style={block.bg ? `background-image: url('${block.bg}'); background-size: cover; background-position: center;` : ''}
+              onclick={`
+                var el = document.getElementById('${videoId}');
+                el.querySelector('.video-overlay').style.display = 'none';
+                el.querySelector('iframe').style.display = 'block';
+              `}
+            >
+              {/* Dark scrim over background image for readability */}
+              {block.bg && <div class="absolute inset-0 bg-black/50 rounded-xl"></div>}
+              {/* Play button */}
+              <div class="relative z-10 w-20 h-20 rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-center mb-5 backdrop-blur-sm border border-white/30">
+                <svg class="w-9 h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              {block.title && (
+                <p class="relative z-10 text-white text-xl font-semibold tracking-wide text-center px-6">{block.title}</p>
+              )}
+              <p class="relative z-10 text-white/60 text-sm mt-2">Click to play</p>
+            </div>
+            {/* Iframe — hidden until overlay is clicked */}
             <iframe
               src={block.src}
               allow="autoplay"
               allowfullscreen
               class="absolute inset-0 w-full h-full border-0 rounded-xl"
+              style="display: none;"
               title={block.title || 'Video'}
             ></iframe>
           </div>
         </div>
       );
+    }
 
     default:
       return null;
