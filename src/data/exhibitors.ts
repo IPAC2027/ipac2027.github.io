@@ -153,6 +153,28 @@ export const exhibitors: Exhibitor[] = [
     booth: "C14",
     featured: true
   },
+  {
+    id: "gold-009",
+    name: "UHV Design",
+    logo: "/images/logos/exhibitors/gold/uhv_design.png",
+    website: "https://www.uhvdesign.com/",
+    description: "Gold tier exhibitor - placeholder",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C9",
+    featured: true
+  },
+  {
+    id: "gold-010",
+    name: "Technix High Voltage",
+    logo: "/images/logos/exhibitors/gold/Technix.png",
+    website: "https://technix-hv.com/",
+    description: "Gold tier exhibitor - placeholder",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C19",
+    featured: true
+  },
 ];
 
 // Helper functions
