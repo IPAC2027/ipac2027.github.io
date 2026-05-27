@@ -183,7 +183,7 @@ export const exhibitors: Exhibitor[] = [
     description: "Gold tier exhibitor - placeholder",
     category: "Industry Partner",
     tier: "gold",
-    booth: "TBD",
+    booth: "C8",
     featured: true
   },
 ];
