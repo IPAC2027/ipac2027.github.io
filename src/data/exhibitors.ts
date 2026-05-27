@@ -175,6 +175,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C19",
     featured: true
   },
+   {
+    id: "gold-011",
+    name: "Agilent Technologies",
+    logo: "/images/logos/exhibitors/gold/Agilent.png",
+    website: "https://www.agilent.com/",
+    description: "Gold tier exhibitor - placeholder",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "TBD",
+    featured: true
+  },
 ];
 
 // Helper functions
