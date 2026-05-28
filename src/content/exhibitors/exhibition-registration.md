@@ -13,14 +13,13 @@ Complete the registration process by October 1, 2026, to receive a 5% discount.
 - The IPAC’27 Exhibition Hall is located on the floor directly beneath the Plenary Session Hall, ensuring convenient access and a steady flow of attendees throughout the event. Exhibition booths will be positioned in the central area shared with poster sessions and coffee breaks.
 - All coffee breaks and poster sessions are located within the exhibition hall.
 
-<div style="text-align: center; margin: 2rem auto; max-width: 900px;">
-  <img src="/images/exhibitor/ExhibitorLayoutV3.png" alt="Exhibitor Hall Layout" style="width: 100%; height: auto; border-radius: 8px;" />
-</div>
+:::floorplan
+:::
 
 :::warning
 Current layout is tentative, that may have minor adjustment soon. The
 exact booth location is subject to change, with same tier at similar or better booth
-location.
+location.  The occupied booth information is updated every 2 days, may not reflect the real-time availability.
 :::
 
 ## Registration Procedure

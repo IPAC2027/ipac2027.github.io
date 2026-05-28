@@ -21,7 +21,8 @@ export type ContentBlockType =
   | 'collapsible'
   | 'pdfpreview'
   | 'table'
-  | 'video';
+  | 'video'
+  | 'floorplan';
 
 /**
  * Status options for status blocks
@@ -167,7 +168,13 @@ export type ContentBlock =
   | CardContentBlock
   | PdfPreviewContentBlock
   | TableContentBlock
-  | VideoContentBlock;
+  | VideoContentBlock
+  | FloorPlanContentBlock;
+
+export interface FloorPlanContentBlock extends BaseContentBlock {
+  type: 'floorplan';
+  content: string;
+}
 
 /**
  * Configuration for grid layouts

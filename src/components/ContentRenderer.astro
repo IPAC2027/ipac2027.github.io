@@ -2,6 +2,7 @@
 import type { ContentBlock, CollapsibleContent } from '../types/content.ts';
 import CollapsibleContentComponent from './content/CollapsibleContent.astro';
 import ConferenceCalendar from './content/ConferenceCalendar.astro';
+import ExhibitorFloorPlan from './ExhibitorFloorPlan.astro';
 import katex from 'katex';
 
 export interface Props {
@@ -438,6 +439,13 @@ const processMarkdown = (content: string): string => {
         </div>
       );
     }
+
+    case 'floorplan':
+      return (
+        <div class="my-6">
+          <ExhibitorFloorPlan />
+        </div>
+      );
 
     default:
       return null;

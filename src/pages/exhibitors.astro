@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ExhibitorsSection from '../components/ExhibitorsSection.astro';
+import ExhibitorFloorPlan from '../components/ExhibitorFloorPlan.astro';
 ---
 
 <Layout title="Exhibitors & Sponsors - IPAC27">
@@ -32,6 +33,12 @@ import ExhibitorsSection from '../components/ExhibitorsSection.astro';
       </div>
     </div>
     
+    <div class="py-12 bg-white dark:bg-primary-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ExhibitorFloorPlan />
+      </div>
+    </div>
+
     <ExhibitorsSection />
   </main>
 </Layout>

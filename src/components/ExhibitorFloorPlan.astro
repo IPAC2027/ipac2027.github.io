@@ -1,0 +1,196 @@
+---
+import { boothCoordinates, IMG_W, IMG_H, HALL_E3_BOOTHS } from '../data/boothCoordinates';
+import { exhibitors } from '../data/exhibitors';
+import type { Exhibitor } from '../data/exhibitors';
+
+// Build booth → exhibitor lookup
+const boothMap: Record<string, Exhibitor> = {};
+for (const exhibitor of exhibitors) {
+  if (exhibitor.booth && exhibitor.booth in boothCoordinates) {
+    boothMap[exhibitor.booth] = exhibitor;
+  }
+}
+
+type Tier = 'diamond' | 'platinum' | 'gold' | 'hall';
+
+function getTier(boothId: string): Tier {
+  if (boothId.startsWith('A')) return 'diamond';
+  if (boothId.startsWith('B')) return 'platinum';
+  if (HALL_E3_BOOTHS.includes(boothId)) return 'hall';
+  return 'gold';
+}
+
+const COLORS: Record<Tier, { emptyFill: string; occupiedFill: string; stroke: string }> = {
+  diamond: { emptyFill: '#E2F0D9', occupiedFill: '#92D050', stroke: '#70AD47' },
+  platinum: { emptyFill: '#FCE4D6', occupiedFill: '#FFB547', stroke: '#C76800' },
+  gold:     { emptyFill: '#DAE3F3', occupiedFill: '#5B8EDE', stroke: '#2F5496' },
+  hall:     { emptyFill: '#F0F0F0', occupiedFill: '#D0D0D0', stroke: '#909090' },
+};
+
+const TIER_LABELS: Record<Tier, string> = {
+  diamond: 'Diamond',
+  platinum: 'Platinum',
+  gold: 'Gold',
+  hall: 'Hall E3',
+};
+---
+
+<div class="space-y-6">
+  <!-- Header -->
+  <div class="text-center">
+    <h2 class="text-3xl font-bold text-primary-900 dark:text-primary-100 mb-2">Interactive Floor Plan of Exhibition Hall</h2>
+    <p class="text-primary-600 dark:text-primary-300">
+      Hover over booths to view exhibitor details. Click an occupied booth to visit their website.
+    </p>
+  </div>
+
+  <!-- Legend -->
+  <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm">
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-4 rounded" style="background:#92D050; border: 2px solid #70AD47;"></div>
+      <span class="text-primary-700 dark:text-primary-300">Diamond (A) — occupied</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-4 rounded" style="background:#FFB547; border: 2px solid #C76800;"></div>
+      <span class="text-primary-700 dark:text-primary-300">Platinum (B) — occupied</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-4 rounded" style="background:#5B8EDE; border: 2px solid #2F5496;"></div>
+      <span class="text-primary-700 dark:text-primary-300">Gold (C) — occupied</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-4 rounded" style="background:rgba(200,220,255,0.3); border: 2px dashed #888;"></div>
+      <span class="text-primary-700 dark:text-primary-300">Available</span>
+    </div>
+  </div>
+
+  <!-- Floor Plan -->
+  <div
+    class="relative w-full overflow-hidden rounded-xl shadow-lg border border-gray-200 dark:border-primary-700"
+    id="fp-container"
+  >
+    <img
+      src="/images/exhibitor/EmptyLayout.png"
+      alt="IPAC27 Exhibition Hall Floor Plan"
+      class="w-full h-auto block select-none"
+      draggable="false"
+    />
+    <svg
+      viewBox={`0 0 ${IMG_W} ${IMG_H}`}
+      class="absolute inset-0 w-full h-full"
+      preserveAspectRatio="none"
+      id="floorplan-svg"
+      aria-label="Exhibition floor plan with interactive booths"
+    >
+      {Object.entries(boothCoordinates).map(([boothId, bounds]) => {
+        const tier = getTier(boothId);
+        const colors = COLORS[tier];
+        const exhibitor = boothMap[boothId];
+        const occupied = !!exhibitor;
+        return (
+          <g
+            class="booth-group"
+            style="cursor: pointer;"
+            data-booth={boothId}
+            data-occupied={occupied ? 'true' : 'false'}
+            data-name={exhibitor?.name ?? ''}
+            data-website={exhibitor?.website ?? ''}
+            data-tier={tier}
+          >
+            <rect
+              x={bounds.x}
+              y={bounds.y}
+              width={bounds.w}
+              height={bounds.h}
+              fill={occupied ? colors.occupiedFill : colors.emptyFill}
+              fill-opacity={1}
+              stroke={colors.stroke}
+              stroke-width={occupied ? 2 : 1.5}
+              stroke-dasharray={occupied ? undefined : '6 4'}
+            />
+            <title>{occupied ? `${boothId}: ${exhibitor.name}` : `${boothId} (available)`}</title>
+          </g>
+        );
+      })}
+    </svg>
+
+    <!-- Tooltip -->
+    <div
+      id="fp-tooltip"
+      class="absolute z-20 hidden pointer-events-none bg-white dark:bg-primary-800 border border-gray-200 dark:border-primary-600 rounded-lg shadow-xl px-3 py-2 text-sm"
+      style="max-width: 220px; min-width: 120px;"
+    >
+      <div id="fp-tip-id" class="font-bold text-gray-900 dark:text-white"></div>
+      <div id="fp-tip-name" class="text-primary-700 dark:text-primary-200 mt-0.5 leading-tight"></div>
+      <div id="fp-tip-tier" class="text-gray-400 dark:text-gray-500 text-xs mt-1"></div>
+      <div id="fp-tip-hint" class="text-blue-500 text-xs mt-1 hidden">Click to visit website →</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const svg = document.getElementById('floorplan-svg') as SVGElement | null;
+  const container = document.getElementById('fp-container') as HTMLElement | null;
+  const tooltip = document.getElementById('fp-tooltip') as HTMLElement | null;
+  const tipId = document.getElementById('fp-tip-id') as HTMLElement | null;
+  const tipName = document.getElementById('fp-tip-name') as HTMLElement | null;
+  const tipTier = document.getElementById('fp-tip-tier') as HTMLElement | null;
+  const tipHint = document.getElementById('fp-tip-hint') as HTMLElement | null;
+
+  if (svg && container && tooltip && tipId && tipName && tipTier && tipHint) {
+    svg.addEventListener('mousemove', (e: Event) => {
+      const me = e as MouseEvent;
+      const group = (me.target as Element).closest('.booth-group');
+      if (!group) {
+        tooltip.classList.add('hidden');
+        return;
+      }
+
+      const boothId = group.getAttribute('data-booth') ?? '';
+      const occupied = group.getAttribute('data-occupied') === 'true';
+      const name = group.getAttribute('data-name') ?? '';
+      const tier = group.getAttribute('data-tier') ?? '';
+      const website = group.getAttribute('data-website') ?? '';
+
+      tipId.textContent = boothId;
+      tipName.textContent = occupied ? name : 'Available';
+      tipTier.textContent =
+        tier.charAt(0).toUpperCase() + tier.slice(1) + ' tier';
+      if (occupied && website) {
+        tipHint.classList.remove('hidden');
+      } else {
+        tipHint.classList.add('hidden');
+      }
+
+      const rect = container.getBoundingClientRect();
+      let x = me.clientX - rect.left + 14;
+      let y = me.clientY - rect.top - 10;
+
+      // Keep tooltip inside container bounds
+      tooltip.classList.remove('hidden');
+      const tw = tooltip.offsetWidth;
+      const th = tooltip.offsetHeight;
+      if (x + tw > rect.width - 4) x = me.clientX - rect.left - tw - 14;
+      if (y + th > rect.height - 4) y = rect.height - th - 4;
+      if (y < 4) y = 4;
+
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    });
+
+    svg.addEventListener('mouseleave', () => {
+      tooltip.classList.add('hidden');
+    });
+
+    svg.addEventListener('click', (e: Event) => {
+      const me = e as MouseEvent;
+      const group = (me.target as Element).closest('.booth-group');
+      if (!group) return;
+      const occupied = group.getAttribute('data-occupied') === 'true';
+      const website = group.getAttribute('data-website') ?? '';
+      if (occupied && website) {
+        window.open(website, '_blank', 'noopener,noreferrer');
+      }
+    });
+  }
+</script>
