@@ -12,7 +12,7 @@ export const homeContent = {
     },
     callToAction: {
       primary: {
-        text: "Register Starting November 2026",
+        text: "Register Starting October 2026",
         href: "/registration/conference-registration"
       },
       secondary: {

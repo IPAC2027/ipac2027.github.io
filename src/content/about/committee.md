@@ -192,6 +192,7 @@ The success of IPAC'27 depends on the dedicated work of our organizing committee
 * Rao, Xing (MSU)
 * Swartz, Anna (MSU)
 * Wang, Ling (MSU), Editor in Chief
+* Wier, Michelle (MSU)
 * Wootton, Kent (ANL)
 * Zhang, Tong (MSU)
 * Zhao, Shen (MSU)
