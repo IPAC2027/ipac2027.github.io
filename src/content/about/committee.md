@@ -189,6 +189,7 @@ The success of IPAC'27 depends on the dedicated work of our organizing committee
 * Parsons, Alex (MSU)
 * Patterer, Robert (MSU), Treasurer
 * Plastun, Alexander (MSU)
+* Popielarski, Laura (MSU)
 * Rao, Xing (MSU)
 * Swartz, Anna (MSU)
 * Wang, Ling (MSU), Editor in Chief

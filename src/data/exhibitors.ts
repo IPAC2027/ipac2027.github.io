@@ -52,6 +52,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "B20",
     featured: true
   },
+   {
+    id: "platinum-2",
+    name: "SIGMAPHI",
+    logo: "/images/logos/exhibitors/platinum/SigmaPhi.png",
+    website: "https://www.sigmaphi.com/",
+    description: "Platinum tier exhibitor",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B15",
+    featured: true
+  },
   // {
   //   id: "platinum-2",
   //   name: "Your Logo Here",
