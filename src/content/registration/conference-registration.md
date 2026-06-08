@@ -36,7 +36,6 @@ The registration fee for conference attendee includes access to the scientific p
 
 
 
-
 ## Registration Procedure
 
 To register for IPAC’27:
@@ -50,6 +49,15 @@ To register for IPAC’27:
 
 - **Complete payment**, follow the instructions in the payment system. Available payment methods and deadlines will be listed on the registration site.  **Your registration is not complete without payment cleared.**
 
+## Cancellation policy
+
+Cancellations are processed by e-mail to [IPAC'27 Registration](/contact)
+
+- Full refund before March 26, 2027: 100 % of the full invoice, less a 3% processing fee if the original payment was made by credit card.
+
+- Partial refund before Apr. 13, 2027 : 80% of the invoice amount.
+
+- After Apr. 13, 2027: No refund request will be accepted, except in extenuating circumstances that will be reviewed on a case-by-case basis.
 
 
 ## Support
