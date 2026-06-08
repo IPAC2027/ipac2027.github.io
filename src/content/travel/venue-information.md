@@ -14,7 +14,7 @@ IPAC'27 will be held at [Huntington Place](https://www.huntingtonplacedetroit.co
 **[Huntington Place](https://www.huntingtonplacedetroit.com)**  is Detroit’s premier convention center located on the scenic Detroit River waterfront. Known internationally as the home of the Detroit Auto Show (North American International Auto Show), Huntington Place has long served as a global stage for technological innovation and engineering excellence. The venue offers modern meeting facilities, expansive exhibit halls, and advanced technical infrastructure ideally suited for a major international scientific conference. Within walking distance of downtown hotels, restaurants, and cultural attractions, Huntington Place provides convenient access for visitors while showcasing Detroit’s legacy as a center of industry, technology, and innovation.
 
 <div style="text-align: center;">
-  <img src="https://www.huntingtonplacedetroit.com/assets/img/Huntington-Place-61b4124412.jpg" alt="Huntington Place exterior" style="width: 100%; max-width: 900px;" />
+  <img src="/images/travel/huntingtonplace.png" alt="Huntington Place exterior" style="width: 100%; max-width: 1800px;" />
 </div>
 
 Explore the venue in [360° panoramic virtual tours](https://www.huntingtonplacedetroit.com/plan-your-event-2/floor-plans) covering all 46 areas of the facility. See the [Floor Plans & Venue Specs](https://www.huntingtonplacedetroit.com/plan-your-event-2/floor-plans) for more details.
