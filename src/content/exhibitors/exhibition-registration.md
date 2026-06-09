@@ -31,9 +31,18 @@ location.  The occupied booth information is updated every 2 days, may not refle
 
 - Once booth registration is completed, complimentary registration codes for exhibitor personnel will be issued. The number of codes provided depends on the selected exhibitor tier. 
 
-- Exhibitor personnel who wish to attend the scientific program should complete the regular [conference registration](/registration/conference-registration), and use their complimentary registration code on the payment site.
+## Exhibitor Personnel Registration
+
+:::highlight
+Exhibition Personnel must follow the following steps to register to access the exhibition hall.  
+:::
+
+- Exhibitor personnel who wish to attend the scientific program should complete the regular [conference registration](/registration/conference-registration#registration-procedure), and use their complimentary registration code on the payment site.
 
 - Exhibitor personnel who plan to attend only the exhibition program may complete registration directly through the payment site using their complimentary registration code.
+
+:::button{url="" text="Exhibtion Personnel Registration, Open Soon"}
+:::
 
 
 

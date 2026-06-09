@@ -38,16 +38,15 @@ The registration fee for conference attendee includes access to the scientific p
 
 ## Registration Procedure
 
-To register for IPAC’27:
+To register for IPAC’27, please follow the steps below. If you do not plan to participate in the IPAC’27 scientific program and only need to register for the industrial exhibition,  please follow the [exhibition personnel registration guide](/exhibitors/exhibition-registration#exhibitor-personnel-registration).
 
--  **Prepare your JACoW account**, ensure that you have a valid JACoW Indico account and that your personal information and affiliation are up to date.
+1.  **Prepare your JACoW account**, ensure that you have a valid JACoW Indico account and that your personal information and affiliation are up to date.
 
+2. **Complete the registration form in Indico site**, provide the required personal information and select any applicable registration options.  
 
-- **Complete the registration form in Indico site**, provide the required personal information and select any applicable registration options.
+3. **Submit the registration**, after submission, you will be provided the payment link and receive a confirmation email summarizing your registration details.
 
-- **Submit the registration**, after submission, you will be provided the payment link and receive a confirmation email summarizing your registration details.
-
-- **Complete payment**, follow the instructions in the payment system. Available payment methods and deadlines will be listed on the registration site.  **Your registration is not complete without payment cleared.**
+4. **Complete payment**, follow the instructions in the payment system. Available payment methods and deadlines will be listed on the registration site.  **Your registration is not complete without payment cleared.**
 
 ## Cancellation policy
 
