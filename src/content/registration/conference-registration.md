@@ -23,7 +23,7 @@ All participants should have a **JACoW account** before registering. The JACoW a
 
 ## Registration Fees
 
-| Registration Category | Early Fee | Regular Fee |
+| Registration Category | Early Fee,<br>by Feb. 27 | Regular Fee,<br> starting Feb. 28 |
 |---|---:|---:|
 | IEEE/APS Member | $990 | $1,300 |
 | Non Member | $1,100 | $1,300 |

@@ -337,9 +337,8 @@ const processMarkdown = (content: string): string => {
                     <th
                       scope="col"
                       class={`px-6 py-4 text-base font-semibold text-white tracking-wide ${alignClass(alignments[ci] ?? 'none')} first:rounded-tl-xl last:rounded-tr-xl`}
-                    >
-                      {h}
-                    </th>
+                      set:html={h}
+                    />
                   ))}
                 </tr>
               </thead>
