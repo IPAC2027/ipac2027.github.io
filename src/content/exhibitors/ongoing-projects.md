@@ -6,22 +6,19 @@ bannerText: "Ongoing Projects"
 
 
 
-
-## Projects Showcase
-
 Major accelerator projects currently under development, construction, or commissioning around the world are highlighted below. IPAC’27 is honored to provide a forum for effective and productive discussion that supports these projects and strengthens the accelerator community.
 
 The project information below represents a snapshot as of 2026.
 
-### Projects in America
+## Projects in America
 
 :::collapsible{title="ALS-U"}
 
 **Location / Institution:** Lawrence Berkeley Lab  
 **Type:** Project Upgrade
 
-**Short description:**  
-Upgrading the current ALS into a fourth-generation light source.
+**Short description:**  Upgrading the current ALS into a fourth-generation light source.
+**Estimated Project Cost:** $900M USD
 
 **Status:**  
 - Approval: Not specified  
@@ -45,8 +42,8 @@ Upgrading the current ALS into a fourth-generation light source.
 **Location / Institution:** BNL  
 **Type:** New Project
 
-**Short description:**  
-The Electron-Ion Collider (EIC), being designed by BNL, JLab, and partners, will collide polarized high-energy electron beams with proton and ion beams at center-of-mass energies of 20–140 GeV. It will provide detailed insight into the quark and gluon structure of nucleons and nuclei, the strong nuclear force, and the origin of spin.
+**Short description:**  The Electron-Ion Collider (EIC), being designed by BNL, JLab, and partners, will collide polarized high-energy electron beams with proton and ion beams at center-of-mass energies of 20–140 GeV. It will provide detailed insight into the quark and gluon structure of nucleons and nuclei, the strong nuclear force, and the origin of spin.
+**Estimated Project Cost:** $2.8B USD
 
 **Status:**  
 - Approval: Not yet approved for construction  
@@ -76,8 +73,8 @@ The Electron-Ion Collider (EIC), being designed by BNL, JLab, and partners, will
 **Location / Institution:** Brookhaven National Laboratory  
 **Type:** New Project
 
-**Short description:**  
-This project proposes adding a beamline off the AGS using slow-extracted proton and heavy-ion beams delivered to an end station designed for radiation effects testing.
+**Short description:**  This project proposes adding a beamline off the AGS using slow-extracted proton and heavy-ion beams delivered to an end station designed for radiation effects testing.
+**Estimated Project Cost:** $550M USD
 
 **Status:**  
 - Approval: TBD  
@@ -104,15 +101,44 @@ This project proposes adding a beamline off the AGS using slow-extracted proton 
 - Kevin Brown, Brookhaven National Laboratory — brownk@bnl.gov
 :::
 
-### Projects in Asia
+:::collapsible{title="NSLS-II Upgrade"}
+
+**Location / Institution:** Brookhaven National Laboratory  
+**Type:** Project Upgrade
+**Short description:** Development of high-brightness upgrades for the National Synchrotron Light Source II.
+**Estimated Project Cost:** around $1B USD
+
+**Status:**  
+- Approval: N/A  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Duration: 8 years
+- Construction start: 2030
+
+**Equipment needed:**  
+* Accelerator magnets  
+* RF  
+* Power supplies  
+* Diagnostics and instrumentation  
+* Vacuum  
+* Girders  
+* Optics  
+* Electronics and controls
+
+**Contact person(s):**  
+- Timur Shaftan, BNL — shaftan@bnl.gov
+:::
+
+## Projects in Asia
 
 :::collapsible{title="China initiative Accelerator Driven System (CiADS)"}
 
 **Location / Institution:** Huizhou, Guangdong, China  
 **Type:** New Project
 
-**Short description:**  
-CiADS is proposed as the world’s first megawatt-scale accelerator-driven transmutation research facility to achieve high-power coupled operation. Construction started in 2021 with a six-year construction period.
+**Short description:**  CiADS is proposed as the world’s first megawatt-scale accelerator-driven transmutation research facility to achieve high-power coupled operation. Construction started in 2021 with a six-year construction period.
+**Estimated Project Cost:** 2.8 billion RMB
 
 **Status:**  
 - Contracting / progress: 30%–80% contracted
@@ -146,6 +172,7 @@ CiADS is proposed as the world’s first megawatt-scale accelerator-driven trans
 
 **Short description:**  
 The project aims to achieve breakthroughs in key technologies for the mass production of alpha-emitting isotopes, such as radium-223 and actinium-225, for tumor therapy, together with integration and demonstration of core devices.
+**Estimated Project Cost:** 0.5B RMB
 
 **Status:**  
 - Approval / key date: 2024-07-05  
@@ -172,9 +199,9 @@ The project aims to achieve breakthroughs in key technologies for the mass produ
 **Location / Institution:** RIKEN Nishina Center, Saitama, Japan  
 **Type:** Project Upgrade
 
-**Short description:**  
-This project aims to increase the intensity of radioactive isotope beams by a factor of 20 compared with the current capability of the RIKEN RI Beam Factory (RIBF).  
+**Short description:**  This project aims to increase the intensity of radioactive isotope beams by a factor of 20 compared with the current capability of the RIKEN RI Beam Factory (RIBF).  
 Reference: `https://www.nishina.riken.jp/researcher/RIBFupgrade/RIBF_Upgrade_NCAC.pdf`
+**Estimated Project Cost:** ~$26,000 MYEN in total
 
 **Status:**  
 - Approval: Not yet approved  
@@ -199,14 +226,66 @@ Reference: `https://www.nishina.riken.jp/researcher/RIBFupgrade/RIBF_Upgrade_NCA
 
 :::
 
-### Projects in Europe
+:::collapsible{title="SPring-8-II"}
+
+**Location / Institution:** Sayo-cho, Hyogo, Japan  
+**Type:** Project Upgrade
+
+**Short description:**  Upgrade project of SPring-8 SR facility.
+**Estimated Project Cost:** About $300M
+
+**Status:**  
+- Contracting / progress: >80% contracted
+
+**Timeline:**  
+- Construction start: 2025  
+- Duration: 4 years
+
+**Equipment needed:**  
+* Light source equipments
+
+**Contact person(s):**  
+- Takahiro Watanabe, JASRI/RIKEN — twatanabe@spring8.or.jp
+:::
+
+:::collapsible{title="Siam Photon Source II (SPS-II)"}
+
+**Location / Institution:** Rayong, Thailand  
+**Type:** New Project
+
+**Short description:**  
+4th generation, 3 GeV synchrotron.
+**Estimated Project Cost:** 490 M USD
+
+**Status:**  
+- Approval: January 2026  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Estimated construction start: 2027–2028  
+- Duration: 6 years
+
+**Equipment needed:**  
+* Magnets  
+* RF system  
+* Power supplies  
+* Vacuum components  
+* Control system  
+* Utilities
+
+**Contact person(s):**  
+- Prapong Klysubun, Synchrotron Light Research Institute — pklysubun@slri.or.th  
+- Wasupon Rungatanapiriom, Synchrotron Light Research Institute — wasupon@slri.or.th
+:::
+
+## Projects in Europe
 
 :::collapsible{title="ALBA II"} 
 **Location / Institution:** Cerdanyola del Vallès, Barcelona, Spain  
 **Type:** Project Upgrade
 
-**Short description:**  
-ALBA II is the major upgrade of the ALBA Synchrotron Light Source, transforming it from a third-generation to a fourth-generation synchrotron. The project includes a new low-emittance storage ring, upgrades to beamlines, and new advanced experimental stations to strengthen research in materials science, life sciences, energy, nanotechnology, and industrial applications.
+**Short description:**  ALBA II is the major upgrade of the ALBA Synchrotron Light Source, transforming it from a third-generation to a fourth-generation synchrotron. The project includes a new low-emittance storage ring, upgrades to beamlines, and new advanced experimental stations to strengthen research in materials science, life sciences, energy, nanotechnology, and industrial applications.
+**Estimated Project Cost:** $170M Euros
 
 **Status:**  
 - Approval / key date: May 2024  
@@ -235,8 +314,8 @@ ALBA II is the major upgrade of the ALBA Synchrotron Light Source, transforming 
 **Location / Institution:** Trieste, Italy  
 **Type:** Project Upgrade
 
-**Short description:**  
-Elettra 2.0 will replace the existing third-generation Elettra light source with a 2.4 GeV, low-emittance storage ring. The upgrade will expand and modernize beamline capabilities, especially in tender and hard X-rays, enabling major advances in X-ray spectroscopy, diffraction, coherent imaging, time-resolved experiments, nanotechnology, materials science, quantum materials, pharmaceuticals, and health sciences.
+**Short description:**  Elettra 2.0 will replace the existing third-generation Elettra light source with a 2.4 GeV, low-emittance storage ring. The upgrade will expand and modernize beamline capabilities, especially in tender and hard X-rays, enabling major advances in X-ray spectroscopy, diffraction, coherent imaging, time-resolved experiments, nanotechnology, materials science, quantum materials, pharmaceuticals, and health sciences.
+**Estimated Project Cost:** 170 Meuro
 
 **Status:**  
 - Approval / key date: 2019  
@@ -261,4 +340,52 @@ Elettra 2.0 will replace the existing third-generation Elettra light source with
 
 **Contact person(s):**  
 - Emanuel Karantzoulis, Elettra - Sincrotrone Trieste — emanuel.karantzoulis@elettra.eu
+:::
+
+:::collapsible{title="BESSY III"}
+
+**Location / Institution:** Berlin, Germany  
+**Type:** New Project
+
+**Short description:**  Synchrotron radiation source planned for 2031.
+**Estimated Project Cost:** 1.2B Euros
+
+**Status:**  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Construction period: 2026–2031  
+- Duration: 4–5 years
+
+**Equipment needed:**  
+* RF equipment  
+* Power supplies  
+* Magnets
+
+**Contact person(s):**  
+- Renke van der Veen, Helmholtz-Zentrum Berlin — renke@helmholtz-berlin.de  
+- Andreas Jankowiak, Helmholtz-Zentrum Berlin — andreas.jankowiak@helmholtz-berlin.de
+:::
+
+:::collapsible{title="PETRA IV"}
+
+**Location / Institution:** DESY, Hamburg  
+**Type:** Project Upgrade
+
+**Short description:**  
+The PETRA IV project at DESY, with approval foreseen within 2026.
+**Estimated Project Cost:** 1.8 Bn Euros
+
+**Status:**  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Estimated construction start: 2030  
+- Duration: 5 years
+
+**Equipment needed:**  
+* All accelerator and beamlines subsystems
+
+**Contact person(s):**  
+- Riccardo Bartolini, DESY — riccardo.bartolini@desy.de
 :::
