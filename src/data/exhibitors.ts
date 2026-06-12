@@ -168,7 +168,7 @@ export const exhibitors: Exhibitor[] = [
     id: "gold-008",
     name: "SYES",
     logo: "/images/logos/exhibitors/gold/syes.png",
-    website: "https://syes.eu/",
+    website: "https://syes.eu/scientific/",
     description: "",
     category: "Industry Partner",
     tier: "gold",
