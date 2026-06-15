@@ -278,6 +278,42 @@ Reference: `https://www.nishina.riken.jp/researcher/RIBFupgrade/RIBF_Upgrade_NCA
 - Wasupon Rungatanapiriom, Synchrotron Light Research Institute — wasupon@slri.or.th
 :::
 
+:::collapsible{title="China Spallation Neutron Source Phase II"}
+
+**Location / Institution:** Dongguan, Guangdong, China  
+**Type:** Project Upgrade
+
+**Short description:**  
+The China Spallation Neutron Source Phase II, CSNS-II, is a major national upgrade to the CSNS facility. It aims to increase accelerator beam power from 100 kW to 500 kW and add 11 new neutron spectrometers alongside China’s first muon experiment terminal.
+
+Incorporating advanced technological innovations such as dual-harmonic accelerating methods, domestically developed 2 K helium cryogenic systems, and ATCA-based fast protection networks, the project will significantly enhance experimental resolution and efficiency. Upon completion, this upgraded mega-science infrastructure will serve as a world-class platform for cutting-edge research and industrial innovation in fields ranging from new materials and aerospace to life sciences, further strengthening the comprehensive national science center in the Greater Bay Area.
+
+**Estimated Project Cost:** 430 million USD
+
+**Status:**  
+- Approval / key date: January 9, 2024  
+- Contracting / progress: 30%–80% contracted
+
+**Timeline:**  
+- Start / key milestone: January 9, 2024  
+- Duration: 5 years and 9 months
+
+**Equipment needed:**  
+* Superconducting cavities  
+* RF power sources  
+* Cryogenic systems  
+* Beam diagnostic equipment  
+* Neutron guides  
+* Neutron detectors  
+* Neutron choppers
+
+**Contact person(s):**  
+- Sheng Wang, Institute of High Energy Physics, Chinese Academy of Sciences — wangs@ihep.ac.cn  
+- Xiao Li, Institute of High Energy Physics, Chinese Academy of Sciences — lixiao@ihep.ac.cn
+:::
+
+
+
 ## Projects in Europe
 
 :::collapsible{title="ALBA II"} 
@@ -388,4 +424,156 @@ The PETRA IV project at DESY, with approval foreseen within 2026.
 
 **Contact person(s):**  
 - Riccardo Bartolini, DESY — riccardo.bartolini@desy.de
+:::
+
+:::collapsible{title="MYRRHA"}
+
+**Location / Institution:** Mol, Belgium  
+**Type:** Project Upgrade
+
+**Short description:**  
+MYRRHA is designed as an Accelerator Driven System. As a first step toward a 600 MeV superconducting linac, a 100 MeV proton linac will be constructed by 2031. A connected proton target facility will serve radioisotope production.
+
+**Estimated Project Cost:** 650 M€
+
+**Status:**  
+- Approval / key date: 07 September 2018  
+- Contracting / progress: 30%–80% contracted
+
+**Timeline:**  
+- Start / key milestone: 01 November 2024  
+- Duration: 13 years
+
+**Equipment needed:**  
+* 100 MeV proton linac  
+* 17 MeV injector  
+* 15 copper CH-cavities  
+* Superconducting linac with 60 single-spoke cavities  
+* Proton target station
+
+**Contact person(s):**  
+- Hamid Aït Abderrahim, MYRRHA aisbl/ivzw — hamid.ait.abderrahim@myrrha.be  
+- Adrian Fabich, SCK CEN Belgian Nuclear Research Centre — adrian.fabich@sckcen.be
+:::
+
+
+:::collapsible{title="Future Circular Collider"}
+
+**Location / Institution:** Lake Geneva Basin / CERN  
+**Type:** New Project
+
+**Short description:**  
+The Future Circular Collider (FCC) is a proposed ultra-high-luminosity electron-positron collider, also called FCC-ee, serving as a Higgs factory, electroweak factory, and top factory. It would be installed in a new 91 km tunnel infrastructure connected to the existing CERN complex.
+
+As a potential second step, a hadron collider providing proton-proton collisions at a center-of-mass energy close to 100 TeV, FCC-hh, could reuse the same tunnel and technical infrastructure.
+
+The FCC-ee project is expected to be presented to CERN Council for approval in 2028/29, with a possible start of construction by 2032/33. First beams are expected in 2046, and regular physics operation is expected to commence in 2048.
+
+**Estimated Project Cost:** 15 BCHF
+
+**Status:**  
+- Approval / key date: 2028/29  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Estimated construction start: 2032/33  
+- Duration: 14 years
+
+**Equipment needed:**  
+* RF systems  
+* Warm RF structures  
+* Superconducting RF cavities  
+* RF power sources  
+* Cryogenic systems  
+* Series production of magnets  
+* Vacuum chambers, vacuum pumps, and interconnection modules  
+* NEG coating  
+* Kickers, septa, and pulsed-power systems  
+* Beam dumps and collimators  
+* Beam instrumentation, including beam position monitors, polarimeters, emittance and bunch-length monitors, beam current monitors, and bunch current monitors  
+* Laser systems for polarimeters and the electron injector  
+* Temperature and position sensors  
+* Alignment instrumentation  
+* Cooling plants and distribution systems  
+* Electrical substations and power-distribution systems  
+* Large-scale control systems  
+* Particle source systems and diagnostics  
+* Tracking detectors, calorimeters, experimental magnets, and DAQ systems  
+* Computing infrastructure and storage  
+* Groundwater and spoil-management systems  
+* Tunnel boring machines and excavation support  
+* Environmental monitoring systems
+
+**Contact person(s):**  
+- Michael Benedikt, CERN — michael.benedikt@cern.ch  
+- Frank Zimmermann, CERN — frank.zimmermann@cern.ch
+:::
+
+:::collapsible{title="High Luminosity LHC"}
+
+**Location / Institution:** CERN, Geneva, Switzerland  
+**Type:** Project Upgrade
+
+**Short description:**  
+The High-Luminosity Large Hadron Collider (HL-LHC) project is a major upgrade to the current Large Hadron Collider. It aims to increase LHC performance and expand the potential for discoveries after 2030. The objective is to increase the integrated luminosity by a factor of 10 beyond the LHC design value.
+
+With the upgrade, the LHC will push the limits of human knowledge and enable physicists to go beyond the Standard Model and its Higgs boson. Following approval of HL-LHC as a priority project in the European Strategy for Particle Physics and approval of its budget by CERN Council, this major upgrade is now in full implementation together with companion upgrade programs for the LHC injectors and detectors.
+
+**Estimated Project Cost:** 1.2 BCHF
+
+**Status:**  
+- Approval / key date: 2016  
+- Contracting / progress: >80% contracted
+
+**Timeline:**  
+- Deployment phase: July 2026  
+- Duration: 4 years
+
+**Equipment needed:**  
+* Electronic components and assemblies  
+* Remaining industrial procurements associated with deployment
+
+**Contact person(s):**  
+- Markus Zerlauth, CERN — markus.zerlauth@cern.ch
+:::
+
+
+:::collapsible{title="Upgrade of Linear Accelerator for SOLARIS National Synchrotron Radiation Centre"}
+
+**Location / Institution:** Krakow, Poland  
+**Type:** Project Upgrade
+
+**Short description:**  
+The objective of the project is to design and construct a compact 1.5 GeV linear accelerator at the SOLARIS National Synchrotron Radiation Centre, enabling continuous replenishment of the electron beam current in the storage ring through top-up operation.
+
+The project foresees a hybrid accelerator architecture, partially based on existing infrastructure and complemented by new accelerator sections using C-band technology. This approach will make it possible to reach the target energy of 1.5 GeV in a single-pass configuration within the existing LINAC tunnel, while preserving space for diagnostics, maintenance, and future upgrades.
+
+The upgraded injector will significantly improve beam stability, beam availability, and the quality of experimental data delivered to users. It will also establish the foundation for future applications of the LINAC as a standalone facility, including electron irradiation, accelerator diagnostics and testing, and longer-term development of a free-electron laser and new experimental beamlines.
+
+**Estimated Project Cost:** 42 M€
+
+**Status:**  
+- Approval / key date: 2027  
+- Contracting / progress: Not started
+
+**Timeline:**  
+- Estimated construction start: 2028  
+- Duration: 5 years
+
+**Equipment needed:**  
+* C-band accelerating structures  
+* C-band modulators and klystrons  
+* Waveguides  
+* Power dividers  
+* Pulse compressors  
+* Vacuum equipment, including valves, bellows, pumps, and controllers  
+* Electron beam instrumentation  
+* Magnets and power supplies  
+* RF photocathode gun  
+* Laser system  
+* LLRF system  
+* Timing system
+
+**Contact person(s):**  
+- Adriana Wawrzyniak, SOLARIS National Synchrotron Radiation Centre, Jagiellonian University — adriana.wawrzyniak@uj.edu.pl
 :::
