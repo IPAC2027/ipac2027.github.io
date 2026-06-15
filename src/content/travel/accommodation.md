@@ -18,7 +18,15 @@ A special room block is available at the conference hotel for IPAC'27 attendees.
   <p style="font-style: italic; margin-top: 0.5rem; color: #666;">Aerial view of Detroit Marriott at the Renaissance Center</p>
 </div>
 
-The **Detroit Marriott at the Renaissance Center** serves as the official conference hotel for IPAC'27, offering convenient access to the conference venue and spectacular views of the Detroit River.
+The [**Detroit Marriott at the Renaissance Center**](https://www.marriott.com/en-us/hotels/dtwdt-detroit-marriott-at-the-renaissance-center/) serves as the official conference hotel for IPAC'27, offering convenient access to the conference venue and spectacular views of the Detroit River.
+
+- **Conference Rate**: 239 USD/night (subject to availability)
+- **Book your stay** use the following link.
+
+:::button{url="https://book.passkey.com/go/IEEEIPAC2027" text="Secure your room now"}
+:::
+
+Limited number of rooms are available at the conference rate, so we encourage attendees to book early to secure accommodations. 
 
 :::grid{columns=2}
 :::card{icon="📍" title="Address"}
@@ -28,35 +36,18 @@ Detroit, MI 48243
 <iframe src="https://maps.google.com/maps?q=400+Renaissance+Dr+W,+Detroit,+MI+48243&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="240" style="border:0;border-radius:8px;margin-top:0.75rem;" allowfullscreen="" loading="lazy"></iframe>
 :::
 
-:::card{icon="🏨" title="Book Your Stay"}
-**A special discounted room block is reserved for IPAC'27 attendees at the conference hotel.**
-
-<br>
-
-- **Conference Rate**: To be announced
-- **Booking Link**: To be announced
-
-[Hotel Website](https://www.marriott.com/en-us/hotels/dtwdt-detroit-marriott-at-the-renaissance-center/)
-
-Booking information and special conference rates will be announced approximately one year before the conference. Check back for updates.
+:::card{icon="🏨" title="Hotel Highlights"}
+- 1,200+ rooms with **river views**
+- Just 0.5 miles from Huntington Place (conference venue), connected by the scenic Detroit RiverWalk
+<div style="text-align: center; margin: 1rem 0;">
+  <img src="/images/travel/riverfront.jpg" alt="Riverfront View" style="width: 100%; height: 200px; object-fit: cover;" />
+</div>
+- Reaching venue by People Mover, free Detriot elevated transit system, in 5 minutes
+- Iconic Detroit landmark with on-site dining, fitness center, and more
 :::
 :::
 
-### Hotel Highlights
 
-:::grid{columns=3}
-:::card{icon="📍" title="Prime Location"}
-Located on the Detroit RiverWalk, just 0.5 miles from Huntington Place (conference venue).
-:::
-
-:::card{icon="🚇" title="Connected by People Mover"}
-Conveniently connected to the convention center via Detroit's People Mover elevated transit system.
-:::
-
-:::card{icon="🏙️" title="Iconic Landmark"}
-Part of the Renaissance Center complex, Detroit's most recognizable riverfront landmark.
-:::
-:::
 
 ### Nearby Attractions
 
