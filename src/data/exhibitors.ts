@@ -208,6 +208,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C8",
     featured: true
   },
+  {  
+    id: "gold-012",
+    name: "R&K Company Limited",
+    logo: "/images/logos/exhibitors/gold/RK_microwave.png",
+    website: "https://rk-microwave.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C42",
+    featured: true
+  },
 ];
 
 // Helper functions
