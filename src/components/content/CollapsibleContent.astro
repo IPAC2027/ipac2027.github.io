@@ -242,12 +242,47 @@ const { content, group } = Astro.props;
         });
       });
       
+      // Scroll collapsible title into view below the sticky nav
+      function scrollToButton() {
+        const nav = document.querySelector('nav');
+        const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+        const offset = 20; // extra breathing room
+
+        // If other group members above this button will be closing, their content
+        // height will disappear, shifting this button upward. Subtract that amount
+        // so the final scroll position is accurate.
+        let collapsingHeightAbove = 0;
+        if (groupName) {
+          const groupContainers = document.querySelectorAll(`[data-group="${groupName}"]`);
+          groupContainers.forEach((otherContainer) => {
+            if (otherContainer !== container && otherContainer.classList.contains('is-open')) {
+              const otherBottom = otherContainer.getBoundingClientRect().bottom;
+              const buttonTop = button.getBoundingClientRect().top;
+              if (otherBottom <= buttonTop) {
+                const otherContent = otherContainer.querySelector('.collapsible-content') as HTMLElement;
+                if (otherContent) {
+                  collapsingHeightAbove += otherContent.scrollHeight;
+                }
+              }
+            }
+          });
+        }
+
+        const top = button.getBoundingClientRect().top + window.scrollY - navHeight - offset - collapsingHeightAbove;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+
       // Handle click events
       button.addEventListener('click', function(e) {
         e.preventDefault();
         
         // Prevent multiple concurrent animations
         if (isAnimating) return;
+        
+        // Only scroll when opening (not when closing)
+        if (!isOpen) {
+          scrollToButton();
+        }
         
         // If this is part of a group and we're opening, close others in the group
         if (groupName && !isOpen) {
