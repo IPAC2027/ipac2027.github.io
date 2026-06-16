@@ -463,16 +463,13 @@ MYRRHA is designed as an Accelerator Driven System. As a first step toward a 600
 **Type:** New Project
 
 **Short description:**  
-The Future Circular Collider (FCC) is a proposed ultra-high-luminosity electron-positron collider, also called FCC-ee, serving as a Higgs factory, electroweak factory, and top factory. It would be installed in a new 91 km tunnel infrastructure connected to the existing CERN complex.
+The Future Circular Collider (FCC) is a proposed ultra-high luminosity electron-positron collider (also called FCC-ee), serving as Higgs factory, electroweak & top factory, which would be installed in a new 91 km tunnel infrastructure connected to the existing CERN complex.  As a potential second step, a hadron collider providing proton-proton collisions at a centre-of-mass energy close to 100 TeV (FCC-hh) could reuse the same tunnel and technical infrastructure. 
+The FCC-ee was recommended by the 2025/26 Update of the European Strategy for Particle Physics as both the option “A” and (in descoped form) the option “B” for CERN’s next flagship accelerator. The FCC-ee project will be presented to CERN Council for approval in 2028/29, with a possible start of construction by 2032/33. First beams are expected in 2046, and regular physics operation to commence in 2048.
 
-As a potential second step, a hadron collider providing proton-proton collisions at a center-of-mass energy close to 100 TeV, FCC-hh, could reuse the same tunnel and technical infrastructure.
-
-The FCC-ee project is expected to be presented to CERN Council for approval in 2028/29, with a possible start of construction by 2032/33. First beams are expected in 2046, and regular physics operation is expected to commence in 2048.
-
-**Estimated Project Cost:** 15 BCHF
+**Estimated Project Cost:** 15B CHF
 
 **Status:**  
-- Approval / key date: 2028/29  
+- Approval / key date: September 2028   
 - Contracting / progress: Not started
 
 **Timeline:**  
@@ -482,7 +479,7 @@ The FCC-ee project is expected to be presented to CERN Council for approval in 2
 **Equipment needed:**  
 * RF systems  
 * Warm RF structures  
-* Superconducting RF cavities  
+* Superconducting RF cavities and Cryomodules
 * RF power sources  
 * Cryogenic systems  
 * Series production of magnets  
