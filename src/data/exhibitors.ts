@@ -28,6 +28,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "A7",
     featured: true
   },
+   {
+    id: "diamond-2",
+    name: "ICEX, SPAIN TRADE and INVESTMENT, E.P.E.",
+    logo: "/images/logos/exhibitors/diamond/icex.png",
+    website: "https://www.icex.es/",
+    description: "",
+    category: "Industry Partner",
+    tier: "diamond",
+    booth: "A6",
+    featured: true
+  },
   // {
   //   id: "diamond-2",
   //   name: "Your Logo Here",
