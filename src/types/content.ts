@@ -55,8 +55,16 @@ export interface TextContentBlock extends BaseContentBlock {
  */
 export interface ListContentBlock extends BaseContentBlock {
   type: 'list';
-  content: string[];
+  content: string[] | NestedListItem[];
   multiColumn?: boolean;
+}
+
+/**
+ * Recursive list item for nested markdown lists
+ */
+export interface NestedListItem {
+  text: string;
+  children?: NestedListItem[];
 }
 
 /**

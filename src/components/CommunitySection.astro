@@ -54,7 +54,7 @@ const createWeightedExhibitorList = (exhibitors: Exhibitor[]) => {
   };
   
   // Dynamic count based on number of exhibitors (5x), with a minimum buffer of 30 logos
-  const count = Math.max(30, exhibitors.length * 5);
+  const count = Math.max(30, exhibitors.length * 2);
   const weightedList: Exhibitor[] = [];
   
   for (let i = 0; i < count; i++) {

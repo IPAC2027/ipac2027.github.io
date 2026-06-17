@@ -6,11 +6,58 @@ import { join } from 'path';
 import type { 
   ContentBlock, 
   ContentGrid, 
+  NestedListItem,
   PageContent, 
   ContentLoadResult,
   ContentLoadError,
   MarkdownParseConfig
 } from '../types/content.ts';
+
+type ListMarker = '*' | '-';
+
+function getIndentWidth(line: string): number {
+  const leadingWhitespace = line.match(/^\s*/)?.[0] || '';
+  let width = 0;
+  for (const char of leadingWhitespace) {
+    width += char === '\t' ? 4 : 1;
+  }
+  return width;
+}
+
+function parseNestedListItems(listLines: string[]): NestedListItem[] {
+  const rootItems: NestedListItem[] = [];
+  const stack: Array<{ indent: number; item: NestedListItem }> = [];
+
+  for (const rawLine of listLines) {
+    const trimmed = rawLine.trim();
+    if (!trimmed) continue;
+
+    const listMatch = rawLine.match(/^(\s*)([*-])\s+(.+)$/);
+    if (!listMatch) continue;
+
+    const [, , , text] = listMatch;
+    const indent = getIndentWidth(rawLine);
+    const newItem: NestedListItem = { text: text.trim() };
+
+    while (stack.length > 0 && indent <= stack[stack.length - 1].indent) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      rootItems.push(newItem);
+    } else {
+      const parent = stack[stack.length - 1].item;
+      if (!parent.children) {
+        parent.children = [];
+      }
+      parent.children.push(newItem);
+    }
+
+    stack.push({ indent, item: newItem });
+  }
+
+  return rootItems;
+}
 
 /**
  * Default configuration for markdown parsing
@@ -131,41 +178,47 @@ function parseMarkdownToBlocks(content: string, config: MarkdownParseConfig = DE
         } else if (line.startsWith('### ')) {
           blocks.push({ type: 'subsubtitle', content: line.substring(4) });
         } else if (line.startsWith('* ') || line.startsWith('- ')) {
-          // Handle markdown lists - collect consecutive list items
-          // Use * for multi-column lists, - for single-column lists
-          const listMarker = line.startsWith('* ') ? '*' : '-';
+          // Handle markdown lists with optional nesting via indentation.
+          // Tab indentation is treated as 4 spaces.
+          const baseLine = lines[i];
+          const baseIndent = getIndentWidth(baseLine);
+          const listMarker: ListMarker = line.startsWith('* ') ? '*' : '-';
           const isMultiColumn = listMarker === '*';
-          const listItems: string[] = [];
-          
-          // Add the current line
-          listItems.push(line.substring(2).trim());
-          
-          // Look ahead to collect consecutive list items with the same marker
+          const listLines: string[] = [baseLine];
+
           let nextIndex = i + 1;
           while (nextIndex < lines.length) {
-            const nextLine = lines[nextIndex].trim();
-            
-            // Skip all consecutive blank lines
-            if (nextLine === '') {
+            const rawNextLine = lines[nextIndex];
+            const trimmedNextLine = rawNextLine.trim();
+
+            if (trimmedNextLine === '') {
+              listLines.push(rawNextLine);
               nextIndex++;
               continue;
             }
-            
-            // Check if it's a list item with the same marker
-            const nextMarker = nextLine.startsWith('* ') ? '*' : nextLine.startsWith('- ') ? '-' : null;
-            
-            if (nextMarker === listMarker) {
-              listItems.push(nextLine.substring(2).trim());
-              nextIndex++;
-            } else {
-              // End of list - found a non-blank, non-matching line
+
+            const listMatch = rawNextLine.match(/^(\s*)([*-])\s+(.+)$/);
+            if (!listMatch) {
               break;
             }
+
+            const nextIndent = getIndentWidth(rawNextLine);
+            if (nextIndent < baseIndent) {
+              break;
+            }
+
+            listLines.push(rawNextLine);
+            nextIndex++;
           }
-          
-          blocks.push({ 
-            type: 'list', 
-            content: listItems,
+
+          const nestedItems = parseNestedListItems(listLines);
+          const hasNestedItems = nestedItems.some(item => item.children && item.children.length > 0);
+
+          blocks.push({
+            type: 'list',
+            content: hasNestedItems
+              ? nestedItems
+              : nestedItems.map(item => item.text),
             multiColumn: isMultiColumn
           });
           i = nextIndex - 1; // -1 because the main loop will increment

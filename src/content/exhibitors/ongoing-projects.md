@@ -130,6 +130,50 @@ The project information below represents a snapshot as of 2026.
 - Timur Shaftan, BNL — shaftan@bnl.gov
 :::
 
+
+:::collapsible{title="PIP-II"}
+
+**Project name:** PIP-II (Proton Improvement Plan)  
+**Location / Institution:** Fermi National Accelerator Laboratory, Batavia, IL, USA  
+**Type:** New Project
+
+**Short description:**  
+PIP-II is a new superconducting 800 MeV H⁻ linac and beam transfer line that will inject a 2 mA beam into the Fermilab Booster. The goal is to upgrade the Fermilab Accelerator Complex toward more than 1.2 MW proton power on target to drive the LBNF/DUNE neutrino experiment.
+
+**Estimated Project Cost:** $978M
+
+**Status:**  
+- Approval / key date: December 2017  
+- Contracting / progress: 30%–80% contracted
+
+**Timeline:**  
+- Start / key milestone: April 2022  
+- Duration: 10 years
+
+**Equipment needed:**  
+* Superconducting cryomodules:
+    * One HWR 162.5 MHz cryomodule with 8 beta = 0.11 half-wave SRF resonators and 8 solenoids
+    * 2+1 SSR1 325 MHz cryomodules with 8 beta = 0.22 single-spoke SRF resonators and 8 solenoids
+    * 7+1 SSR2 325 MHz cryomodules with 5 beta = 0.47 single-spoke SRF resonators and 3 solenoids
+    * 9+1 low-beta 650 MHz cryomodules with 4 beta = 0.61 elliptical SRF resonators
+    * 4+1 high-beta 650 MHz cryomodules with 6 beta = 0.92 elliptical SRF resonators
+* Solid-state amplifiers for each cavity: 2 kW, 7 kW, 20 kW, 40 kW, and 70 kW
+* 2 K cryogenic cold box of 12 kW and cryoplant
+* 25 kW beam absorber
+* Beam transfer line
+* Collimators
+* H⁻ stripping and injection system
+* Specialty room-temperature RF cavities and magnets for the Booster and Main Injector
+* Conventional facilities, including High Bay and Cryoplant buildings, RF gallery, linac and beam transfer line tunnel, and service buildings
+* Warm Front End, already built and operated at Fermilab
+
+**Contact person(s):**  
+- Cristian Boffo, Fermi National Accelerator Laboratory — crboffo@fnal.gov  
+- Olivier Napoly, Fermi National Accelerator Laboratory — napoly@fnal.gov
+:::
+
+
+
 ## Projects in Asia
 
 :::collapsible{title="China initiative Accelerator Driven System (CiADS)"}
