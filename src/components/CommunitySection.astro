@@ -53,14 +53,20 @@ const createWeightedExhibitorList = (exhibitors: Exhibitor[]) => {
     gold: 1        // Lowest probability
   };
   
-  // Dynamic count based on number of exhibitors (5x), with a minimum buffer of 30 logos
+  // Dynamic count based on number of exhibitors (2x), with a minimum buffer of 30 logos
   const count = Math.max(30, exhibitors.length * 2);
   const weightedList: Exhibitor[] = [];
+  const recentIds: string[] = [];
+  const minimumGap = 5;
   
   for (let i = 0; i < count; i++) {
-    // Create weighted pool
+    const blockedIds = new Set(recentIds);
+    const eligibleExhibitors = exhibitors.filter(exhibitor => !blockedIds.has(exhibitor.id));
+    const selectionPool = eligibleExhibitors.length > 0 ? eligibleExhibitors : exhibitors;
+
+    // Create weighted pool from eligible exhibitors
     const pool: Exhibitor[] = [];
-    exhibitors.forEach(exhibitor => {
+    selectionPool.forEach(exhibitor => {
       const weight = weights[exhibitor.tier as keyof typeof weights] || 1;
       for (let j = 0; j < weight; j++) {
         pool.push(exhibitor);
@@ -69,7 +75,13 @@ const createWeightedExhibitorList = (exhibitors: Exhibitor[]) => {
     
     // Pick random exhibitor from weighted pool
     const randomIndex = Math.floor(Math.random() * pool.length);
-    weightedList.push(pool[randomIndex]);
+    const selectedExhibitor = pool[randomIndex];
+    weightedList.push(selectedExhibitor);
+
+    recentIds.push(selectedExhibitor.id);
+    if (recentIds.length > minimumGap) {
+      recentIds.shift();
+    }
   }
   
   return weightedList;
