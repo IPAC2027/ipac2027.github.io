@@ -356,6 +356,41 @@ Incorporating advanced technological innovations such as dual-harmonic accelerat
 - Xiao Li, Institute of High Energy Physics, Chinese Academy of Sciences — lixiao@ihep.ac.cn
 :::
 
+:::collapsible{title="Korea Light Source"}
+
+**Project name:** Multipurpose Synchrotron Radiation Accelerator Construction Project, KLS, Korea Light Source  
+**Location / Institution:** KBSI Ochang Center, 162 Yeongudanji-ro, Ochang-eup, Cheongju-si, Chungcheongbuk-do 28119, Republic of Korea  
+**Type:** New Project
+
+**Short description:**  
+This project aims to construct a world-class multipurpose synchrotron radiation accelerator to support industrial R&D and leading basic and original research. It will serve as a core national research facility underpinning the growth engines of next-generation advanced science sectors, including semiconductors, secondary batteries, advanced materials, and biotechnology.
+
+**Estimated Project Cost:** KRW 1,164.3 billion, approximately USD 850 million
+
+**Status:**  
+- Approval / key date: April 2021  
+- Contracting / progress: <30% contracted
+
+**Timeline:**  
+- Start / key milestone: May 2026  
+- Duration: 3.6 years
+
+**Equipment needed:**  
+* Accelerator systems, including injector linac, 4 GeV booster, and 800 m storage ring  
+* High-frequency RF systems and cavities  
+* Precision magnet and power-supply systems  
+* Ultra-high-vacuum systems and beam diagnostics  
+* Initial 10 primary beamline optical and experimental equipment systems  
+* Integrated control systems, EPICS-based, and safety interlocks  
+* Conventional facilities, including accelerator tunnel, specialized laboratories, and utilities  
+* Specialized engineering, construction, and technical consulting services
+
+**Contact person(s):**  
+- Seunghwan Shin, Director General — tlssh@kbsi.re.kr  
+- Sunkwon Park, External Relations & Cooperation Office Leader — psk22@kbsi.re.kr
+:::
+
+
 
 
 ## Projects in Europe
@@ -617,4 +652,34 @@ The upgraded injector will significantly improve beam stability, beam availabili
 
 **Contact person(s):**  
 - Adriana Wawrzyniak, SOLARIS National Synchrotron Radiation Centre, Jagiellonian University — adriana.wawrzyniak@uj.edu.pl
+:::
+
+:::collapsible{title="Diamond Light Source Upgrade (Diamond-II)"}
+
+**Location / Institution:** Oxfordshire, UK  
+**Type:** Project Upgrade
+
+**Short description:**  
+Diamond-II is an upgrade of the Diamond Storage Ring to a low-emittance 6BA lattice.
+
+**Estimated Project Cost:** £519M
+
+**Status:**  
+- Approval / key date: July 2023  
+- Contracting / progress: 30%–80% contracted
+
+**Timeline:**  
+- Start / key milestone: January 1, 2024  
+- Duration: 5 years
+
+**Equipment needed:**  
+* Magnets  
+* Vacuum vessels  
+* Vacuum instrumentation  
+* Girders  
+* Power supplies  
+* Various electronic systems
+
+**Contact person(s):**  
+- Richard P. Walker, Diamond Light Source Ltd. — richard.walker@diamond.ac.uk
 :::
