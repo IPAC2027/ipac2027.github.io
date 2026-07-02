@@ -172,6 +172,36 @@ PIP-II is a new superconducting 800 MeV H⁻ linac and beam transfer line that w
 - Olivier Napoly, Fermi National Accelerator Laboratory — napoly@fnal.gov
 :::
 
+:::collapsible{title="LAMP"}
+
+**Project name:** LAMP, LANSCE Accelerator Modernization Project  
+**Location / Institution:** Los Alamos, New Mexico, US  
+**Type:** Project Upgrade
+
+**Short description:**  
+The LANSCE accelerator is more than 50 years old, and much of the accelerator itself is original, especially in the upstream sections such as the Cockcroft-Walton-based injectors. The LANSCE Accelerator Modernization Project, LAMP, will replace the front end of the existing LANSCE accelerator, from ion sources through the end of the 100 MeV drift-tube linac, using modern component and system designs to ensure operational sustainability for the coming decades.
+
+**Estimated Project Cost:** US$687M to US$1.007B
+
+**Status:**  
+- Approval / key date: CD-0 in November 2024; CD-1 in June 2026  
+- Contracting / progress: <30% contracted
+
+**Timeline:**  
+- Technology maturation platforms: 2027  
+- Major tunnel renovation, removal, and installation: 2030–2032
+
+**Equipment needed:**  
+* Accelerator structures, including RFQ and DTLs  
+* Beamline components  
+* Ancillary equipment, including high-power RF circulators  
+* Removal and installation services
+
+**Contact person(s):**  
+- Greg Dale, Los Alamos National Laboratory — gedale@lanl.gov  
+- John Lewellen, Los Alamos National Laboratory — jwlewellen@lanl.gov
+:::
+
 
 
 ## Projects in Asia
@@ -395,30 +425,32 @@ This project aims to construct a world-class multipurpose synchrotron radiation 
 
 ## Projects in Europe
 
-:::collapsible{title="ALBA II"} 
-**Location / Institution:** Cerdanyola del Vallès, Barcelona, Spain  
+:::collapsible{title="ALBA II Upgrade"}
+
+**Location / Institution:** Barcelona, Spain  
 **Type:** Project Upgrade
 
-**Short description:**  ALBA II is the major upgrade of the ALBA Synchrotron Light Source, transforming it from a third-generation to a fourth-generation synchrotron. The project includes a new low-emittance storage ring, upgrades to beamlines, and new advanced experimental stations to strengthen research in materials science, life sciences, energy, nanotechnology, and industrial applications.
-**Estimated Project Cost:** $170M Euros
+**Short description:**  
+The ALBA II upgrade is a major renovation project transforming the ALBA Synchrotron in Spain from a third-generation facility into a fourth-generation diffraction-limited light source. By dramatically reducing the electron beam size, or emittance, the facility will produce synchrotron light that is significantly brighter and more coherent. This will provide researchers with unprecedented spatial resolution and detection capabilities across health, materials science, and energy sectors.
+
+**Estimated Project Cost:** 246 M€
 
 **Status:**  
-- Approval / key date: May 2024  
-- Contracting / progress: < 30% contracted
+- Approval / key date: January 1, 2026  
+- Contracting / progress: <30% contracted
 
 **Timeline:**  
-- Estimated beginning: 2030  
-- Duration: 1 year to remove and install the storage ring, plus 1 year for commissioning and first experiments
+- Start / key milestone: 2026  
+- Duration / construction period: 2027–2032
 
 **Equipment needed:**  
-* New magnets  
-* Girders  
-* Vacuum chambers  
-* Power supplies  
-* Other storage-ring renewal systems
+* Accelerator components  
+* Beamline components  
+* New buildings  
+* Infrastructure renovation
 
 **Contact person(s):**  
-- Francisco José Pérez Rodríguez, ALBA Synchrotron — francis@cells.es
+- Francis Perez, ALBA Synchrotron — francis@cells.es
 :::
 
 
