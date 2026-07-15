@@ -230,6 +230,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C42",
     featured: true
   },
+  {  
+    id: "gold-013",
+    name: "Buckley Systems Ltd",
+    logo: "/images/logos/exhibitors/gold/buckley.png",
+    website: "https://www.buckleysystems.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C20",
+    featured: true
+  },
 ];
 
 // Helper functions
