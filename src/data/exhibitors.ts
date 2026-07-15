@@ -74,8 +74,8 @@ export const exhibitors: Exhibitor[] = [
     booth: "B15",
     featured: true
   },
-     {
-    id: "platinum-2",
+  {
+    id: "platinum-3",
     name: "SAES Getters SpA",
     logo: "/images/logos/exhibitors/platinum/SAES_Getters.png",
     website: "https://www.saesgetters.com/",
@@ -83,6 +83,17 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "platinum",
     booth: "B10",
+    featured: true
+  },
+  {
+    id: "platinum-4",
+    name: "Ridgway Machines Ltd",
+    logo: "/images/logos/exhibitors/platinum/Ridgeway.png",
+    website: "https://www.ridgwayeng.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B14",
     featured: true
   },
   // {
