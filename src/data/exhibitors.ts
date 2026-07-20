@@ -252,6 +252,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C20",
     featured: true
   },
+  {  
+    id: "gold-014",
+    name: "Revol TT Consulting, s.r.o.",
+    logo: "/images/logos/exhibitors/gold/RTC_engineering.png",
+    website: "https://www.rtc-engineering.com/",
+    description: "Leaflet Insert Sponsor",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C102",
+    featured: true
+  },
 ];
 
 // Helper functions
