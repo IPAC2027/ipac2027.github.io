@@ -254,7 +254,7 @@ export const exhibitors: Exhibitor[] = [
   },
   {  
     id: "gold-014",
-    name: "Revol TT Consulting, s.r.o.",
+    name: "RTC Engineering (Revol TT Consulting)",
     logo: "/images/logos/exhibitors/gold/RTC_engineering.png",
     website: "https://www.rtc-engineering.com/",
     description: "Leaflet Insert Sponsor",
