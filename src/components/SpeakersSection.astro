@@ -98,9 +98,9 @@ const groups = types
                 )}
 
                 {speaker.bio && (
-                  <details class="mt-4 w-full text-left">
+                  <details name="speaker-details" class="group mt-4 w-full text-left">
                     <summary class="cursor-pointer select-none text-sm font-medium text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 list-none flex items-center justify-center gap-1">
-                      <span>Read bio</span>
+                      <span>{speaker.abstract ? 'Read bio and abstract' : 'Read bio'}</span>
                       <svg class="w-4 h-4 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                       </svg>
