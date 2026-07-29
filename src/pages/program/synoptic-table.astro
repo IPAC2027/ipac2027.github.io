@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import ContentRenderer from '../../components/ContentRenderer.astro';
+import SynopticTableSection from '../../components/SynopticTableSection.astro';
 import { getEntry } from 'astro:content';
 
 // Get content from the markdown file using Astro content collections
@@ -36,4 +37,8 @@ const headings = pageContent?.blocks
       <p>Content will be loaded from the markdown file.</p>
     </div>
   )}
+
+  <div class="mt-8">
+    <SynopticTableSection />
+  </div>
 </ContentLayout>

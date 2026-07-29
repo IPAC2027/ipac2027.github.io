@@ -1,0 +1,214 @@
+---
+import type { Speaker } from '../data/speakers';
+import { speakers } from '../data/speakers';
+import { conferenceDays, tracks, getTrack } from '../data/synopticSchedule';
+
+// Group scheduled speakers by conference day
+function getDaySpeakers(date: string): Speaker[] {
+  return speakers
+    .filter(s => s.schedule?.date === date)
+    .sort((a, b) => (a.schedule?.startTime || '').localeCompare(b.schedule?.startTime || ''));
+}
+
+// Distinct rooms scheduled on a given day, used as grid columns when there
+// are real parallel sessions to show (desktop matrix view)
+function getRooms(daySpeakers: Speaker[]): string[] {
+  return [...new Set(daySpeakers.map(s => s.schedule?.room).filter(Boolean))] as string[];
+}
+
+// Distinct time slots scheduled on a given day, used as grid rows
+function getTimeSlots(daySpeakers: Speaker[]): string[] {
+  const slots = new Set(
+    daySpeakers
+      .filter(s => s.schedule?.startTime)
+      .map(s => `${s.schedule!.startTime}${s.schedule?.endTime ? `–${s.schedule.endTime}` : ''}`)
+  );
+  return [...slots].sort();
+}
+
+function speakersFor(daySpeakers: Speaker[], slot: string, room: string): Speaker[] {
+  return daySpeakers.filter(s => {
+    const sSlot = `${s.schedule?.startTime}${s.schedule?.endTime ? `–${s.schedule.endTime}` : ''}`;
+    return sSlot === slot && s.schedule?.room === room;
+  });
+}
+
+const days = conferenceDays.map((day) => {
+  const daySpeakers = getDaySpeakers(day.date);
+  const rooms = getRooms(daySpeakers);
+  const timeSlots = getTimeSlots(daySpeakers);
+  return {
+    ...day,
+    daySpeakers,
+    rooms,
+    timeSlots,
+    // Only worth rendering a true matrix when there's more than one room
+    // (i.e. real parallel sessions); otherwise fall back to a simple agenda.
+    showGrid: rooms.length > 1 && timeSlots.length > 0,
+  };
+});
+---
+
+<div class="synoptic-table">
+  {/* Track legend */}
+  <div class="flex flex-wrap gap-2 justify-center mb-8">
+    {tracks.map((t) => (
+      <span
+        class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${t.borderClass} ${t.textClass} bg-white dark:bg-primary-800`}
+        title={t.label}
+      >
+        <span class={`w-2 h-2 rounded-full ${t.dotClass}`}></span>
+        {t.code}
+      </span>
+    ))}
+  </div>
+
+  {/* Day tabs */}
+  <div class="flex gap-2 overflow-x-auto pb-2 mb-6 justify-start sm:justify-center scrollbar-thin" role="tablist">
+    {days.map((day, i) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={i === 0}
+        class="day-tab-btn flex-shrink-0 px-4 py-2 rounded-xl border text-sm font-medium transition-all duration-200 whitespace-nowrap border-primary-200 dark:border-primary-700 text-primary-700 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-700/50 aria-selected:bg-gradient-to-r aria-selected:from-primary-600 aria-selected:to-accent-600 aria-selected:text-white aria-selected:border-transparent aria-selected:shadow-md"
+        data-day-target={day.date}
+      >
+        <span class="block">{day.dayOfWeek}</span>
+        <span class="block text-xs opacity-80">{day.displayDate}</span>
+      </button>
+    ))}
+  </div>
+
+  {/* Day panels */}
+  {days.map((day, i) => (
+    <div class="day-panel" data-day-panel={day.date} hidden={i !== 0}>
+      {day.note && (
+        <p class="text-center text-sm text-primary-500 dark:text-primary-400 mb-6 italic">{day.note}</p>
+      )}
+
+      {day.daySpeakers.length === 0 ? (
+        <div class="text-center py-16 px-6 border-2 border-dashed border-primary-200 dark:border-primary-700 rounded-2xl">
+          <svg class="w-10 h-10 mx-auto text-primary-300 dark:text-primary-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <p class="text-primary-500 dark:text-primary-400">Schedule for this day will be announced closer to the conference.</p>
+        </div>
+      ) : day.showGrid ? (
+        /* Desktop matrix view: time x room grid */
+        <div class="hidden md:block overflow-x-auto">
+          <div
+            class="grid gap-2 min-w-[640px]"
+            style={`grid-template-columns: 8rem repeat(${day.rooms.length}, minmax(0, 1fr));`}
+          >
+            <div></div>
+            {day.rooms.map((room) => (
+              <div class="px-3 py-2 text-sm font-semibold text-primary-800 dark:text-primary-100 text-center bg-primary-100 dark:bg-primary-700 rounded-lg">
+                {room}
+              </div>
+            ))}
+
+            {day.timeSlots.map((slot) => (
+              <>
+                <div class="px-2 py-3 text-xs font-mono text-primary-500 dark:text-primary-400 flex items-center">{slot}</div>
+                {day.rooms.map((room) => {
+                  const cellSpeakers = speakersFor(day.daySpeakers, slot, room);
+                  return (
+                    <div class="min-h-[3.5rem]">
+                      {cellSpeakers.map((speaker) => {
+                        const track = getTrack(speaker.classification);
+                        return (
+                          <details name={`synoptic-${day.date}`} class="group h-full rounded-lg border border-primary-100 dark:border-primary-700 bg-white dark:bg-primary-800 hover:shadow-md transition-shadow duration-200">
+                            <summary class="cursor-pointer select-none list-none p-2.5">
+                              <div class="flex items-center gap-1.5 mb-1">
+                                {track && <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${track.dotClass}`}></span>}
+                                <span class="text-[11px] font-medium text-primary-400 dark:text-primary-500">{speaker.classification || speaker.type}</span>
+                              </div>
+                              <p class="text-xs font-semibold text-primary-900 dark:text-primary-100 leading-snug line-clamp-2">{speaker.title || speaker.name}</p>
+                            </summary>
+                            <div class="px-2.5 pb-2.5 text-xs text-primary-600 dark:text-primary-300">
+                              <p class="font-medium text-primary-800 dark:text-primary-200">{speaker.name}</p>
+                              <p class="text-primary-400 dark:text-primary-500">{speaker.affiliation}</p>
+                              {speaker.abstract && <p class="mt-1.5 leading-relaxed">{speaker.abstract}</p>}
+                            </div>
+                          </details>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      {/* Agenda view: always available, used on mobile, and as the only
+          view on desktop when there isn't enough data for a true grid */}
+      <div class={day.showGrid ? 'md:hidden space-y-3' : 'space-y-3'}>
+        {day.daySpeakers.map((speaker) => {
+          const track = getTrack(speaker.classification);
+          return (
+            <details name={`synoptic-agenda-${day.date}`} class="group border border-primary-100 dark:border-primary-700 rounded-xl bg-white dark:bg-primary-800 overflow-hidden hover:shadow-md transition-shadow duration-200">
+              <summary class="cursor-pointer select-none list-none flex items-center gap-3 p-4">
+                <span class="text-sm font-mono text-primary-400 dark:text-primary-500 w-24 flex-shrink-0">
+                  {speaker.schedule?.startTime || 'TBD'}{speaker.schedule?.endTime ? `–${speaker.schedule.endTime}` : ''}
+                </span>
+                {track && <span class={`w-2 h-2 rounded-full flex-shrink-0 ${track.dotClass}`} title={track.label}></span>}
+                <span class="flex-1 text-sm font-medium text-primary-900 dark:text-primary-100">{speaker.title || speaker.name}</span>
+                {speaker.schedule?.room && (
+                  <span class="text-xs text-primary-400 dark:text-primary-500 hidden sm:inline flex-shrink-0">{speaker.schedule.room}</span>
+                )}
+                <svg class="w-4 h-4 text-primary-400 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-4 pb-4 pt-0 text-sm text-primary-600 dark:text-primary-300 border-t border-primary-50 dark:border-primary-700">
+                <p class="font-semibold text-primary-800 dark:text-primary-200 mt-3">{speaker.name} — {speaker.affiliation}</p>
+                {speaker.session?.code && (
+                  <p class="text-xs mt-1 text-primary-400 dark:text-primary-500">
+                    Session {speaker.session.code}{speaker.session.name ? ` · ${speaker.session.name}` : ''}
+                  </p>
+                )}
+                {speaker.abstract && <p class="mt-2 leading-relaxed">{speaker.abstract}</p>}
+              </div>
+            </details>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.day-tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('[data-day-panel]');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.dayTarget;
+      buttons.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+      panels.forEach((p) => {
+        p.hidden = p.dataset.dayPanel !== target;
+      });
+    });
+  });
+</script>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: theme('colors.primary.300');
+    border-radius: 9999px;
+  }
+</style>

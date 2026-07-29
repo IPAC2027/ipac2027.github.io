@@ -6,7 +6,7 @@ bannerText: "Synoptic Table"
 
 
 :::highlight
-The synoptic table will be available closer to the conference date.
+Browse the conference program by day below. Session times and rooms will be added as the technical program is finalized — the legend and day tabs are ready to go.
 :::
 
 
