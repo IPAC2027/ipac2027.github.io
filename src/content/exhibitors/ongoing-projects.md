@@ -715,3 +715,49 @@ Diamond-II is an upgrade of the Diamond Storage Ring to a low-emittance 6BA latt
 **Contact person(s):**  
 - Richard P. Walker, Diamond Light Source Ltd. — richard.walker@diamond.ac.uk
 :::
+
+:::collapsible{title="European Spallation Source (ESS)"}
+
+**Location / Institution:** Lund, Sweden — European Spallation Source ERIC  
+**Type:** Project Upgrade
+
+**Short description:**  
+The European Spallation Source (ESS) is a multidisciplinary research facility under construction in Lund, Sweden, designed to become the world's most powerful long-pulse neutron spallation source. The facility is centered on a 5 MW superconducting proton linear accelerator and will provide world-class neutron scattering capabilities for research in materials science, energy, health, engineering, and environmental sciences. ESS is a collaborative effort involving 13 European member countries and more than 100 partner laboratories through extensive in-kind contributions. The official user program is expected to begin in 2028.
+
+**Estimated Project Cost:** Approximately €3.5 billion
+
+**Status:**  
+- Contracting / progress: >80% contracted
+
+**Timeline:**  
+- Project approved: 2009-05-28  
+- Groundbreaking: 2014-09-02  
+- Foundation stone laid: 2014-10-09  
+- Construction period: Approximately 13 years  
+- User program begins: 2028
+
+**Equipment needed:**  
+* Operational equipment and spare components
+* Klystrons
+* Tetrodes
+* High-voltage power supplies
+* Vacuum systems
+* Other accelerator hardware required for reliable long-term operation
+
+**Contact person(s):**  
+- Helmut Schober, Director General — helmut.schober@ess.eu  
+- Jane Hvolbæk Nielsen, Director General designate (from 2026-11-01) — janeh.nielsen@ess.eu  
+- Andrew Kimber, Project Director — andrew.kimber@ess.eu  
+- Camille Ginsburg, Operations and Machine Director — camille.ginsburg@ess.eu  
+- Giovanna Fragneto, Science Director — giovanna.fragneto@ess.eu  
+- Vjeko Begic, Engineering and Infrastructure Director — vjeko.begic@ess.eu  
+- Anders Ihr, Administration Director — anders.ihr@ess.eu  
+
+**Industrial contact:**  
+- Ciprian Plostinar, European Spallation Source ERIC — ciprian.plostinar@ess.eu
+
+**Procurement information:**  
+- https://ess.eu/doing-business-ess  
+- https://kommersannons.se/ess/
+
+:::
