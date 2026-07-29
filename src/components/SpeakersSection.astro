@@ -30,6 +30,14 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
+// Build an inline style for a speaker photo based on its optional adjustment
+// (position/zoom), so individual photos can be fine-tuned without touching markup.
+function getPhotoStyle(adjustment?: Speaker['photoAdjustment']): string {
+  const position = adjustment?.position || 'center';
+  const zoom = adjustment?.zoom || 1;
+  return `object-position: ${position}; transform: scale(${zoom});`;
+}
+
 const groups = types
   .map(type => ({
     type,
@@ -61,12 +69,15 @@ const groups = types
 
               <div class="p-6 flex flex-col items-center text-center flex-1">
                 {speaker.photo ? (
-                  <img
-                    src={speaker.photo}
-                    alt={speaker.name}
-                    class="w-24 h-24 rounded-full object-cover ring-4 ring-primary-50 dark:ring-primary-700 shadow-md"
-                    loading="lazy"
-                  />
+                  <div class="w-24 h-24 rounded-full overflow-hidden ring-4 ring-primary-50 dark:ring-primary-700 shadow-md">
+                    <img
+                      src={speaker.photo}
+                      alt={speaker.name}
+                      class="w-full h-full object-cover"
+                      style={getPhotoStyle(speaker.photoAdjustment)}
+                      loading="lazy"
+                    />
+                  </div>
                 ) : (
                   <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-2xl font-heading font-semibold shadow-md">
                     {getInitials(speaker.name)}

@@ -34,12 +34,26 @@ export interface SpeakerSchedule {
   room?: string;       // Room/location name
 }
 
+/**
+ * Fine-tuning for how a speaker's photo is cropped/positioned within its
+ * (fixed-size, circular) frame. Useful when submitted photos have different
+ * aspect ratios, framing, or the subject isn't centered.
+ */
+export interface PhotoAdjustment {
+  /** CSS object-position value, e.g. "center 20%", "top", "50% 30%". Defaults to "center". */
+  position?: string;
+  /** Zoom factor applied to the image, e.g. 1.2 for 20% zoom-in. Defaults to 1. */
+  zoom?: number;
+}
+
 export interface Speaker {
   id: string;
   name: string;
   affiliation: string;
   country?: string;
   photo?: string;
+  /** Optional adjustment to better frame the photo (cropping/position/zoom) */
+  photoAdjustment?: PhotoAdjustment;
   bio?: string;
   type: SpeakerType;
 
@@ -123,6 +137,7 @@ export const speakers: Speaker[] = [
     name: "Haixiao Deng",
     affiliation: `Shanghai Advanced Research Institute`,
     photo: "/images/speakers/haixiao-deng.jpg",
+    photoAdjustment: { position: "center 20%" },
     bio: `Haixiao Deng, President of the Shanghai Advanced Research Institute (SARI), Chinese Academy of Sciences, has long been dedicated to X-ray free-electron laser physics and experiments. He proposed and demonstrated the self-amplification of coherent energy modulation in electron beams, and pioneered the phase-merging FEL theory, opening new directions for advanced light source research. He has played core roles in the construction of China’s major FEL facilities including SDUV, DCLS, SXFEL and SHINE. Currently, he is the General Manager Assistant of the SHINE project and in charge of the overall construction of the switchyard and undulator lines of SHINE.`,
     type: "plenary",
     title: `First light of SHINE`,
@@ -269,6 +284,7 @@ export const speakers: Speaker[] = [
     name: "Mario Galletti",
     affiliation: `Italian National Institute for Nuclear Physics`,
     photo: "/images/speakers/mario-galletti.jpeg",
+    photoAdjustment: { position: "center 15%" },
     bio: `Mario Galletti is a Senior Researcher at the Frascati National Laboratories (LNF) of the Italian National Institute for Nuclear Physics (INFN), where he conducts research on advanced accelerator concepts, high-power laser systems, and plasma-based particle acceleration. He received his M.Sc. in Physics from the University of Pisa and his Ph.D. in Physics Engineering from Instituto Superior Técnico, University of Lisbon, in 2020.
 His research focuses on laser- and beam-driven plasma wakefield acceleration, free-electron lasers, beam diagnostics, and the development of compact accelerator technologies for scientific applications. He has played a leading role in several international collaborations, including EuPRAXIA, contributing to pioneering demonstrations of plasma-driven free-electron lasers and innovative plasma accelerator technologies. He is the lead or corresponding author of numerous high-impact publications in journals such as Nature, Nature Photonics, Physical Review Letters, and Physical Review.
 Dr. Galletti has received several prestigious awards, including the 2024 SILS Young Scientist Award and the European Physical Society Plasma Physics Division PhD Research Award. He is actively involved in teaching, mentoring young researchers, coordinating international research activities, and serving as reviewer and editor for leading scientific journals.`,
@@ -396,6 +412,7 @@ Dr. Galletti has received several prestigious awards, including the 2024 SILS Yo
     name: "Alexandre Arsenault",
     affiliation: `Paul Scherrer Institut`,
     photo: "/images/speakers/alexandre-arsenault.jpg",
+    photoAdjustment: { position: "center 20%" },
     bio: `Alexandre Arsenault is a scientist at the Paul Scherrer Institute, specializing in R&D for new undulator concepts. His research is focused on simulations and experiments of high-temperature superconducting bulks and tapes used to generate high magnetic fields at small period lengths for the next generation of undulators. He received his PhD degree in 2023 from Polytechnique Montreal, where he investigated the use of superconducting bulks for magnetic drug delivery.`,
     type: "invited",
     title: `CASPER: a Compact Arbitrary Superconducting Polarisation Emitting Radiator`,
@@ -409,6 +426,7 @@ Dr. Galletti has received several prestigious awards, including the 2024 SILS Yo
     name: "Samuel Miller",
     affiliation: `Facility for Rare Isotope Beams`,
     photo: "/images/speakers/samuel-miller.jpg",
+    photoAdjustment: { position: "center 25%" },
     bio: `Samuel Miller is the Mechanical Engineering Department Manager and Superconducting Mechanical Design Group Leader at the Facility for Rare Isotope Beams (FRIB). He holds a Master of Science in Mechanical Engineering and brings more than 17 years of experience in accelerator technology, superconducting radio-frequency (SRF) systems, interceptive devices, and large-scale scientific infrastructure.
 During the first 14 years of his career, Samuel specialized in the design and development of superconducting cryomodules, SRF cavities, and superconducting magnets, while leading the mechanical integration and installation of complex accelerator systems. His expertise spans the full lifecycle of advanced accelerator components, from design and fabrication to installation and commissioning.
 In his current role, Samuel leads engineering efforts focused on interceptive devices, including the development of next-generation high-power beam dumps to support FRIB's future operational needs. He also oversees the mechanical design and development of new beamlines that will enable the expansion of FRIB's experimental capabilities and support future scientific programs.
