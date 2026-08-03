@@ -263,6 +263,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C102",
     featured: true
   },
+  {  
+    id: "gold-015",
+    name: "Avalanche Energy Designs, Inc.",
+    logo: "/images/logos/exhibitors/gold/Avalanche.jpg",
+    website: "https://www.avalanchefusion.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C29",
+    featured: true
+  },
 ];
 
 // Helper functions
