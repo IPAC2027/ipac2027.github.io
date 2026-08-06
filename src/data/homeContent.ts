@@ -16,8 +16,8 @@ export const homeContent = {
         href: "/registration/conference-registration"
       },
       secondary: {
-        text: "Learn More",
-        href: "/about/welcome"
+        text: "Important Dates",
+        href: "/#important-dates"
       }
     }
   },
@@ -35,44 +35,61 @@ export const homeContent = {
         period: "May. 1, 2026",
         title: "Exhibitor Registration Opened",
         description: "",
-        colorScheme: "accent-primary"
+        link: "/exhibitors/exhibition-registration"
+      },
+      {
+        period: "Oct. 1, 2026",
+        title: "Exhibitor Early-bird Deadline",
+        description: "",
+        link: "/exhibitors/exhibition-registration"
       },
       {
         period: "Oct. 1, 2026",
         title: "Abstract Submission Opens",
         description: "",
-        colorScheme: "primary-accent"
+        link: "/authors/abstract-submission"
       },
       {
         period: "Oct. 1, 2026",
         title: "Early Registration Opens",
         description: "",
-        colorScheme: "accent-primary"
+        link: "/registration/conference-registration"
       },
       {
-        period: "Dec 2026",
+        period: "Oct. 1, 2026",
+        title: "Student Award Applications Open",
+        description: "",
+        link: "/registration/student-grant"
+      },
+      {
+        period: "Dec. 2, 2026",
         title: "Abstract Submission Deadline",
         description: "",
-        colorScheme: "primary-accent"
+        link: "/authors/abstract-submission"
       },
       {
-        period: "March 2027",
-        title: "Early Registration Ends",
+        period: "Dec. 2, 2026",
+        title: "Student Award Applications Deadline",
         description: "",
-        colorScheme: "accent-primary"
+        link: "/registration/student-grant"
+      },
+      {
+        period: "Feb. 27, 2027",
+        title: "Early Registration Deadline",
+        description: "",
+        link: "/registration/conference-registration"
       },
     {
-        period: "April 2027",
-        title: "Final Registration",
+        period: "May 2027",
+        title: "Final Online Registration",
         description: "",
-        colorScheme: "primary-accent"
+        link: "/registration/conference-registration"
       }      
 
     ],
     conferenceStart: {
       date: "May 23, 2027",
-      title: "🎉 Conference Begins!",
-      colorScheme: "conference-start"
+      title: "🎉 Conference Begins!"
     }
   },
   

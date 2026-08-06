@@ -4,7 +4,7 @@ description: ""
 ---
 
 :::highlight
-Abstract submission will open in October, 2026, and close in December 2026. 
+Abstract submission will open in October 1st, 2026, and close in December 2026. 
 :::
 
 ## Call for Papers
@@ -12,7 +12,7 @@ Abstract submission will open in October, 2026, and close in December 2026.
 We invite you to submit abstracts for contributed oral and/or poster presentations at IPAC'27. All scientific contributions to IPAC’27 will be managed using the [JACoW Indico system](https://indico.jacow.org/e/IPAC27).
 
 :::status{type="coming-soon"}
-Abstract Submission - Oct. 9, 2026
+Abstract Submission - Oct. 1, 2026
 :::
 
 ## Submission Instructions
