@@ -299,15 +299,15 @@ import Footer from '../components/Footer.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
     const submitText = document.getElementById('submitText');
     const loadingText = document.getElementById('loadingText');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
     
     // Handle form submission
-    if (contactForm) {
+    if (contactForm && submitBtn && submitText && loadingText && successMessage && errorMessage) {
       contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -353,7 +353,7 @@ import Footer from '../components/Footer.astro';
     
     // Check for success parameter in URL (non-JS fallback redirect)
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
+    if (urlParams.get('success') === 'true' && successMessage) {
       successMessage.classList.remove('hidden');
       successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
       
