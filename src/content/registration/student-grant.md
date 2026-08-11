@@ -19,3 +19,7 @@ IPAC'27 is happy to provide the limited number of supports for graduate and unde
 
 - To complete the application, all reference or support letters **must be uploaded by the stated deadline**. Late submission of these letters may render the application invalid.
 
+
+## Support
+Please contact the [IPAC'27 Student Program Coordinator](/contact) if you have questions.
+

@@ -28,3 +28,6 @@ IPAC27 will support selected student attendees and cover their:
 * travel and accommodation supports
 
 The students will be selected based on the quality, novelty, and impact of their work. The applicants can find instructions of application [here](/registration/student-grant). The application form will be available when the conference registration is open.
+
+## Support
+Please contact the [IPAC'27 Student Program Coordinator](/contact) if you have questions.
