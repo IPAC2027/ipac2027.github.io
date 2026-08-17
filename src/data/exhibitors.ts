@@ -274,6 +274,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C29",
     featured: true
   },
+  {  
+    id: "gold-016",
+    name: "AFT microwave GmbH",
+    logo: "/images/logos/exhibitors/gold/AFT_microwave.jpg",
+    website: "https://www.aft-microwave.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C57",
+    featured: true
+  },
 ];
 
 // Helper functions
