@@ -277,7 +277,7 @@ export const exhibitors: Exhibitor[] = [
   {  
     id: "gold-016",
     name: "AFT microwave GmbH",
-    logo: "/images/logos/exhibitors/gold/AFT_microwave.jpg",
+    logo: "/images/logos/exhibitors/gold/AFT_microwave.png",
     website: "https://www.aft-microwave.com/",
     description: "",
     category: "Industry Partner",
