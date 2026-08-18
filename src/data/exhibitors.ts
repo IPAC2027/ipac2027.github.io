@@ -98,7 +98,7 @@ export const exhibitors: Exhibitor[] = [
   },
   {
     id: "platinum-5",
-    name: "ELS Instruments srl",
+    name: "ELS Instruments",
     logo: "/images/logos/exhibitors/platinum/ELS_instruments.png",
     website: "https://www.els-instruments.com/",
     description: "",
