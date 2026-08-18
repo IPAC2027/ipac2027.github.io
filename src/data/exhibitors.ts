@@ -285,6 +285,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C57",
     featured: true
   },
+  {  
+    id: "gold-017",
+    name: " VadaTech Inc.",
+    logo: "/images/logos/exhibitors/gold/vadatech.png",
+    website: "https://www.vadatech.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C31",
+    featured: true
+  },
 ];
 
 // Helper functions
