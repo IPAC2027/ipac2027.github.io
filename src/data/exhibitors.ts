@@ -96,17 +96,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "B14",
     featured: true
   },
-  // {
-  //   id: "platinum-2",
-  //   name: "Your Logo Here",
-  //   logo: "/images/logos/exhibitors/platinum/sample_6.jpg",
-  //   website: "#",
-  //   description: "Platinum tier exhibitor - placeholder",
-  //   category: "Industry Partner",
-  //   tier: "platinum",
-  //   booth: "TBD",
-  //   featured: true
-  // },
+  {
+    id: "platinum-5",
+    name: "ELS Instruments srl",
+    logo: "/images/logos/exhibitors/platinum/ELS_instruments.png",
+    website: "https://www.els-instruments.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B13",
+    featured: true
+  },
   
   // Gold Tier
   {
