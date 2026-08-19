@@ -296,6 +296,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C31",
     featured: true
   },
+  {  
+    id: "gold-018",
+    name: " TDK Lambda",
+    logo: "/images/logos/exhibitors/gold/TDK_Lambda.png",
+    website: "https://www.us.lambda.tdk.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C52",
+    featured: true
+  },
 ];
 
 // Helper functions
