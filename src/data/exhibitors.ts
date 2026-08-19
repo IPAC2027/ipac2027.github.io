@@ -298,7 +298,7 @@ export const exhibitors: Exhibitor[] = [
   },
   {  
     id: "gold-018",
-    name: " TDK Lambda",
+    name: " TDK Lambda Americas",
     logo: "/images/logos/exhibitors/gold/TDK_Lambda.png",
     website: "https://www.us.lambda.tdk.com/",
     description: "",
