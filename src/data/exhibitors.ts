@@ -307,6 +307,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C52",
     featured: true
   },
+  {  
+    id: "gold-019",
+    name: "DB Elettronica Telecomunicazioni SPA - Science Division",
+    logo: "/images/logos/exhibitors/gold/DB_Elettronica.png",
+    website: "http://db-science.com",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C24",
+    featured: true
+  },
 ];
 
 // Helper functions
