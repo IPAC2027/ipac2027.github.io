@@ -329,6 +329,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C60",
     featured: true
   },
+  {  
+    id: "gold-021",
+    name: "Stangenes Industries, Inc.",
+    logo: "/images/logos/exhibitors/gold/stangenes.png",
+    website: "https://stangenes.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C67",
+    featured: true
+  },
 ];
 
 // Helper functions
