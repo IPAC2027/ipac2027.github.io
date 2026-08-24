@@ -318,6 +318,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C24",
     featured: true
   },
+  {  
+    id: "gold-020",
+    name: "Suzhou Bama Superconductor Technology Co., Ltd.",
+    logo: "/images/logos/exhibitors/gold/bama.png",
+    website: "https://www.bama-supercon.com/enindex.asp",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C60",
+    featured: true
+  },
 ];
 
 // Helper functions
