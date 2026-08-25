@@ -340,6 +340,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C67",
     featured: true
   },
+  {  
+    id: "gold-022",
+    name: "Shanghai Kelin Technology Development Co., Ltd.",
+    logo: "/images/logos/exhibitors/gold/kelin.jpg",
+    website: "https://www.chnkelin.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C55",
+    featured: true
+  },
 ];
 
 // Helper functions
