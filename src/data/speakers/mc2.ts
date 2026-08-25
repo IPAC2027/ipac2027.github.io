@@ -1,0 +1,53 @@
+// MC2: Photon Sources and Electron Accelerators — invited speakers for IPAC'27
+import type { Speaker } from './types';
+
+export const mc2Speakers: Speaker[] = [
+  {
+    id: "sven-reiche",
+    name: "Sven Reiche",
+    affiliation: `Paul Scherrer Institut`,
+    photo: "/images/speakers/sven-reiche.jpg",
+    photoAdjustment: { position: "center 20%" },
+    bio: `Dr. Reiche got his Ph.D. at DESY, Hamburg, for writing the 3D, time-dependent FEL code Genesis 1.3. Then he worked with Claudio Pellegrini for LCLS at UCLA. In 2008 he joined PSI to contribute to the realization of SwissFEL. Currently he is the group leader of FEL beam dynamics at PSI and prepares for the proposed upgrade of the facility.`,
+    type: "invited",
+    title: `Quo vadis X-ray free-electron lasers? Present and future of the most brilliant light sources`,
+    abstract: `X-ray free-electron lasers have revolutionized science with their unprecedented peak brilliance and ultrashort pulses. This talk reviews the current state of X-ray facilities and explores the next frontier. The presentation will focus on shaping the FEL pulses (pulse length control pulses, coherence control), new development of the driving injectors and accelerators and future target applications for FELs.`,
+    classification: "MC2",
+    session: {},
+    schedule: { date: "2027-05-26", startTime: "09:00", endTime: "09:30", room: "Grand Riverview Ballroom A" },
+  },
+  {
+    id: "michele-carla",
+    name: "Michele Carlà",
+    affiliation: `ALBA-CELLS Synchrotron`,
+    type: "invited",
+    title: ``,
+    classification: "MC2",
+    session: {},
+    schedule: { date: "2027-05-24", startTime: "14:00", endTime: "14:30", room: "Grand Riverview Ballroom B" },
+  },
+  {
+    id: "david-funk",
+    name: "David Funk",
+    affiliation: `Nevada National Security Site`,
+    type: "invited",
+    title: ``,
+    classification: "MC2",
+    session: {},
+    schedule: { date: "2027-05-24", startTime: "14:30", endTime: "15:00", room: "Grand Riverview Ballroom B" },
+  },
+  {
+    id: "jun-ho-ko",
+    name: "Jun Ho Ko",
+    affiliation: `Pohang Accelerator Laboratory`,
+    photo: "/images/speakers/jun-ho-ko.jpg",
+    photoAdjustment: { position: "center 20%" },
+    bio: `Jun Ho Ko earned his Ph.D. from Pohang University of Science and Technology (POSTECH), with a thesis on the characterization of coherent radiation generated in an electron bunch compressor. After completing his doctorate, he joined Pohang Accelerator Laboratory (PAL) as a postdoctoral researcher in the PAL-XFEL Accelerator Group, where he supported accelerator operations for user services. He subsequently joined a synchrotron construction project aimed at developing an extreme-ultraviolet (EUV) light source and contributed to the construction and integration of the accelerator facility. Since July 2021, he has been a staff researcher at the PAL Extreme Ultraviolet Synchrotron (PAL-EUV). His current work focuses on commissioning PAL-EUV by validating accelerator systems, characterizing electron beam performance, and establishing stable operating conditions. Through these efforts, he is helping prepare the facility for reliable operation and future research applications. His research interests include accelerator commissioning and operation, electron beam diagnostics, and beam performance optimization.`,
+    type: "invited",
+    title: `Construction and commissioning of the PAL-EUV compact synchrotron for semiconductor applications`,
+    abstract: `PAL-EUV is a 400 MeV compact synchrotron dedicated to EUV radiation at 13.5 nm for semiconductor R&D, constructed within a 15 m x 15 m footprint at Pohang Accelerator Laboratory. The facility, consisting of a linac, booster ring, and storage ring, completed construction and commissioning in 2023. The speaker would present the design, commissioning results, and operational status of this unique accelerator-based EUV source for industrial applications.`,
+    classification: "MC2",
+    session: {},
+    schedule: { date: "2027-05-25", startTime: "14:30", endTime: "15:00", room: "Grand Riverview Ballroom B" },
+  },
+];
