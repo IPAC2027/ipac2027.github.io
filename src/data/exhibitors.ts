@@ -39,17 +39,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "A6",
     featured: true
   },
-  // {
-  //   id: "diamond-2",
-  //   name: "Your Logo Here",
-  //   logo: "/images/logos/exhibitors/diamond/sample_5.jpg",
-  //   website: "#",
-  //   description: "Diamond tier exhibitor - placeholder",
-  //   category: "Industry Partner",
-  //   tier: "diamond",
-  //   booth: "TBD",
-  //   featured: true
-  // },
+  {
+    id: "diamond-3",
+    name: "CERN COURIER",
+    logo: "/images/logos/exhibitors/diamond/CERNCourier.png",
+    website: "https://cerncourier.com",
+    description: "",
+    category: "Industry Partner",
+    tier: "diamond",
+    booth: "A8",
+    featured: true
+  },
   
   // Platinum Tier
   {
