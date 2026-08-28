@@ -42,7 +42,7 @@ export const exhibitors: Exhibitor[] = [
   {
     id: "diamond-3",
     name: "CERN COURIER",
-    logo: "/images/logos/exhibitors/diamond/CERNCourier.png",
+    logo: "/images/logos/exhibitors/diamond/CERNCourier.jpg",
     website: "https://cerncourier.com",
     description: "",
     category: "Industry Partner",
