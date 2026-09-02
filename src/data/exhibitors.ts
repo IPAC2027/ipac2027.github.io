@@ -107,6 +107,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "B13",
     featured: true
   },
+   {
+    id: "platinum-6",
+    name: "JEMA Energy",
+    logo: "/images/logos/exhibitors/platinum/jema.png",
+    website: "https://www.jemaenergy.com/en/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B16",
+    featured: true
+  },
   
   // Gold Tier
   {
@@ -349,6 +360,17 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "gold",
     booth: "C55",
+    featured: true
+  },
+   {  
+    id: "gold-023",
+    name: "Kyma S.p.A",
+    logo: "/images/logos/exhibitors/gold/kyma.png",
+    website: "https://kyma-undulators.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C50",
     featured: true
   },
 ];
