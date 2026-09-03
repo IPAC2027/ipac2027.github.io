@@ -110,7 +110,7 @@ export const exhibitors: Exhibitor[] = [
    {
     id: "platinum-6",
     name: "JEMA Energy",
-    logo: "/images/logos/exhibitors/platinum/jema.png",
+    logo: "/images/logos/exhibitors/platinum/jema.jpg",
     website: "https://www.jemaenergy.com/en/",
     description: "",
     category: "Industry Partner",
@@ -371,6 +371,17 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "gold",
     booth: "C50",
+    featured: true
+  },
+  {  
+    id: "gold-024",
+    name: "GMW Associates",
+    logo: "/images/logos/exhibitors/gold/gmw.png",
+    website: "https://gmw.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C81",
     featured: true
   },
 ];
