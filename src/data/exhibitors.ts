@@ -384,6 +384,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C81",
     featured: true
   },
+  {  
+    id: "gold-025",
+    name: "Cryoelectra GmbH",
+    logo: "/images/logos/exhibitors/gold/cryoelectra.jpeg",
+    website: "https://cryoelectra.eu/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C61",
+    featured: true
+  },
 ];
 
 // Helper functions
