@@ -1,7 +1,8 @@
 ---
 import type { Speaker } from '../data/speakers';
 import { speakers } from '../data/speakers';
-import { conferenceDays, tracks, getTrack } from '../data/synopticSchedule';
+import { conferenceDays, tracks, getTrack, scheduleBreaks } from '../data/synopticSchedule';
+import type { ScheduleBreak } from '../data/synopticSchedule';
 
 // Group scheduled speakers by conference day
 function getDaySpeakers(date: string): Speaker[] {
@@ -11,18 +12,27 @@ function getDaySpeakers(date: string): Speaker[] {
 }
 
 // Distinct rooms scheduled on a given day, used as grid columns when there
-// are real parallel sessions to show (desktop matrix view)
+// are real parallel sessions to show (desktop matrix view). Sorted
+// alphabetically so "Ballroom A" always renders left of "Ballroom B".
 function getRooms(daySpeakers: Speaker[]): string[] {
-  return [...new Set(daySpeakers.map(s => s.schedule?.room).filter(Boolean))] as string[];
+  return [...new Set(daySpeakers.map(s => s.schedule?.room).filter(Boolean))].sort((a, b) =>
+    (a as string).localeCompare(b as string)
+  ) as string[];
 }
 
-// Distinct time slots scheduled on a given day, used as grid rows
-function getTimeSlots(daySpeakers: Speaker[]): string[] {
+function breakSlot(b: ScheduleBreak): string {
+  return `${b.startTime}–${b.endTime}`;
+}
+
+// Distinct time slots scheduled on a given day, used as grid rows. Includes
+// timed breaks (lunch, poster session) so they get their own row.
+function getTimeSlots(daySpeakers: Speaker[], timedBreaks: ScheduleBreak[]): string[] {
   const slots = new Set(
     daySpeakers
       .filter(s => s.schedule?.startTime)
       .map(s => `${s.schedule!.startTime}${s.schedule?.endTime ? `–${s.schedule.endTime}` : ''}`)
   );
+  timedBreaks.forEach(b => slots.add(breakSlot(b)));
   return [...slots].sort();
 }
 
@@ -35,13 +45,28 @@ function speakersFor(daySpeakers: Speaker[], slot: string, room: string): Speake
 
 const days = conferenceDays.map((day) => {
   const daySpeakers = getDaySpeakers(day.date);
+  const dayBreaks = scheduleBreaks.filter(b => b.dates.includes(day.date));
+  const timedBreaks = dayBreaks.filter(b => b.startTime);
+  const tbdBreaks = dayBreaks.filter(b => !b.startTime);
   const rooms = getRooms(daySpeakers);
-  const timeSlots = getTimeSlots(daySpeakers);
+  const timeSlots = getTimeSlots(daySpeakers, timedBreaks);
+  // Merge speakers and timed breaks into a single time-ordered agenda list
+  // (used by the mobile/no-grid agenda view).
+  const agendaEntries = [
+    ...daySpeakers.map(s => ({ kind: 'speaker' as const, speaker: s, time: s.schedule?.startTime || '' })),
+    ...timedBreaks.map(b => ({ kind: 'break' as const, brk: b, time: b.startTime || '' })),
+  ].sort((a, b) => a.time.localeCompare(b.time));
   return {
     ...day,
     daySpeakers,
+    timedBreaks,
+    tbdBreaks,
+    agendaEntries,
     rooms,
     timeSlots,
+    // A day has something to show if it has talks and/or non-program events
+    // (breaks, social events); only truly empty days get the placeholder.
+    hasEvents: daySpeakers.length > 0 || dayBreaks.length > 0,
     // Only worth rendering a true matrix when there's more than one room
     // (i.e. real parallel sessions); otherwise fall back to a simple agenda.
     showGrid: rooms.length > 1 && timeSlots.length > 0,
@@ -86,14 +111,13 @@ const days = conferenceDays.map((day) => {
         <p class="text-center text-sm text-primary-500 dark:text-primary-400 mb-6 italic">{day.note}</p>
       )}
 
-      {day.daySpeakers.length === 0 ? (
-        <div class="text-center py-16 px-6 border-2 border-dashed border-primary-200 dark:border-primary-700 rounded-2xl">
-          <svg class="w-10 h-10 mx-auto text-primary-300 dark:text-primary-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-          </svg>
-          <p class="text-primary-500 dark:text-primary-400">Schedule for this day will be announced closer to the conference.</p>
-        </div>
-      ) : day.showGrid ? (
+      {day.tbdBreaks.length > 0 && (
+        <p class="text-center text-xs text-primary-400 dark:text-primary-500 mb-6">
+          {day.tbdBreaks.map((b) => `${b.emoji} ${b.label} — time TBD`).join(' · ')}
+        </p>
+      )}
+
+      {day.hasEvents && (day.showGrid ? (
         /* Desktop matrix view: time x room grid */
         <div class="hidden md:block overflow-x-auto">
           <div
@@ -107,45 +131,85 @@ const days = conferenceDays.map((day) => {
               </div>
             ))}
 
-            {day.timeSlots.map((slot) => (
-              <>
-                <div class="px-2 py-3 text-xs font-mono text-primary-500 dark:text-primary-400 flex items-center">{slot}</div>
-                {day.rooms.map((room) => {
-                  const cellSpeakers = speakersFor(day.daySpeakers, slot, room);
-                  return (
-                    <div class="min-h-[3.5rem]">
-                      {cellSpeakers.map((speaker) => {
-                        const track = getTrack(speaker.classification);
-                        return (
-                          <details name={`synoptic-${day.date}`} class="group h-full rounded-lg border border-primary-100 dark:border-primary-700 bg-white dark:bg-primary-800 hover:shadow-md transition-shadow duration-200">
-                            <summary class="cursor-pointer select-none list-none p-2.5">
-                              <div class="flex items-center gap-1.5 mb-1">
-                                {track && <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${track.dotClass}`}></span>}
-                                <span class="text-[11px] font-medium text-primary-400 dark:text-primary-500">{speaker.classification || speaker.type}</span>
-                              </div>
-                              <p class="text-xs font-semibold text-primary-900 dark:text-primary-100 leading-snug line-clamp-2">{speaker.title || speaker.name}</p>
-                            </summary>
-                            <div class="px-2.5 pb-2.5 text-xs text-primary-600 dark:text-primary-300">
-                              <p class="font-medium text-primary-800 dark:text-primary-200">{speaker.name}</p>
-                              <p class="text-primary-400 dark:text-primary-500">{speaker.affiliation}</p>
-                              {speaker.abstract && <p class="mt-1.5 leading-relaxed">{speaker.abstract}</p>}
-                            </div>
-                          </details>
-                        );
-                      })}
+            {day.timeSlots.map((slot) => {
+              const slotBreak = day.timedBreaks.find((b) => `${b.startTime}–${b.endTime}` === slot);
+              if (slotBreak) {
+                return (
+                  <>
+                    <div class="px-2 py-3 text-xs font-mono text-primary-500 dark:text-primary-400 flex items-center">{slot}</div>
+                    <div
+                      class="rounded-lg border border-dashed border-primary-200 dark:border-primary-600 bg-primary-50 dark:bg-primary-800/40 flex items-center justify-center gap-2 text-sm font-medium text-primary-500 dark:text-primary-400 py-3"
+                      style={`grid-column: span ${day.rooms.length};`}
+                    >
+                      <span aria-hidden="true">{slotBreak.emoji}</span>
+                      <span>{slotBreak.label}{slotBreak.location ? ` — ${slotBreak.location}` : ''}</span>
                     </div>
-                  );
-                })}
-              </>
-            ))}
+                  </>
+                );
+              }
+              return (
+                <>
+                  <div class="px-2 py-3 text-xs font-mono text-primary-500 dark:text-primary-400 flex items-center">{slot}</div>
+                  {day.rooms.map((room) => {
+                    const cellSpeakers = speakersFor(day.daySpeakers, slot, room);
+                    return (
+                      <div class="min-h-[3.5rem]">
+                        {cellSpeakers.map((speaker) => {
+                          const track = getTrack(speaker.classification);
+                          return (
+                            <details name={`synoptic-${day.date}`} class="group h-full rounded-lg border border-primary-100 dark:border-primary-700 bg-white dark:bg-primary-800 hover:shadow-md transition-shadow duration-200">
+                              <summary class="cursor-pointer select-none list-none p-2.5">
+                                <div class="flex items-center gap-1.5 mb-1">
+                                  {track && <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${track.dotClass}`}></span>}
+                                  <span class="text-[11px] font-medium text-primary-400 dark:text-primary-500">{speaker.classification || speaker.type}</span>
+                                </div>
+                                <p class="text-xs font-semibold text-primary-900 dark:text-primary-100 leading-snug line-clamp-2">{speaker.title || speaker.name}</p>
+                              </summary>
+                              <div class="px-2.5 pb-2.5 text-xs text-primary-600 dark:text-primary-300">
+                                <p class="font-medium text-primary-800 dark:text-primary-200">{speaker.name}</p>
+                                <p class="text-primary-400 dark:text-primary-500">{speaker.affiliation}</p>
+                                {speaker.abstract && <p class="mt-1.5 leading-relaxed">{speaker.abstract}</p>}
+                              </div>
+                            </details>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </>
+              );
+            })}
           </div>
         </div>
-      ) : null}
+      ) : null)}
+
+      {!day.hasEvents && (
+        <div class="text-center py-16 px-6 border-2 border-dashed border-primary-200 dark:border-primary-700 rounded-2xl">
+          <svg class="w-10 h-10 mx-auto text-primary-300 dark:text-primary-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <p class="text-primary-500 dark:text-primary-400">Schedule for this day will be announced closer to the conference.</p>
+        </div>
+      )}
 
       {/* Agenda view: always available, used on mobile, and as the only
           view on desktop when there isn't enough data for a true grid */}
       <div class={day.showGrid ? 'md:hidden space-y-3' : 'space-y-3'}>
-        {day.daySpeakers.map((speaker) => {
+        {day.agendaEntries.map((entry) => {
+          if (entry.kind === 'break') {
+            const b = entry.brk;
+            return (
+              <div class="flex items-center gap-3 p-4 rounded-xl border border-dashed border-primary-200 dark:border-primary-600 bg-primary-50 dark:bg-primary-800/40">
+                <span class="text-sm font-mono text-primary-400 dark:text-primary-500 w-24 flex-shrink-0">{b.startTime}–{b.endTime}</span>
+                <span aria-hidden="true">{b.emoji}</span>
+                <span class="flex-1 text-sm font-medium text-primary-500 dark:text-primary-400">{b.label}</span>
+                {b.location && (
+                  <span class="text-xs text-primary-400 dark:text-primary-500 hidden sm:inline flex-shrink-0">{b.location}</span>
+                )}
+              </div>
+            );
+          }
+          const speaker = entry.speaker;
           const track = getTrack(speaker.classification);
           return (
             <details name={`synoptic-agenda-${day.date}`} class="group border border-primary-100 dark:border-primary-700 rounded-xl bg-white dark:bg-primary-800 overflow-hidden hover:shadow-md transition-shadow duration-200">

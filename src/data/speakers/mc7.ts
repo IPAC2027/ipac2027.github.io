@@ -34,7 +34,7 @@ export const mc7Speakers: Speaker[] = [
     name: "Samuel Miller",
     affiliation: `Facility for Rare Isotope Beams`,
     photo: "/images/speakers/samuel-miller.jpg",
-    photoAdjustment: { position: "center 25%" },
+    photoAdjustment: { position: "center 10%" },
     bio: `Samuel Miller is the Mechanical Engineering Department Manager and Superconducting Mechanical Design Group Leader at the Facility for Rare Isotope Beams (FRIB). He holds a Master of Science in Mechanical Engineering and brings more than 17 years of experience in accelerator technology, superconducting radio-frequency (SRF) systems, interceptive devices, and large-scale scientific infrastructure.
 During the first 14 years of his career, Samuel specialized in the design and development of superconducting cryomodules, SRF cavities, and superconducting magnets, while leading the mechanical integration and installation of complex accelerator systems. His expertise spans the full lifecycle of advanced accelerator components, from design and fabrication to installation and commissioning.
 In his current role, Samuel leads engineering efforts focused on interceptive devices, including the development of next-generation high-power beam dumps to support FRIB's future operational needs. He also oversees the mechanical design and development of new beamlines that will enable the expansion of FRIB's experimental capabilities and support future scientific programs.
@@ -51,7 +51,7 @@ In his current role, Samuel leads engineering efforts focused on interceptive de
     name: "Aveen Mahon",
     affiliation: `TRIUMF, Canada’s particle accelerator center`,
     photo: "/images/speakers/aveen-mahon.jpg",
-    photoAdjustment: { position: "center 20%" },
+    photoAdjustment: { position: "center 20%", zoom: 1.3 },
     bio: `Aveen Mahon is a PhD candidate at the University of Victoria, working in the accelerator physics division at TRIUMF, Canada’s national particle accelerator centre. Her research centres on the charging and migration of micron-sized dust particulates in accelerator environments and their impact on SRF cavities. Her work at TRIUMF also includes beam optics studies and quadrupole magnet design for the TRIUMF electron linear accelerator. Mahon obtained her Master’s degree in particle physics at McGill University working with the CALICE (now DRDCalo) collaboration. In addition to her research, Mahon actively engages in physics outreach and mentorship programs and serves on the TRIUMF graduate student and postdoc committee. Mahon has received independent funding through the NSERC Postgraduate Scholarships – Doctoral (PGS D) program, the Westcott Fellowship, and is the current holder of the Shelley Page Fellowship.`,
     type: "invited",
     title: `Microscopic dust, macroscopic downtime: the impacts of micron sized particulates

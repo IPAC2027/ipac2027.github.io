@@ -1,6 +1,7 @@
 ---
 import type { Speaker, SpeakerType } from '../data/speakers';
 import { speakers } from '../data/speakers';
+import { getTrack } from '../data/synopticSchedule';
 
 export interface Props {
   types?: SpeakerType[];
@@ -30,12 +31,20 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
+function getLastName(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return parts[parts.length - 1];
+}
+
 // Build an inline style for a speaker photo based on its optional adjustment
 // (position/zoom), so individual photos can be fine-tuned without touching markup.
+// `transform-origin` is set to match `position` so `zoom` scales around the
+// same focal point instead of the frame's center, which is otherwise the
+// default pivot for `transform: scale()` regardless of `object-position`.
 function getPhotoStyle(adjustment?: Speaker['photoAdjustment']): string {
   const position = adjustment?.position || 'center';
   const zoom = adjustment?.zoom || 1;
-  return `object-position: ${position}; transform: scale(${zoom});`;
+  return `object-position: ${position}; transform-origin: ${position}; transform: scale(${zoom});`;
 }
 
 const groups = types
@@ -43,7 +52,9 @@ const groups = types
     type,
     label: groupLabels[type],
     description: groupDescriptions[type],
-    items: speakers.filter(s => s.type === type),
+    items: type === 'invited'
+      ? [...speakers.filter(s => s.type === type)].sort((a, b) => getLastName(a.name).localeCompare(getLastName(b.name)))
+      : speakers.filter(s => s.type === type),
   }))
   .filter(group => group.items.length > 0);
 ---
@@ -62,10 +73,12 @@ const groups = types
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {group.items.map((speaker: Speaker) => (
+          {group.items.map((speaker: Speaker) => {
+            const track = getTrack(speaker.classification);
+            return (
             <div data-speaker-card class="group relative flex flex-col bg-white dark:bg-primary-800 rounded-2xl border border-primary-100 dark:border-primary-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-              {/* Accent top bar */}
-              <div class="h-1.5 w-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
+              {/* Accent top bar, color-coded by MC track (same colors as the synoptic table) */}
+              <div class={`h-1.5 w-full ${track ? track.gradientClass : 'bg-gradient-to-r from-primary-500 to-accent-500'}`}></div>
 
               <div class="p-6 flex flex-col items-center text-center flex-1">
                 {speaker.photo ? (
@@ -120,7 +133,8 @@ const groups = types
                 )}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     ))}

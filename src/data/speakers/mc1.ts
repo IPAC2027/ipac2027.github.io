@@ -33,6 +33,7 @@ export const mc1Speakers: Speaker[] = [
     id: "sergey-litvinov",
     name: "Sergey Litvinov",
     affiliation: `GSI Helmholtz Centre for Heavy Ion Research`,
+    photo: "/images/speakers/sergey-litvinov.jpg",
     bio: `Sergey Litvinov is a research scientist at GSI Helmholtzzentrum for Heavy Ion Research (GSI) in Darmstadt, Germany, working in the Storage Ring Department on accelerator physics and experiments at the Experimental Storage Ring (ESR). He received his PhD in Physics from Justus Liebig University Giessen in 2008. His doctoral work was focused on isochronous operation of storage rings, including studies for the ESR and the future Collector Ring (CR) of FAIR. Isochronous storage-ring operation enables precision experiments with short-lived nuclei and applications in astrophysics.
 Since joining GSI, he has been involved in the development and operation of storage-ring experiments, with contributions to beam dynamics studies, accelerator operation, and advanced beam manipulation techniques. His work covers various aspects of storage-ring physics, including isochronous operation and novel concepts for stored beam experiments.`,
     type: "invited",
