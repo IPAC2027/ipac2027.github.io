@@ -1,6 +1,7 @@
 ---
 import type { CollapsibleContent } from '../../types/content.ts';
 import ContentRenderer from '../ContentRenderer.astro';
+import { getTrack } from '../../data/synopticSchedule';
 
 export interface Props {
   content: CollapsibleContent;
@@ -8,13 +9,23 @@ export interface Props {
 }
 
 const { content, group } = Astro.props;
+
+// Derive a stable "mc1", "mc2", ... anchor id from titles like "MC1: ..." so
+// other pages (e.g. the speakers legend) can deep-link to a specific MC.
+const mcCode = content.title.match(/^MC\d+/i)?.[0];
+const mcId = mcCode?.toLowerCase();
+const track = mcCode ? getTrack(mcCode.toUpperCase()) : undefined;
 ---
 
 <div class="mb-6 border border-primary-200 dark:border-primary-700 rounded-lg overflow-hidden collapsible-container transition-colors duration-300" 
+     id={mcId}
      data-initial-open={content.isOpen ? 'true' : 'false'}
      data-group={group || ''}>
   <button type="button" class="w-full px-6 py-4 bg-primary-50 dark:bg-primary-700 hover:bg-primary-100 dark:hover:bg-primary-600 cursor-pointer transition-colors duration-200 border-b border-primary-200 dark:border-primary-600 collapsible-summary text-left flex justify-between items-center">
-    <span class="font-medium text-primary-900 dark:text-primary-100">{content.title}</span>
+    <span class="font-medium text-primary-900 dark:text-primary-100 flex items-center gap-2">
+      {track && <span class={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${track.dotClass}`}></span>}
+      {content.title}
+    </span>
     <span class="collapsible-icon transition-transform duration-300">
       <svg class="w-5 h-5 text-primary-600 dark:text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -387,5 +398,19 @@ const { content, group } = Astro.props;
       });
     });
   });
+
+  // Deep-linking support: opening a link like "/authors/classification#mc1"
+  // should expand and scroll to that MC's collapsible box. Runs on `load`
+  // (after the browser's own, nav-offset-unaware fragment scroll) so our
+  // precise scroll position is the one that sticks.
+  window.addEventListener('load', () => {
+    if (!window.location.hash) return;
+    const target = document.getElementById(window.location.hash.slice(1));
+    const targetButton = target?.classList.contains('collapsible-container')
+      ? (target.querySelector('.collapsible-summary') as HTMLButtonElement | null)
+      : null;
+    targetButton?.click();
+  });
 </script>
+
 

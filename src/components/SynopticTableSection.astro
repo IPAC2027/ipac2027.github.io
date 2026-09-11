@@ -78,13 +78,14 @@ const days = conferenceDays.map((day) => {
   {/* Track legend */}
   <div class="flex flex-wrap gap-2 justify-center mb-8">
     {tracks.map((t) => (
-      <span
-        class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${t.borderClass} ${t.textClass} bg-white dark:bg-primary-800`}
+      <a
+        href={`/authors/classification#${t.code.toLowerCase()}`}
+        class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${t.borderClass} ${t.textClass} bg-white dark:bg-primary-800 hover:opacity-80 transition-opacity`}
         title={t.label}
       >
         <span class={`w-2 h-2 rounded-full ${t.dotClass}`}></span>
         {t.code}
-      </span>
+      </a>
     ))}
   </div>
 

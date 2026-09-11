@@ -1,7 +1,7 @@
 ---
 import type { Speaker, SpeakerType } from '../data/speakers';
 import { speakers } from '../data/speakers';
-import { getTrack } from '../data/synopticSchedule';
+import { getTrack, tracks } from '../data/synopticSchedule';
 
 export interface Props {
   types?: SpeakerType[];
@@ -71,6 +71,21 @@ const groups = types
           <h2 class="text-3xl font-heading font-bold text-primary-900 dark:text-primary-100">{group.label}</h2>
           <p class="mt-2 text-primary-600 dark:text-primary-300">{group.description}</p>
         </div>
+
+        {group.type === 'invited' && (
+          <div class="mb-8 flex flex-wrap gap-2 justify-center">
+            {tracks.map((track) => (
+              <a
+                href={`/authors/classification#${track.code.toLowerCase()}`}
+                title={track.label}
+                class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${track.borderClass} ${track.textClass} bg-white dark:bg-primary-800 hover:opacity-80 transition-opacity`}
+              >
+                <span class={`w-2 h-2 rounded-full ${track.dotClass}`}></span>
+                {track.code}
+              </a>
+            ))}
+          </div>
+        )}
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {group.items.map((speaker: Speaker) => {
