@@ -366,7 +366,20 @@ const days = conferenceDays.map((day) => {
   // content panel's height/opacity ourselves (mirrors CollapsibleContent.astro).
   const TALK_ANIM_MS = 280;
 
+  // Tracks the latest animation "generation" per details element so that a
+  // stale animation's cleanup (from one interrupted by rapid switching)
+  // can't clobber styles set by a newer one that superseded it.
+  const talkAnimGen = new WeakMap<HTMLDetailsElement, number>();
+
+  function bumpGen(details: HTMLDetailsElement): number {
+    const gen = (talkAnimGen.get(details) || 0) + 1;
+    talkAnimGen.set(details, gen);
+    return gen;
+  }
+
   function animateTalkClose(details: HTMLDetailsElement, content: HTMLElement, onDone: () => void) {
+    const gen = bumpGen(details);
+    content.getAnimations().forEach((a) => a.cancel());
     content.style.overflow = 'hidden';
     const startHeight = content.getBoundingClientRect().height;
     const anim = content.animate(
@@ -375,16 +388,19 @@ const days = conferenceDays.map((day) => {
     );
     anim.finished
       .then(() => {
+        if (talkAnimGen.get(details) !== gen) return; // superseded, its own animation owns cleanup
         details.open = false;
         content.style.overflow = '';
         content.style.height = '';
         content.style.opacity = '';
         onDone();
       })
-      .catch(onDone);
+      .catch(() => {});
   }
 
   function animateTalkOpen(details: HTMLDetailsElement, content: HTMLElement) {
+    const gen = bumpGen(details);
+    content.getAnimations().forEach((a) => a.cancel());
     content.style.overflow = 'hidden';
     content.style.height = 'auto';
     const targetHeight = content.getBoundingClientRect().height;
@@ -396,11 +412,14 @@ const days = conferenceDays.map((day) => {
     // Scroll alongside the opening animation instead of waiting for it to
     // finish; the box's own top position doesn't move as it grows downward.
     requestAnimationFrame(() => scrollToTalk(details));
-    anim.finished.then(() => {
-      content.style.overflow = '';
-      content.style.height = '';
-      content.style.opacity = '';
-    });
+    anim.finished
+      .then(() => {
+        if (talkAnimGen.get(details) !== gen) return;
+        content.style.overflow = '';
+        content.style.height = '';
+        content.style.opacity = '';
+      })
+      .catch(() => {});
   }
 
   document.querySelectorAll<HTMLDetailsElement>('details[name^="synoptic-"]').forEach((details) => {
@@ -408,22 +427,17 @@ const days = conferenceDays.map((day) => {
     const content = details.querySelector(':scope > div') as HTMLElement | null;
     if (!summary || !content) return;
 
-    let isAnimating = false;
-
     summary.addEventListener('click', (e) => {
       e.preventDefault();
-      if (isAnimating) return;
-      isAnimating = true;
 
       if (details.open) {
-        animateTalkClose(details, content, () => { isAnimating = false; });
+        animateTalkClose(details, content, () => {});
         return;
       }
 
       const openThis = () => {
         details.open = true;
         animateTalkOpen(details, content);
-        isAnimating = false;
       };
 
       // Close the currently-open talk in this group (with the same smooth
