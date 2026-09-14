@@ -11,21 +11,19 @@ function getDaySpeakers(date: string): Speaker[] {
     .sort((a, b) => (a.schedule?.startTime || '').localeCompare(b.schedule?.startTime || ''));
 }
 
-// Distinct rooms scheduled on a given day, used as grid columns when there
-// are real parallel sessions to show (desktop matrix view). Sorted
-// alphabetically so "Ballroom A" always renders left of "Ballroom B".
-function getRooms(daySpeakers: Speaker[]): string[] {
-  return [...new Set(daySpeakers.map(s => s.schedule?.room).filter(Boolean))].sort((a, b) =>
-    (a as string).localeCompare(b as string)
-  ) as string[];
-}
+// All rooms used anywhere in the program, used as fixed grid columns so the
+// matrix (and its empty placeholder slots) look the same on every day.
+// Sorted alphabetically so "Ballroom A" always renders left of "Ballroom B".
+const ALL_ROOMS = [...new Set(speakers.map(s => s.schedule?.room).filter(Boolean))].sort((a, b) =>
+  (a as string).localeCompare(b as string)
+) as string[];
 
 function breakSlot(b: ScheduleBreak): string {
   return `${b.startTime}–${b.endTime}`;
 }
 
-// Distinct time slots scheduled on a given day, used as grid rows. Includes
-// timed breaks (lunch, poster session) so they get their own row.
+// Distinct time slots actually scheduled on a given day (talks + timed
+// breaks), used as the seed for the full, gap-filled grid rows below.
 function getTimeSlots(daySpeakers: Speaker[], timedBreaks: ScheduleBreak[]): string[] {
   const slots = new Set(
     daySpeakers
@@ -43,13 +41,96 @@ function speakersFor(daySpeakers: Speaker[], slot: string, room: string): Speake
   });
 }
 
+function timeToMinutes(t: string): number {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function minutesToTime(min: number): string {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+}
+
+const SLOT_MINUTES = 30;
+
+// Row height scales with slot duration so a 20-min talk visibly takes less
+// vertical space than a 30-min one. Slots without a parsed end time (or with
+// an end time before the start, e.g. bad data) fall back to 30 min.
+const PX_PER_MINUTE = 2;
+const MIN_ROW_PX = 40;
+
+function slotDurationMinutes(slot: string): number {
+  const [start, end] = slot.split('–');
+  if (!start || !end) return 30;
+  const minutes = timeToMinutes(end) - timeToMinutes(start);
+  return minutes > 0 ? minutes : 30;
+}
+
+function slotRowHeightPx(slot: string): number {
+  return Math.max(slotDurationMinutes(slot) * PX_PER_MINUTE, MIN_ROW_PX);
+}
+
+// Fill the [startMin, endMin) window with 30-min placeholder rows wherever
+// there isn't already a real (talk/break) slot, so the time axis always
+// reads at a constant pace even on days without a full program yet.
+function buildDaySlots(realSlots: string[], startMin: number, endMin: number): string[] {
+  const intervals = realSlots
+    .map(slot => {
+      const [start, end] = slot.split('–');
+      const startM = timeToMinutes(start);
+      return { label: slot, start: startM, end: end ? timeToMinutes(end) : startM + SLOT_MINUTES };
+    })
+    .sort((a, b) => a.start - b.start);
+
+  const result: string[] = [];
+  let cursor = startMin;
+  for (const interval of intervals) {
+    if (interval.start >= endMin) break;
+    while (cursor + SLOT_MINUTES <= interval.start) {
+      result.push(`${minutesToTime(cursor)}–${minutesToTime(cursor + SLOT_MINUTES)}`);
+      cursor += SLOT_MINUTES;
+    }
+    result.push(interval.label);
+    cursor = Math.max(cursor, interval.end);
+  }
+  while (cursor + SLOT_MINUTES <= endMin) {
+    result.push(`${minutesToTime(cursor)}–${minutesToTime(cursor + SLOT_MINUTES)}`);
+    cursor += SLOT_MINUTES;
+  }
+  return result;
+}
+
+// Program window per day: Mon-Thu always show the full 9am-6pm business day
+// (even before it's filled in). Sunday's morning is satellite/registration
+// only, so its grid starts at noon; Friday is a closing half-day, so both
+// end early at whatever the last scheduled item actually is.
+function dayWindow(dayOfWeek: string, realSlots: string[]): { startMin: number; endMin: number } {
+  const lastRealEnd = realSlots.reduce((max, slot) => {
+    const [, end] = slot.split('–');
+    return end ? Math.max(max, timeToMinutes(end)) : max;
+  }, 0);
+
+  if (dayOfWeek === 'Sunday') {
+    const startMin = 12 * 60;
+    return { startMin, endMin: Math.max(lastRealEnd, startMin) };
+  }
+  if (dayOfWeek === 'Friday') {
+    const startMin = 9 * 60;
+    return { startMin, endMin: Math.max(lastRealEnd, startMin) };
+  }
+  return { startMin: 9 * 60, endMin: 18 * 60 };
+}
+
 const days = conferenceDays.map((day) => {
   const daySpeakers = getDaySpeakers(day.date);
   const dayBreaks = scheduleBreaks.filter(b => b.dates.includes(day.date));
   const timedBreaks = dayBreaks.filter(b => b.startTime);
   const tbdBreaks = dayBreaks.filter(b => !b.startTime);
-  const rooms = getRooms(daySpeakers);
-  const timeSlots = getTimeSlots(daySpeakers, timedBreaks);
+  const rooms = ALL_ROOMS;
+  const realTimeSlots = getTimeSlots(daySpeakers, timedBreaks);
+  const { startMin, endMin } = dayWindow(day.dayOfWeek, realTimeSlots);
+  const timeSlots = buildDaySlots(realTimeSlots, startMin, endMin);
   // Merge speakers and timed breaks into a single time-ordered agenda list
   // (used by the mobile/no-grid agenda view).
   const agendaEntries = [
@@ -64,12 +145,15 @@ const days = conferenceDays.map((day) => {
     agendaEntries,
     rooms,
     timeSlots,
-    // A day has something to show if it has talks and/or non-program events
-    // (breaks, social events); only truly empty days get the placeholder.
-    hasEvents: daySpeakers.length > 0 || dayBreaks.length > 0,
-    // Only worth rendering a true matrix when there's more than one room
-    // (i.e. real parallel sessions); otherwise fall back to a simple agenda.
-    showGrid: rooms.length > 1 && timeSlots.length > 0,
+    // Header row stays auto-sized; each time-slot row is at least its
+    // duration-scaled height, but can grow (pushing later rows down) when an
+    // opened talk's abstract needs more room than that.
+    gridTemplateRows: ['auto', ...timeSlots.map(slot => `minmax(${slotRowHeightPx(slot)}px, auto)`)].join(' '),
+    // The grid's own time-filled window means there's always something to
+    // show; only a day with a genuinely empty window falls back to the
+    // "announced later" placeholder.
+    hasEvents: timeSlots.length > 0,
+    showGrid: true,
   };
 });
 ---
@@ -123,7 +207,7 @@ const days = conferenceDays.map((day) => {
         <div class="hidden md:block overflow-x-auto">
           <div
             class="grid gap-2 min-w-[640px]"
-            style={`grid-template-columns: 8rem repeat(${day.rooms.length}, minmax(0, 1fr));`}
+            style={`grid-template-columns: 8rem repeat(${day.rooms.length}, minmax(0, 1fr)); grid-template-rows: ${day.gridTemplateRows};`}
           >
             <div></div>
             {day.rooms.map((room) => (
@@ -154,7 +238,7 @@ const days = conferenceDays.map((day) => {
                   {day.rooms.map((room) => {
                     const cellSpeakers = speakersFor(day.daySpeakers, slot, room);
                     return (
-                      <div class="min-h-[3.5rem]">
+                      <div class="h-full">
                         {cellSpeakers.map((speaker) => {
                           const track = getTrack(speaker.classification);
                           return (
@@ -248,13 +332,114 @@ const days = conferenceDays.map((day) => {
   const buttons = document.querySelectorAll<HTMLButtonElement>('.day-tab-btn');
   const panels = document.querySelectorAll<HTMLElement>('[data-day-panel]');
 
+  function selectDay(target: string) {
+    buttons.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.dayTarget === target)));
+    panels.forEach((p) => {
+      p.hidden = p.dataset.dayPanel !== target;
+    });
+  }
+
   buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.dayTarget;
-      buttons.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
-      panels.forEach((p) => {
-        p.hidden = p.dataset.dayPanel !== target;
-      });
+    btn.addEventListener('click', () => selectDay(btn.dataset.dayTarget!));
+  });
+
+  // If viewing during the conference itself, jump straight to today's agenda.
+  const now = new Date();
+  const todayISO = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const todayButton = Array.from(buttons).find((b) => b.dataset.dayTarget === todayISO);
+  if (todayButton) {
+    selectDay(todayISO);
+    todayButton.scrollIntoView({ block: 'nearest', inline: 'center' });
+  }
+
+  // Opening a talk should bring its box to the top of the viewport (below
+  // the sticky nav) instead of leaving it wherever it happened to expand.
+  function scrollToTalk(details: HTMLElement) {
+    const nav = document.querySelector('nav');
+    const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+    const offset = 16;
+    const top = details.getBoundingClientRect().top + window.scrollY - navHeight - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  // Native <details> has no built-in open/close transition, so animate the
+  // content panel's height/opacity ourselves (mirrors CollapsibleContent.astro).
+  const TALK_ANIM_MS = 280;
+
+  function animateTalkClose(details: HTMLDetailsElement, content: HTMLElement, onDone: () => void) {
+    content.style.overflow = 'hidden';
+    const startHeight = content.getBoundingClientRect().height;
+    const anim = content.animate(
+      [{ height: `${startHeight}px`, opacity: 1 }, { height: '0px', opacity: 0 }],
+      { duration: TALK_ANIM_MS, easing: 'ease-in', fill: 'forwards' }
+    );
+    anim.finished
+      .then(() => {
+        details.open = false;
+        content.style.overflow = '';
+        content.style.height = '';
+        content.style.opacity = '';
+        onDone();
+      })
+      .catch(onDone);
+  }
+
+  function animateTalkOpen(details: HTMLDetailsElement, content: HTMLElement) {
+    content.style.overflow = 'hidden';
+    content.style.height = 'auto';
+    const targetHeight = content.getBoundingClientRect().height;
+    content.style.height = '0px';
+    const anim = content.animate(
+      [{ height: '0px', opacity: 0 }, { height: `${targetHeight}px`, opacity: 1 }],
+      { duration: TALK_ANIM_MS, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' }
+    );
+    // Scroll alongside the opening animation instead of waiting for it to
+    // finish; the box's own top position doesn't move as it grows downward.
+    requestAnimationFrame(() => scrollToTalk(details));
+    anim.finished.then(() => {
+      content.style.overflow = '';
+      content.style.height = '';
+      content.style.opacity = '';
+    });
+  }
+
+  document.querySelectorAll<HTMLDetailsElement>('details[name^="synoptic-"]').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector(':scope > div') as HTMLElement | null;
+    if (!summary || !content) return;
+
+    let isAnimating = false;
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isAnimating) return;
+      isAnimating = true;
+
+      if (details.open) {
+        animateTalkClose(details, content, () => { isAnimating = false; });
+        return;
+      }
+
+      const openThis = () => {
+        details.open = true;
+        animateTalkOpen(details, content);
+        isAnimating = false;
+      };
+
+      // Close the currently-open talk in this group (with the same smooth
+      // animation) before opening this one, instead of letting the browser's
+      // native same-`name` exclusivity snap it shut mid-animation.
+      const groupName = details.getAttribute('name');
+      const openSibling = groupName
+        ? (document.querySelector(`details[name="${groupName}"][open]`) as HTMLDetailsElement | null)
+        : null;
+      const siblingContent = openSibling?.querySelector(':scope > div') as HTMLElement | null;
+
+      if (openSibling && openSibling !== details && siblingContent) {
+        animateTalkClose(openSibling, siblingContent, openThis);
+      } else {
+        openThis();
+      }
     });
   });
 </script>
