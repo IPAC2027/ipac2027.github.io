@@ -41,7 +41,7 @@ The expected process is:
 ## Important Notes
 
 - Invitation letters are provided only to registered conference participants.
-- The visa etter is intended to support a visa application for attending IPAC’27 and does not imply financial support from the conference.  The student grant awardee will receive a separate letter for the travel support.
+- The visa letter is intended to support a visa application for attending IPAC’27 and does not imply financial support from the conference.  The student grant awardee will receive a separate letter for the travel support.
 - The final decision to issue a visa is made by the relevant U.S. consular authority.  IPAC’27 is unable to contact U.S. embassies or consulates on behalf of visa applicants.
 - Participants should apply for a visa as early as possible to allow sufficient time for interview scheduling and application processing.
 - Participants who make a good-faith effort to obtain a visa but are unable to do so may request a registration refund. Such requests will be reviewed by IPAC’27 and handled in accordance with the conference cancellation policy.

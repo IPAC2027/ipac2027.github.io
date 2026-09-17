@@ -8,7 +8,7 @@ bannerBackground: "/images/banners/Registration/registration.png"
 
 :::warning
 IPAC'27 will be an in-person only event.
-Registration for IPAC'27 will open in October 2026. Please check back for updates and registration announcements.
+Registration for IPAC'27 will open in October 1st, 2026. Please check back for updates and registration announcements.
 :::
 
 ## Registration Information
@@ -32,7 +32,7 @@ All participants should have a **JACoW account** before registering. The JACoW a
 | Student Non Member | $450 | $550 |
 | Companion / Guest | $350 | $350 |
 
-The registration fee for conference attendee includes access to the scientific program, exhibibtion program, conference materials, snack/coffee break, welcome reception and conference banquet.  The companion/guest fee includes all social events including the welcome reception and conference banquet.
+The registration fee for conference attendee includes access to the scientific program, exhibibtion program, conference materials, snack/coffee break, welcome reception and conference banquet.  The companion/guest fee includes all social events including the welcome reception and conference banquet.  Single day registration will be only available for on-site registration.
 
 
 
@@ -40,11 +40,11 @@ The registration fee for conference attendee includes access to the scientific p
 
 To register for IPAC’27, please follow the steps below. If you do not plan to participate in the IPAC’27 scientific program and only need to register for the industrial exhibition,  please follow the [exhibition personnel registration guide](/exhibitors/exhibition-registration#exhibitor-personnel-registration).
 
-1.  **Prepare your JACoW account**, ensure that you have a valid JACoW Indico account and that your personal information and affiliation are up to date.
+1.  **Prepare your JACoW account**, ensure that you have a valid JACoW Indico account, and that your personal information and affiliation are up to date.
 
-2. **Complete the registration form in Indico site**, provide the required personal information and select any applicable registration options.  
+2. **Complete the registration form in Indico site**, provide the required information and select any applicable registration options.  
 
-3. **Submit the registration**, after submission, you will be provided the payment link and receive a confirmation email summarizing your registration details.
+3. **Submit the registration**, after submission, you will be provided the payment link and will receive a confirmation email summarizing your registration details.
 
 4. **Complete payment**, follow the instructions in the payment system. Available payment methods and deadlines will be listed on the registration site.  **Your registration is not complete without payment cleared.**
 

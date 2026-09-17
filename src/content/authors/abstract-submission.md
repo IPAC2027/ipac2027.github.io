@@ -4,7 +4,7 @@ description: ""
 ---
 
 :::highlight
-Abstract submission will open in October 1st, 2026, and close in December 2026. 
+Abstract submission will open on October 1st, 2026, and close in 5pm Eastern Time on December 2nd, 2026. 
 :::
 
 ## Call for Papers
@@ -35,7 +35,7 @@ Enter the title of the abstract using **Sentence** case. For example: This is a 
 :::
 
 :::card{icon="🎤" title="Contribution Type"}
-Choose “**Poster presentation**” for your submission. The Scientific Programme Committee will select a number of abstracts to be presented as oral contributions.
+If you are willing to be selected for an oral presentation, choose “**Oral presentation**” for your submission; otherwise, choose “**Poster presentation**”. The Scientific Programme Committee will select a number of abstracts to be presented as oral contributions.
 :::
 
 :::card{icon="📄" title="Content"}

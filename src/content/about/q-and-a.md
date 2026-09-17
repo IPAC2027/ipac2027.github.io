@@ -27,7 +27,7 @@ We anticipate approximately 1,000–1,300 participants from leading research lab
 
 
 :::collapsible{title="How do I register for IPAC'27?"}
-Online registration will open in October 2026 via the official conference website. Early-bird rates will be available for a limited period—early booking is encouraged.
+Online registration will open in October 1st, 2026 via the official conference website. Early-bird rates will be available for a limited period—early booking is encouraged.
 :::
 
 :::collapsible{title="What is the registration fee?"}
@@ -88,11 +88,11 @@ Indicative transport options (subject to confirmation):
 :::
 
 :::collapsible{title="Where should I stay?"}
-We have negotiated special rates with our conference hotel Marriot. A list of recommended accommodations with booking instructions will be available on our website.
+We have negotiated special rates with our conference hotel Marriot. The direct booking link is available on the [accommodation page](/travel/accommodation).  We recommend booking early, as reserved rooms can fill quickly during the conference period.
 :::
 
 :::collapsible{title="Do I need a visa to attend?"}
-Visa requirements vary by nationality. International participants should consult the nearest U.S. embassy/consulate well in advance. Invitation letters (for confirmed participants) will be available upon request beginning [Date]. We recommend initiating visa procedures early.
+Visa requirements vary by nationality. International participants should consult the nearest U.S. embassy/consulate well in advance. Visa letters for registered participants will be issue after the registration process is completed. We recommend initiating visa procedures early.
 :::
 
 
@@ -110,7 +110,7 @@ Yes. Similar to previous IPAC conferences, we will have a dedicated student post
 
 
 :::collapsible{title="Are there discounted student rates?"}
-Yes. Reduced student registration fees will be available.
+Yes. Reduced student registration fees is be available, see the [conference registration page](/registration/conference-registration#registration-fees).
 :::
 
 

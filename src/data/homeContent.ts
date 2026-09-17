@@ -12,7 +12,7 @@ export const homeContent = {
     },
     callToAction: {
       primary: {
-        text: "Register Starting October 2026",
+        text: "Register Starting October 1st, 2026",
         href: "/registration/conference-registration"
       },
       secondary: {
@@ -57,7 +57,7 @@ export const homeContent = {
       },
       {
         period: "Oct. 1, 2026",
-        title: "Student Award Applications Open",
+        title: "Student Grant Applications Open",
         description: "",
         link: "/registration/student-grant"
       },
@@ -69,7 +69,7 @@ export const homeContent = {
       },
       {
         period: "Dec. 2, 2026",
-        title: "Student Award Applications Deadline",
+        title: "Student Grant Applications Deadline",
         description: "",
         link: "/registration/student-grant"
       },
