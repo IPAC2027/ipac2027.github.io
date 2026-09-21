@@ -35,7 +35,7 @@ Enter the title of the abstract using **Sentence** case. For example: This is a 
 :::
 
 :::card{icon="🎤" title="Contribution Type"}
-Please choose “**Poster presentation**”. If you are willing to be selected for an oral presentation, please indicate the check box "Consider for a contributed oral presentation".  The Scientific Programme Committee will select contributed oral contributions only from the abstracts with the check box checked.
+Please choose “**Poster presentation**”. If you are willing to be selected for an oral presentation, please indicate the **check box "Consider for a contributed oral presentation**".  The Scientific Programme Committee will select contributed oral contributions only from the abstracts with the check box checked.
 :::
 
 :::card{icon="📄" title="Content"}
