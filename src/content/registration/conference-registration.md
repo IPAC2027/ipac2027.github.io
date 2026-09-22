@@ -42,11 +42,28 @@ To register for IPAC’27, please follow the steps below. If you do not plan to 
 
 1.  **Prepare your JACoW account**, ensure that you have a valid JACoW Indico account, and that your personal information and affiliation are up to date.
 
-2. **Complete the registration form in Indico site**, provide the required information and select any applicable registration options.  
+2. **Complete the registration form in Indico site**, provide the required information and select any applicable registration options.  After submission, you will be provided **the payment link** and will receive a confirmation email with a summary of your registration details and the same payment information.  You will also need to record the **Indico Reference Number (Ref #)**, which is illustrated in the following examples.
 
-3. **Submit the registration**, after submission, you will be provided the payment link and will receive a confirmation email summarizing your registration details.
+:::grid{columns=2}
+:::card{title="From post-registration indico page"}
+<div style="text-align: center; margin: 1rem 0;">
+  <img src="/images/registration/ref_num1.png" alt="Indico Reference Number from webpage" style="width: 100%; height: 280px; object-fit: cover;" />
+</div>
 
-4. **Complete payment**, follow the instructions in the payment system. Available payment methods and deadlines will be listed on the registration site.  **Your registration is not complete without payment cleared.**
+You can find the Indico Reference Number (Ref #) from [Indico 's registration page](https://indico.jacow.org/event/109/registrations/127/).
+:::
+
+:::card{title="From confirmation email"}
+<div style="text-align: center; margin: 1rem 0;">
+  <img src="/images/registration/ref_num2.png" alt="Indico Reference Number from email" style="width: 100%; height: 300px; object-fit: cover;" />
+</div>
+
+The Indico Reference Number (Ref #) will also be included in your confirmation email.
+:::
+:::
+
+3. **Complete payment**, follow the instructions in the payment system. You will need the Indico Reference Number (Ref #) to associate your payment with your Indico registration. Available payment methods will be listed on the registration site.  **Your registration is not complete without payment cleared.**
+
 
 ## Cancellation policy
 

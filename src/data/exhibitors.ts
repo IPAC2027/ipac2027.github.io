@@ -417,6 +417,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C90",
     featured: true
   },
+   {  
+    id: "gold-027",
+    name: "Pearson Electronics, Inc.",
+    logo: "/images/logos/exhibitors/gold/pearson.png",
+    website: "https://www.pearsonelectronics.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C15",
+    featured: true
+  },
 ];
 
 // Helper functions

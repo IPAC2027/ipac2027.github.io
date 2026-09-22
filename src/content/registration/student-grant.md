@@ -13,7 +13,7 @@ IPAC'27 will provide a limited number of supports for graduate and undergraduate
 
 ## Student Grant Instruction
 
-- Before applying for a student grant, the student must have submitted **at least one abstract** and obtained **a contribution ID**.  There is no need to wait for the abstract to be accepted, as the contribution ID is assigned immediately after submission.
+- Before applying for a student grant, the student must have submitted **at least one abstract** and obtained **an abstract ID**.  There is no need to wait for the abstract to be accepted, as the abstract ID is assigned immediately after submission.  You may find the ID in the **abstract submission confirmation email**, or in the abstract submission page in the Indico site. 
 
 - Grant applications must be submitted through the online application form in the Indico site.  Applicants must include the proof of student status and at least **two reference letters** signed by the applicant’s supervisor, laboratory mentor, head of institute, laboratory director, or university department chair at the institution where the applicant is working or studying.  The reference letters can be uploaded directly along with the application form, or sent separately by the referees to the conference email address (student@ipac27.org).  The reference letters must be signed and on official letterhead of the institution.
 
