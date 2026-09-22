@@ -395,6 +395,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C61",
     featured: true
   },
+  {  
+    id: "gold-026",
+    name: "ScienceWorks Co., Ltd.",
+    logo: "/images/logos/exhibitors/gold/scienceworks.png",
+    website: "https://scienceworks.kr/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C90",
+    featured: true
+  },
 ];
 
 // Helper functions
