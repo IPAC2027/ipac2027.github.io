@@ -118,6 +118,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "B16",
     featured: true
   },
+    {
+    id: "platinum-7",
+    name: "ZANON Research & Innovation",
+    logo: "/images/logos/exhibitors/platinum/zanon.jpg",
+    website: "https://www.zanonresearch.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B8",
+    featured: true
+  },
   
   // Gold Tier
   {
