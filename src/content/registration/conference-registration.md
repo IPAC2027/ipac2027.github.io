@@ -30,7 +30,7 @@ All participants should have a **JACoW account** before registering. The JACoW a
 | IEEE Life Member | $350 | $550 |
 | IEEE Student Member | $350 | $550 |
 | Student Non Member | $450 | $550 |
-| Companion / Guest | $350 | $350 |
+| Companion / Guest | $360 | $360 |
 
 The registration fee for conference attendee includes access to the scientific program, exhibibtion program, conference materials, snack/coffee break, welcome reception and conference banquet.  The companion/guest fee includes all social events including the welcome reception and conference banquet.  Single day registration will be only available for on-site registration.
 
