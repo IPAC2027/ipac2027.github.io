@@ -31,18 +31,20 @@ Use the JACoW account to login the IPAC'27 indico site and Submit your abstract(
 
 :::grid{columns=2}
 :::card{icon="📝" title="Title"}
-Enter the title of the abstract using **Sentence** case. For example: This is a paper title in SCL: sentence case letters.
+Enter the title of the abstract, using **sentence** case. Use capitals only where appropriate, as for acronyms or [SI units](https://en.wikipedia.org/wiki/International_System_of_Units).
+For example: The EXP experiment running at 4 GeV
 :::
 
 :::card{icon="🎤" title="Contribution Type"}
-Please choose “**Poster presentation**”. If you are willing to be selected for an oral presentation, please indicate the **check box "Consider for a contributed oral presentation**".  The Scientific Programme Committee will select contributed oral contributions only from the abstracts with the check box checked.
+* Please choose “**Poster presentation**”. If you are willing to be selected for an oral presentation, please indicate the **check box "Consider for a contributed oral presentation**".  
+* The Scientific Programme Committee will select contributed oral contributions **only from** the abstracts with the check box checked.
 :::
 
 :::card{icon="📄" title="Content"}
 The description, or abstract text, is needed here. Please describe what you intend to present at this conference:
 * Text should not exceed 1200 characters.
 * Enter plain text only, avoid using Greek symbols, superscripts or subscripts, LaTeX, Markdown etc.
-* Use one or more asterisks (\*, \*\*, etc.) to indicate footnotes to be entered in the footnotes field (see below).
+* Use one or more asterisks (\*, \*\*, etc.) to indicate footnotes to be entered in the footnotes field.
 :::
 
 :::card{icon="🧷" title="Footnotes/Funding Agency"}
@@ -50,15 +52,18 @@ Footnotes may not exceed 200 characters, so be judicious and concise in your use
 :::
 
 :::card{icon="🏷️" title="Classification of Abstracts (tracks)"}
-All contributions are grouped by Main and Sub Classification. It is authors’ responsibility to properly classify their abstracts to ensure that, if accepted for presentation, the paper is properly placed within the conference programme. A description of the scope of the classifications is provided to help authors with this task (see the Main and Sub Classifications section).
+* All contributions are grouped by *Main and Sub Classification*. It is authors’ responsibility to properly classify their abstracts to ensure that, if accepted for presentation, the paper is properly placed within the conference programme. 
+* A description of the scope of the classifications is provided to help authors with this task (see the [Main and Sub Classifications section](/authors/classification)).
 :::
 
 :::card{icon="👬" title="Entry of Co-authors"}
-Please follow the JACoW page ["How to submit an abstract"](https://docs.jacow.org/General/submission/) to enter all your co-authors. Failure to do so will result in their exclusion from the author index in both the conference programme booklet and in the proceedings. 
+* Please follow the JACoW page ["How to submit an abstract"](https://docs.jacow.org/General/submission/) to enter all your co-authors. Failure to do so will result in their exclusion from the author index in both the conference programme booklet and in the proceedings. 
+* Please note that only the main (first) author must be present in the “Authors” section of the abstract’s authors list in Indico. All other authors need to be added as “Co-authors.”
 :::
 
 :::card{icon="🎯" title="Presenter/Speaker Identification"}
-It is assumed that the submitting author would present a paper for oral presentation if selected. The names of submitting authors/persons who will make oral presentations need to appear first in the list of authors in the programme and author index of the proceedings. If someone other than the submitting author will present the paper, this should be indicated on this page. 
+* It is assumed that the (main/first) author or the one marked as “speaker” (presenter) in Indico would be willing to submit a paper for the conference proceedings. 
+* If a person other than the submitting author would present the paper, this should be indicated on this page. Only one person should be marked as "speaker" for a contribution.
 :::
 :::
 
