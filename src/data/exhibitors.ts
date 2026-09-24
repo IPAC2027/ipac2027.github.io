@@ -428,6 +428,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C15",
     featured: true
   },
+  {  
+    id: "gold-028",
+    name: "Luvata Pori Oy",
+    logo: "/images/logos/exhibitors/gold/luvata.jpg",
+    website: "https://www.luvata.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C10",
+    featured: true
+  },
 ];
 
 // Helper functions
