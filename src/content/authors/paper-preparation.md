@@ -10,11 +10,11 @@ bannerText: "Paper Preparation and Submission"
 Paper submission will open in March, 2027, and will close on May 20, 2027. 
 :::
 
-## Jacow Templates
+## JACoW Templates
 
-Each submitting author is asked to submit a paper following the paper preparation guidelines. Use of the [official JACoW templates](https://www.jacow.org/Authors/HomePage) is mandatory. Please Always download the latest version of the template ( $\LaTeX$, Word or OpenDocument) before starting to write a paper, even if you are an experienced author and/or have submitted a paper in a previous JACoW conference.  Please **do not reuse** the source files from previous papers to avoid use of possibly old template parts. Prepare the paper in $\LaTeX$ is strongly preferred.
+Each submitting author is asked to submit a paper following the paper preparation guidelines. Use of the [official JACoW templates](https://www.jacow.org/Authors/HomePage) is mandatory. Please Always download the latest version of the template before starting to write a paper, even if you are an experienced author and/or have submitted a paper in a previous JACoW conference.  Please **do not reuse** the source files from previous papers to avoid use of possibly old template parts. Preparing the paper in $\LaTeX$ is strongly preferred.
 
-:::grid{columns=3}
+:::grid{columns=2}
 :::card{icon="TeX" styled-icon="true" title="$\LaTeX$ Template"}
 The [latest Latex class](https://www.jacow.org/Authors/LaTeX) should be used.  You may also use [Overleaf](https://www.overleaf.com/) to avoid local installation.
 :::
@@ -23,9 +23,6 @@ The [latest Latex class](https://www.jacow.org/Authors/LaTeX) should be used.  Y
 The [latest MS Word template](https://www.jacow.org/Authors/MSWord) should be used. Install the template (.dotx file) on your computer for best results.
 :::
 
-:::card{icon="OO" styled-icon="true" title="ODF Templates"}
-The [latest OpenDocument (ODF) Templates](https://www.jacow.org/Authors/OpenDocument) should be used. 
-:::
 :::
 
 
@@ -47,13 +44,19 @@ Detailed instructions on how to write a good JACoW paper are included in the [JA
 
 
 ## References
-References are among the most frequent issues requiring editor intervention. Follow these rules:
+Incorrectly formatted references are one of the most common causes of delays in proceedings processing.
+ 
+Basic rules:
+- All bibliographical and web references should be numbered and listed at the end of the paper in a section called “References.”
+- When citing a reference in the text, place the corresponding reference number in square brackets, e.g., [3].
+- A URL may be included as part of a reference, but the hyperlink must be removed (In Word, use ctrl+k to remove).
+ 
+### Citations of JACoW publications
+- To get citations of JACoW publications correctly formatted, use the [JACoW Reference Search Tool](https://refs.jacow.org/).  Use this tool for all JACoW conference related citations.
 
-1. All references must be numbered and listed in the “References" section at the end of the paper
-2. In-text citations should appear as [3]
-3. URLs can be included, but hyperlinks must be removed (In Word use Ctrl+K to remove).
-4. Use exact formatting from the templates and JACoW website
-5. “et al.” should be used when citing papers with more than 6 authors
+### Citations of non–JACoW publications
+- Always use the EXACT formatting of references and citations in the [templates](https://www.jacow.org/Authors/Templates). More examples and details can be found in Annex B of the [JACoW Style guide](https://www.jacow.org/Authors/Templates) on the JACoW website.
+ 
 
 ### Reference Examples:
 :::grid{column=1}
@@ -71,15 +74,22 @@ Where XXXXXX denotes the paper ID, e.g. MOPWA999.
 
 :::
 
+## Graphics
+
+- It is important to keep in mind that graphics used in submitted papers must be clearly legible, readable, and comprehensible.
+- Graphics generated from programs such as tracking simulations—where the figure is made up of very large numbers of points or vectors **may cause problems**. When converting such graphics to PDF, the software is unable to compress the files, resulting in thousands of elements being slowly "drawn" on the screen. Please refer to the “Working with Large Files” section of the [Author Guidance](https://www.jacow.org/Authors/HomePage) on the JACoW website for information on handling large graphics files.
+
+
+
 ## Paper Submission
 All papers must be submitted by **May 20, 2027**.
 ### Pre-Submission Checklist via Indico
-Before uploading your files, log into the IPAC’27 Indico system , access the “My contributions” and:
-1. Ensure your paper **title matches exactly** 
+Before uploading your files, log into the IPAC’27 Indico system, access the “My contributions” and:
+1. Ensure **the title in Indico matches your paper**. Update Indico if necessary. 
     - In the **paper: use ALL CAPS**
     - In **Indico: use sentence case**
 
-2. Confirm that the author list in your paper matches the Indico entry
+2. Ensure the author list in your paper matches your Indico contribution. If not, update your contribution to include all authors and co-authors.
     - One speaker must be identified, and it must match the actual presenter
     - All co-authors must be listed correctly for proper indexing
 

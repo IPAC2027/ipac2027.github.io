@@ -6,8 +6,8 @@ bannerText: "Poster Preparation"
 
 ## Poster Preparation
 
-* Each poster will be presented on a single board, whose dimensions are 100 cm (39.4 inches) wide x 200 cm (78.7 inches) high.
-* We recommend preparing and printing a poster of size ISO A0 (84.1 cm x 118.9 cm) or US Arch E (36 in x 48 in) in PORTRAIT orientation on the board.
+* Each poster will be presented on a single board with dimensions of 100 cm (39.4 inches) wide by 200 cm (78.7 inches) high.
+* We recommend preparing and printing a poster of size ISO A0 (84.1 cm x 118.9 cm) or US Arch E (36 in x 48 in) in PORTRAIT orientation.
 
 :::highlight
 Avoid landscape orientation for the A0/Arch E formats, as it will be too wide to fit the poster boards.
@@ -21,10 +21,10 @@ Avoid landscape orientation for the A0/Arch E formats, as it will be too wide to
 
 ## Poster display 
 
-* Poster sessions are scheduled from Sunday to Thursday.  Each poster will be assigned a poster number
-* Assigned poster boards will be ready each morning from 08:45. All presenters are asked to hang their posters as soon as possible in the same morning of their assigned poster session. This way all delegates will be able to study them ahead of the poster session and come prepared with specific questions.
-* Presenters are also asked to remove their posters at the end of the session. Any poster left unmanned on its poster boards after 18:30 will be removed.
-* Student 's poster will be assign a seperate poster number for Sunday's student poster session.
+* Poster sessions are scheduled from Sunday through Thursday. Each poster will be assigned a poster number.
+* Assigned poster boards will be ready each morning from 08:45. All presenters are strongly recommended to hang their posters as soon as possible on the morning of their assigned poster session. This way, all delegates will be able to review them in advance and come prepared with specific questions.
+* Presenters are also asked to remove their posters at the end of the session. Any poster left unmanned on its poster board after 18:30 will be taken down.
+* A separate poster number will be assigned to each student’s poster for Sunday’s student poster session.
 
 ## Support
 Please contact the [IPAC'27 Scientific Secretariat](/contact) if you have questions about managing your abstracts.
