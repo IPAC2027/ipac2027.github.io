@@ -430,7 +430,7 @@ export const exhibitors: Exhibitor[] = [
   },
   {  
     id: "gold-028",
-    name: "Luvata Pori Oy",
+    name: "Luvata",
     logo: "/images/logos/exhibitors/gold/luvata.jpg",
     website: "https://www.luvata.com/",
     description: "",
