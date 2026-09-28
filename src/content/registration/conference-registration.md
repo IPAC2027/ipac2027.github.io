@@ -8,7 +8,7 @@ bannerBackground: "/images/banners/Registration/registration.png"
 
 :::warning
 IPAC'27 will be an in-person only event.
-Registration for IPAC'27 will open in October 1st, 2026. Please check back for updates and registration announcements.
+Registration for IPAC'27 will open on October 1st, 2026. Please check back for updates and registration announcements.
 :::
 
 ## Registration Information

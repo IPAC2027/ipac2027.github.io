@@ -4,7 +4,7 @@ description: ""
 ---
 
 :::highlight
-Abstract submission will open on October 1st, 2026, and close in 5pm Eastern Time on December 2nd, 2026. 
+Abstract submission will open on October 1st, 2026, and close at 5pm Eastern Time on December 2nd, 2026. 
 :::
 
 ## Call for Papers
