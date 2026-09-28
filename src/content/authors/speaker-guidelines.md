@@ -6,31 +6,36 @@ bannerText: "Speaker Guidelines"
 
 ## General requirements
 * Slides should use the 16:9 aspect ratio.
-* Presentations must be uploaded to Indico at least 8 hours before their scheduled time to allow verification and transfer to the conference A/V file server system.
+* Presentations must be uploaded to Indico at least 12 hours before their scheduled time to allow verification and transfer to the conference A/V file server system.
 * There will be no provision for authors to use their personal computers under any circumstances.
 * Each invited Oral will take 25 + 5 (Q&A) minutes.
 * Each contributed Oral will take 15 + 5 (Q&A) minutes.
 
 
-After the presentations are uploaded to the conference server, they can be checked on the conference computers provided in the Speaker Ready Room.
+After the presentations have been uploaded to the conference Indico site, they can be checked on the conference computers provided in the Speaker Ready Room.
 
-Slides that have been successfully submitted and presented will be published in the web version of the proceedings without further notification from the conference organizers. If you have any questions, please leave a comment in the Indico system by the end of the conference.
+Slides that have been successfully submitted and presented will be published in the web version of the proceedings without any further action by the speaker.
 
 If you have any special requirements regarding movies and/or audio, please visit the Speaker Ready Room prior to the presentation as early as possible.
 
 ## Preparation of slides
 
-In addition to the presentation source file, we require a PDF file for inclusion in the conference proceedings.
+In addition to the presentation source file, speakers are required to upload a PDF version of their presentations for inclusion in the conference proceedings.
+For all file types submitted, please ensure:
 
-In PDF, please ensure that all fonts are embedded. No external resources (like linked, not embedded, images) should be used.
+- Embed all fonts.
+- Embed all images and other resources.
+- Do not use externally linked images, videos.
+- Test embedded movies to ensure they play correctly.
 
 ## Upload of presentations
 
-1. Speakers are required to upload their presentation in the same way as their paper contributions.
-
-2. The files of the presentations should be uploaded to Indico as early as possible and no later than half a day before the presentation time. Files must be named with the programme code followed by “_talk”, for example: ```MOPA999_talk.pptx``` and ```MOPA999_talk.pdf```, and then uploaded through the IPAC’27 Indico “My Contributions” area.
-
-3. Be sure to select “Slides” in the “Submit files” button under the Editing area  of your contribution as shown below.
+1. Presentation files are uploaded through Indico using the same procedure as paper submissions.
+2. Presentations files should be uploaded as early as possible and no later no later than 12 hours before the scheduled presentation time. Files must be named with the programme code followed by “_talk”, for example:
+- MOPA999_talk.pptx
+- MOPA999_talk.pdf
+Upload the files through My Contributions in the IPAC’27 Indico system.
+3. When uploading your files, select Slides from the Submit files menu in the Editing section of your contribution.
 
 <img src="/images/authors/slide_submit.png" alt="edit and submit slides" width="800" style="display: block; margin: 0 auto;">
 
@@ -38,7 +43,7 @@ In PDF, please ensure that all fonts are embedded. No external resources (like l
 
 :::grid{columns=2}
 :::card{icon="📍" title="Location"}
-The Speaker Ready Room is located  on the second floor of venue, next to the proceedings office.
+The Speaker Ready Room is located on the second floor of the venue, next to the Proceedings Office.
 :::
 :::card{icon="🕗" title="Opening Hours"}
 * Sunday: 14:00 – 17:30
@@ -47,8 +52,8 @@ The Speaker Ready Room is located  on the second floor of venue, next to the pro
 :::
 :::
 
-The day before presentations, all speakers are required to check that their slides are working correctly on the computers located in this room that are the same as those used in the auditorium.
+All speakers are requested to review their presentations in the Speaker Ready Room before their presentation to ensure that fonts, animations, videos, and other media are displayed correctly.
 
 
 ## During the presentation
-The session chair assistant will help speakers with their presentations and any minor issues. For presentation issues, the Presentation Manager will assist.
+The Session Chair and Session Assistant will assist speakers before and during the session. The Presentation Manager will help with any presentation file or software-related issues.
