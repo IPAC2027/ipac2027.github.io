@@ -58,21 +58,7 @@ Basic rules:
 - Always use the EXACT formatting of references and citations in the [templates](https://www.jacow.org/Authors/Templates). More examples and details can be found in Annex B of the [JACoW Style guide](https://www.jacow.org/Authors/Templates) on the JACoW website.
  
 
-### Reference Examples:
-:::grid{column=1}
-:::card{title="Presented at IPAC’27 (“this conference”)", width="1"}
-[1] A. Author, et al., “Paper title”, presented at the 18th Int. Particle Accelerator Conf. (IPAC’27), Detroit, MI, USA, May 2027, paper XXXXXX, this conference.          
-:::
-:::card{title="Unpublished proceedings papers (e.g., IPAC’25)", width="1"}
-[2] A. Author, B. Author and C. Author, “Paper title”, presented at the 16th Int. Particle Accelerator Conf. (IPAC’25), Taipei, Taiwan, Jun. 2025, paper XXXXXX, unpublished.
-:::
 
-:::card{title="Published papers (e.g., IPAC’23)"}
-[3] A. Author and B. Author, “Paper title”, in Proc. 13th Int. Particle Accelerator Conf. (IPAC’23), Venice, Italy, May 2023, pp. nnn–nnn. doi:10.18429/JACoW-IPAC2023-XXXXXX
-Where XXXXXX denotes the paper ID, e.g. MOPWA999.
-:::
-
-:::
 
 ## Graphics
 
@@ -94,10 +80,10 @@ Before uploading your files, log into the IPAC’27 Indico system, access the �
     - All co-authors must be listed correctly for proper indexing
 
 ### Required Files for Submission
-When your paper is ready, submit the following files through Indico:
+When your paper is ready, submit the following files through Indico(Example for paper code MOPA999):
 1.  **Source file:**
-    - Acceptable formats: .docx, .tex, .odt
-    - Filename format: MOPA999.docx (replace with your actual programme (paper) code)
+    - Acceptable formats: .docx, .tex,
+    - Filename format: MOPA999.docx 
 2. **PDF version of the paper:**
     - Must be created from the source file
     - All fonts must be embedded
