@@ -32,8 +32,13 @@ export const mc6Speakers: Speaker[] = [
     id: "yoshinori-hashimoto",
     name: "Yoshinori Hashimoto",
     affiliation: `High Energy Accelerator Research Organization`,
+    bio: ` `,
     type: "invited",
-    title: ``,
+    title: `Advanced beam halo diagnostics for MW-class proton accelerators with a wide-dynamic-range profile monitor`,
+    abstract: `Accurate beam halo diagnostics and effective halo collimation are essential for modern MW-class high-intensity proton accelerators. To address this challenge, J-PARC has developed an advanced beam halo monitor capable of measuring both the beam core and halo with a dynamic range of six orders of magnitude. The first unit was installed in the 3-GeV injection beam transport line to measure the halo of the beam transported to the J-PARC main ring (MR). The system combines optical transition radiation from a thin titanium foil for the beam core with fluorescence from a chromium-doped alumina screen, enabling halo diagnostics over a relative beam intensity range of 10^-3 to 10^-5.
+A second unit will be installed in the J-PARC MR in 2026 to measure the injected beam for about 20 turns. Combined measurements with the upstream monitor will allow phase-space evaluation of beam halo before and after injection and detailed studies of halo collimation and beam halo dynamics.
+Based on this technology originally developed at J-PARC, the J-PARC group has led the development of a halo diagnostic system for the FNAL 8-GeV injection beam within US-Japan collaboration.
+The presentation will highlight these developments and their impact on halo control in MW-class proton accelerators.`,
     classification: "MC6",
     session: {},
     schedule: { date: "2027-05-26", startTime: "11:00", endTime: "11:30", room: "Grand Riverview Ballroom A" },

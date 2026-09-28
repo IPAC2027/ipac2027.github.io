@@ -22,9 +22,11 @@ These achievements, together with the growing complexity and scientific ambition
   {
     id: "austin-hoover",
     name: "Austin Hoover",
+    bio: ` `,
     affiliation: `Oak Ridge National Laboratory`,
     type: "invited",
-    title: ``,
+    title: `Eigenpainting in hadron accumulator rings`,
+    abstract: `Phase space painting is an important technique to mitigate space charge in high-power hadron rings. Eigenpainting is a new painting method in which particles are injected along eigenvectors of the ring transfer matrix. The method could be leveraged to build near-equilibrium distributions with very small emittance in four-dimensional phase space. This talk reports the first experimental tests of eigenpainting at the Spallation Neutron Source (SNS), including the optimization of the injection system and measurement of the accumulated phase space distribution. I will also describe planned experiments and simulations to study the method performance at high intensities and possible applications to future machines.`,
     classification: "MC4",
     session: {},
     schedule: { date: "2027-05-25", startTime: "14:30", endTime: "15:00", room: "Grand Riverview Ballroom A" },

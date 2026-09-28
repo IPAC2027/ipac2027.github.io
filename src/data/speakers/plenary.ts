@@ -5,6 +5,8 @@ export const plenarySpeakers: Speaker[] = [
   {
     id: "thomas-glasmacher",
     name: "Thomas Glasmacher",
+    photo: "/images/speakers/thomas-glasmacher.jpg",
+    photoAdjustment: { position: "center 0%", zoom: 1.0 },
     affiliation: `Facility for Rare Isotope Beams`,
     type: "plenary",
     title: `From one-of-a-kind technical challenges to first science`,
