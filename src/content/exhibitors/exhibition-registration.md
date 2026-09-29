@@ -37,14 +37,17 @@ location.  The occupied booth information is updated every 2 days, may not refle
 Exhibition Personnel must follow the following steps to register to access the exhibition hall.  
 :::
 
-- Exhibitor personnel who wish to attend the scientific program should complete the regular [conference registration](/registration/conference-registration#registration-procedure), and use their complimentary registration code on the payment site.
+- Exhibitor personnel who wish to also attend the scientific program should complete the regular [conference registration](/registration/conference-registration#registration-procedure), and use the complimentary registration code on the payment site.
 
-- Exhibitor personnel who plan to attend only the exhibition program may complete registration directly through the payment site using their complimentary registration code.
+- Exhibitor personnel who plan to attend only the exhibition program may complete registration directly through the payment site using the complimentary registration code.
 
-:::button{url="" text="Exhibtion Personnel Registration, Open Soon"}
+:::button{url="https://web.cvent.com/event/bd91bdbc-f897-43fc-8e07-c090b15058e0/register?rp=fe266551-da63-427f-89dd-741e750b6849" text="Exhibtion Personnel Registration"}
 :::
 
-
+- In the page one of the payment site, please choose "**Non-member**" in the dropdown box.
+- In the page four of the payment site, please select "**Conference Registration**".
+- For the first question of the page five of the payment site, please use your **confirmation number** from the booth purchase 's confirmation email, instead of the Indico Ref number.
+- Use the complimentary registration code provided as the discount code in the text box.  The subtotal should be zero after the discount code is applied.  If the subtotal is not zero, please contact the [exhibition coordinator](/contact)
 
 
 

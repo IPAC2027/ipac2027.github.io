@@ -439,6 +439,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C10",
     featured: true
   },
+    {  
+    id: "gold-029",
+    name: "HECHAO MANUFACTURING (ZHONGSHAN) TECHNOLOGY",
+    logo: "/images/logos/exhibitors/gold/hechao.png",
+    website: "",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C53",
+    featured: true
+  },
 ];
 
 // Helper functions
