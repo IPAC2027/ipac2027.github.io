@@ -4,10 +4,6 @@ description: "Register for exhibition opportunities at IPAC'27"
 bannerText: "Exhibition Registration"
 ---
 
-:::highlight
-Complete the registration process by October 1, 2026, to receive a 5% discount.
-:::
-
 ## Exhibition Hall Layout
 
 - The IPAC’27 Exhibition Hall is located on the floor directly beneath the Plenary Session Hall, ensuring convenient access and a steady flow of attendees throughout the event. Exhibition booths will be positioned in the central area shared with poster sessions and coffee breaks.

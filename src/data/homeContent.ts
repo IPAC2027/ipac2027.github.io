@@ -52,12 +52,6 @@ export const homeContent = {
       },
       {
         period: "Oct. 1, 2026",
-        title: "Exhibitor Early-bird Deadline",
-        description: "",
-        link: "/exhibitors/exhibition-registration"
-      },
-      {
-        period: "Oct. 1, 2026",
         title: "Abstract Submission Opens",
         description: "",
         link: "/authors/abstract-submission"
@@ -252,12 +246,6 @@ export const homeContent = {
         title: "Meet us at IPAC'26, Booth #111",
         excerpt: "IPAC'27 team will be at IPAC'26 from May 17-22. Visit us at Booth #111 to learn about IPAC'27 and be part of the excitement EARLY!",
         link: "http://www.ipac26.org"
-      },
-      {
-        date: "May 1, 2026",
-        title: "Exhibitor Early Bird Offer",
-        excerpt: "Take advantage of our 5% off early bird pricing for exhibitor booths at IPAC27 before Oct. 1, 2026. ",
-        link: "/exhibitors/opportunities"
       },
       {
         date: "May 1, 2026",
