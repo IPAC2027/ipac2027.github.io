@@ -29,9 +29,13 @@ export const plenarySpeakers: Speaker[] = [
   {
     id: "bruce-carlsten",
     name: "Bruce Carlsten",
+    photo: "/images/speakers/bruce-carlsten.png",
+    photoAdjustment: { position: "center 10%", zoom: 1.3 },
     affiliation: `Los Alamos National Laboratory`,
+    bio: `Bruce Carlsten received a PhD degree in electrical engineering from Stanford University in 1985. He has spent his career at the Los Alamos National Laboratory, working on high-brightness electron beams, free-electron lasers, novel RF vacuum electron devices, and advanced radar systems. At Los Alamos, he was the Group Leader of High-Power Electrodynamics from 2005 to 2012 and since October 2022 he has been the Division Leader of Accelerator Operations and Technology.  Bruce has received several recognitions, including Fellowship in the American Physical Society and in the IEEE. He teaches the RF Sources class regularly at the U.S. Particle Accelerator School.`,
     type: "plenary",
     title: `Accelerators at Los Alamos: Facilities, Upgrades and Research Portfolio`,
+    abstract: `Los Alamos National Laboratory has two major accelerator facilities, LANSCE (a high-power proton RF accelerator) and DARHT (a dual axis electron induction accelerator). Both accelerators have robust user programs and both have detailed upgrade plans, including the LANSCE Modernization Project (LAMP) which recently received CD-1 approval from DOE. This talk will describe the accelerators support these facilities, what is done with them, and upgrade plans.`,
     session: {},
     schedule: { date: "2027-05-24", startTime: "11:00", endTime: "11:30", room: "Grand Riverview Ballroom B" },
   },
