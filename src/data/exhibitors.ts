@@ -443,11 +443,22 @@ export const exhibitors: Exhibitor[] = [
     id: "gold-029",
     name: "HECHAO MANUFACTURING (ZHONGSHAN) TECHNOLOGY",
     logo: "/images/logos/exhibitors/gold/hechao.png",
-    website: "",
+    website: "https://www.hechaozs.com",
     description: "",
     category: "Industry Partner",
     tier: "gold",
     booth: "C53",
+    featured: true
+  },
+  {  
+    id: "gold-030",
+    name: "Wuxi Creative Technologies Co.,Ltd.",
+    logo: "/images/logos/exhibitors/gold/wuxi.png",
+    website: "http://wxchuangxin.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C34",
     featured: true
   },
 ];
