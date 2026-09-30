@@ -247,14 +247,17 @@ import Footer from '../components/Footer.astro';
                 required
               >
                 <option value="">Select a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="registration">Registration Questions</option>
-                <option value="abstracts">Abstract Submission</option>
-                <option value="exhibition">Exhibition Information</option>
-                <option value="travel">Travel and Accommodation</option>
-                <option value="student">Student Inquiries</option>
-                <option value="technical">Technical Issues</option>
-                <option value="media">Media and Press</option>
+                <!-- data-email: team the Outlook rules forward this topic to (they match
+                     the topic name, which is added to the email subject) -->
+                <option value="general" data-email="info@ipac27.org">General Inquiry</option>
+                <option value="registration" data-email="registration@ipac27.org">Registration Questions</option>
+                <option value="abstracts" data-email="scientific.secretariat@ipac27.org">Abstract Submission</option>
+                <option value="exhibition" data-email="exhibitor@ipac27.org">Exhibition Information</option>
+                <option value="travel" data-email="visa@ipac27.org">Travel and Accommodation</option>
+                <option value="student" data-email="student@ipac27.org">Student Inquiries</option>
+                <option value="satellite" data-email="satellite.meeting@ipac27.org">Satellite Meetings</option>
+                <option value="technical" data-email="info@ipac27.org">Technical Issues</option>
+                <option value="media" data-email="info@ipac27.org">Media and Press</option>
               </select>
             </div>            <div>
               <label for="message" class="block text-sm font-medium text-primary-700 dark:text-primary-300 mb-2">Message</label>
@@ -350,6 +353,17 @@ import Footer from '../components/Footer.astro';
         
         try {
           const formData = new FormData(contactForm);
+
+          // Add the topic to the subject, e.g.
+          // "IPAC27 Contact Form Submission - Registration Questions", so Outlook
+          // rules on the form inbox can forward it to that topic's team. Kept to
+          // plain words: earlier subjects with an email address or "[visa]" in
+          // them were caught by the ipac27.org spam filter.
+          const topic = (contactForm.elements.namedItem('inquiryType') as HTMLSelectElement | null)?.selectedOptions[0];
+          if (topic?.value) {
+            formData.set('subject', `IPAC27 Contact Form Submission - ${topic.text}`);
+          }
+
           const response = await fetch(contactForm.action, {
             method: 'POST',
             body: formData,
