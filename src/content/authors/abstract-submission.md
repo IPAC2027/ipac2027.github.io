@@ -11,6 +11,8 @@ Abstract submission is now open! Submit your abstracts by December 2nd, 2026.
 
 We invite you to submit abstracts for contributed oral and/or poster presentations at IPAC'27. All scientific contributions to IPAC’27 will be managed using the [JACoW Indico system](https://indico.jacow.org/e/IPAC27).
 
+Please carefully ***read through the instructions*** below before submitting your abstract.  The abstract submission deadline is **December 2nd, 2026**.  Abstracts submitted after this date will not be considered for presentation at the conference.
+
 
 
 :::button{url="https://indico.jacow.org/event/109/abstracts/" text="Submit Abstract"}

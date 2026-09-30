@@ -1,6 +1,19 @@
 import { exhibitors } from './exhibitors';
 
 export const homeContent = {
+  // Closable bar shown above the navigation on the home page.
+  // Set `show: false` to hide it. Change `id` when you change the message,
+  // so visitors who closed the previous announcement see the new one.
+  announcement: {
+    show: true,
+    id: "2026-10-registration-open",
+    text: "Registration and abstract submission for IPAC'27 are now open!",
+    links: [
+      { text: "Register now", href: "https://indico.jacow.org/event/109/registrations/127/" },
+      { text: "Submit an abstract", href: "/authors/abstract-submission" }
+    ]
+  },
+
   hero: {
     title: "IPAC' 27",
     subtitle: "18th International Particle Accelerator Conference",

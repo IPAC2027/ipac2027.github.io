@@ -1,0 +1,71 @@
+---
+export interface AnnouncementLink {
+  text: string;
+  href: string;
+}
+
+export interface Props {
+  /** Change this whenever the message changes, so visitors who closed the old one see the new one */
+  id: string;
+  text: string;
+  links?: AnnouncementLink[];
+}
+
+const { id, text, links = [] } = Astro.props;
+const storageKey = `ipac27-announcement-closed:${id}`;
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+---
+
+<div
+  id="announcement-bar"
+  data-storage-key={storageKey}
+  role="region"
+  aria-label="Announcement"
+  class="relative bg-accent-700 dark:bg-accent-800 text-white text-sm"
+>
+  <p class="max-w-7xl mx-auto pl-4 pr-12 sm:px-12 py-2.5 text-center">
+    <span>{text}</span>
+    {links.map((link) => (
+      <a
+        href={link.href}
+        target={isExternal(link.href) ? '_blank' : undefined}
+        rel={isExternal(link.href) ? 'noopener noreferrer' : undefined}
+        class="ml-3 font-semibold underline underline-offset-2 hover:text-accent-100 whitespace-nowrap"
+      >
+        {link.text} →
+      </a>
+    ))}
+  </p>
+  <button
+    type="button"
+    id="announcement-close"
+    aria-label="Close announcement"
+    class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-md text-white/80 hover:text-white hover:bg-white/20 transition-colors"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+
+<!-- Runs right away, before the page is drawn, so a bar the visitor already
+     closed doesn't flash on screen -->
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('announcement-bar');
+    try {
+      if (bar && localStorage.getItem(bar.dataset.storageKey)) bar.remove();
+    } catch (e) {}
+  })();
+</script>
+
+<script>
+  const bar = document.getElementById('announcement-bar');
+  document.getElementById('announcement-close')?.addEventListener('click', () => {
+    if (!bar) return;
+    try {
+      localStorage.setItem(bar.dataset.storageKey!, '1');
+    } catch {}
+    bar.remove();
+  });
+</script>

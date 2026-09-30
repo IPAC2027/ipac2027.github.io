@@ -9,10 +9,14 @@ import ImportantDatesAboutSection from '../components/ImportantDatesAboutSection
 import ProgramHighlightsSection from '../components/ProgramHighlightsSection.astro';
 import CommunitySection from '../components/CommunitySection.astro';
 import NewsSection from '../components/NewsSection.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
 import { homeContent } from '../data/homeContent.ts';
+
+const { show: showAnnouncement, ...announcement } = homeContent.announcement;
 ---
 
 <Layout title="IPAC27 - 18th International Particle Accelerator Conference">
+  {showAnnouncement && <AnnouncementBar {...announcement} />}
   <Navigation />
   
   <HeroSection {...homeContent.hero} />
