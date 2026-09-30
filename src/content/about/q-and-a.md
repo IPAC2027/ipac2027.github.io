@@ -27,7 +27,7 @@ We anticipate approximately 1,000–1,300 participants from leading research lab
 
 
 :::collapsible{title="How do I register for IPAC'27?"}
-Online registration will open in October 1st, 2026 via the official conference website. Early-bird rates will be available for a limited period—early booking is encouraged.
+Online registration opened. Early-bird rates will be available before Feb. 27, 2027, early booking is encouraged.
 :::
 
 :::collapsible{title="What is the registration fee?"}
@@ -35,7 +35,7 @@ Registration fees will vary by participant category (APS/IEEE member, student, l
 :::
 
 :::collapsible{title="What is included in a full registration?"}
-Full registration includes access to all scientific and industrial sessions, poster areas, exhibition hall, conference materials, scheduled coffee breaks, and the conference banquet (unless otherwise specified). Final inclusions will be confirmed when registration opens.
+Full registration includes access to all scientific and industrial sessions, poster areas, exhibition hall, conference materials, scheduled coffee breaks, and the conference banquet (unless otherwise specified). 
 :::
 
 :::collapsible{title="Is financial assistance available?"}

@@ -8,7 +8,7 @@ bannerBackground: "/images/banners/Registration/registration.png"
 
 :::warning
 IPAC'27 will be an in-person only event.
-Registration for IPAC'27 will open on October 1st, 2026. Please check back for updates and registration announcements.
+Registration for IPAC'27 opens now. Please register before February 27th, 2027 to receive the early-bird rate.
 :::
 
 ## Registration Information
@@ -16,6 +16,9 @@ Registration for IPAC'27 will open on October 1st, 2026. Please check back for u
 IPAC’27 is an **in-person conference**. Registration is required for all participants, including scientific attendees, students and exhibitor personnel.
 
 All participants should have a **JACoW account** before registering. The JACoW account is used for conference registration, abstract submission, and related conference services.
+
+:::button{url="https://indico.jacow.org/event/109/registrations/127/" text="Register for IPAC'27"}
+:::
 
 
 

@@ -12,7 +12,7 @@ bannerText: "Visa Information"
 
 - Participants are encouraged to review visa requirements and begin the application process as early as possible. Visa processing times vary by country, consulate, and individual circumstances.
 
-- IPAC’27 will open registration early to support participants who need to begin the visa process in advance. However, IPAC’27 cannot influence the outcome of any visa application or expedite consular processing.
+- Registration is now open, and participants should register early to begin the visa process in advance. However, IPAC’27 cannot influence the outcome of any visa application or expedite consular processing.
 
 
 

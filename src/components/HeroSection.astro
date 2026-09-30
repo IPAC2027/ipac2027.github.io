@@ -21,6 +21,9 @@ export interface HeroProps {
 }
 
 const { title, subtitle, backgroundImage, conferenceDetails, callToAction } = Astro.props;
+
+// External links (e.g. Indico registration) open in a new tab
+const primaryIsExternal = /^https?:\/\//.test(callToAction.primary.href);
 ---
 
 <section 
@@ -62,7 +65,7 @@ const { title, subtitle, backgroundImage, conferenceDetails, callToAction } = As
 
       <!-- Call to Action Buttons -->
       <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-        <a href={callToAction.primary.href} class="group bg-accent-600 hover:bg-accent-700 text-white px-8 md:px-10 py-4 rounded-lg font-semibold transition-all duration-200 text-center shadow-lg hover:shadow-xl">
+        <a href={callToAction.primary.href} target={primaryIsExternal ? '_blank' : undefined} rel={primaryIsExternal ? 'noopener noreferrer' : undefined} class="group bg-accent-600 hover:bg-accent-700 text-white px-8 md:px-10 py-4 rounded-lg font-semibold transition-all duration-200 text-center shadow-lg hover:shadow-xl">
           <span class="flex items-center justify-center">
             {callToAction.primary.text}
             <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">

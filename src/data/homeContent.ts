@@ -12,8 +12,8 @@ export const homeContent = {
     },
     callToAction: {
       primary: {
-        text: "Register Starting October 1st, 2026",
-        href: "/registration/conference-registration"
+        text: "Register Now",
+        href: "https://indico.jacow.org/event/109/registrations/127/"
       },
       secondary: {
         text: "Important Dates",
@@ -228,6 +228,12 @@ export const homeContent = {
     title: "Latest Updates and Announcements",
     subtitle: "Stay informed about IPAC27 Announcements",
     articles: [
+      {
+        date: "Oct. 1, 2026",
+        title: "Conference Registration and abstract submission opens",
+        excerpt: "Conference registration and abstract submission for IPAC'27 is now open! Secure your spot to showcase your research and be part of the global accelerator community.",
+        link: "http://www.ipac26.org"
+      },
       {
         date: "May 17, 2026",
         title: "Meet us at IPAC'26, Booth #111",
