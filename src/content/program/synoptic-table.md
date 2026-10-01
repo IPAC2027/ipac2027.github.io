@@ -6,7 +6,7 @@ bannerText: "Synoptic Table"
 
 
 :::highlight
-Browse the conference program by day below. Session times and rooms will be added as the scientific program is finalized — the legend and day tabs are ready to go.
+Browse the conference program by day below. Contributed presentations will be added as they are confirmed.
 :::
 
 

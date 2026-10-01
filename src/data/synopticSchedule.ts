@@ -62,6 +62,8 @@ export interface ScheduleBreak {
   startTime?: string;
   endTime?: string;
   location?: string;
+  /** Grid room (column) the block sits in, e.g. "Grand Riverview Ballroom B"; omit to span all rooms */
+  room?: string;
   /** ISO dates (matching ConferenceDay.date) this break applies to */
   dates: string[];
 }
@@ -75,5 +77,7 @@ export const scheduleBreaks: ScheduleBreak[] = [
   { id: "coffee-morning", label: "Morning Coffee Break", emoji: "☕", startTime: "10:30", endTime: "11:00", dates: MON_FRI },
   { id: "lunch", label: "Lunch Break", emoji: "🍽️", startTime: "12:30", endTime: "14:00", dates: MON_THU },
   { id: "poster", label: "Poster Session at Hall E", emoji: "📋", startTime: "16:00", endTime: "18:00", dates: MON_THU },
+  { id: "awards", label: "Award Session", emoji: "🏆", startTime: "14:00", endTime: "16:00", room: "Grand Riverview Ballroom B", dates: ["2027-05-27"] },
+  { id: "closing", label: "Closing Remarks", emoji: "🎤", startTime: "12:30", endTime: "13:00", room: "Grand Riverview Ballroom B", dates: ["2027-05-28"] },
   { id: "banquet", label: "Conference Banquet", emoji: "🍽️", startTime: "19:00", endTime: "23:00", location: "Marriott at the Renaissance Center", dates: ["2027-05-27"] },
 ];

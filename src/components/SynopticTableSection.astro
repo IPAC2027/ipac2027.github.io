@@ -14,7 +14,10 @@ function getDaySpeakers(date: string): Speaker[] {
 // All rooms used anywhere in the program, used as fixed grid columns so the
 // matrix (and its empty placeholder slots) look the same on every day.
 // Sorted alphabetically so "Ballroom A" always renders left of "Ballroom B".
-const ALL_ROOMS = [...new Set(speakers.map(s => s.schedule?.room).filter(Boolean))].sort((a, b) =>
+const ALL_ROOMS = [...new Set([
+  ...speakers.map(s => s.schedule?.room),
+  ...scheduleBreaks.map(b => b.room),
+].filter(Boolean))].sort((a, b) =>
   (a as string).localeCompare(b as string)
 ) as string[];
 
@@ -217,7 +220,8 @@ const days = conferenceDays.map((day) => {
             ))}
 
             {day.timeSlots.map((slot) => {
-              const slotBreak = day.timedBreaks.find((b) => `${b.startTime}–${b.endTime}` === slot);
+              // Blocks without a room (lunch, coffee...) span every room column
+              const slotBreak = day.timedBreaks.find((b) => !b.room && breakSlot(b) === slot);
               if (slotBreak) {
                 return (
                   <>
@@ -236,6 +240,15 @@ const days = conferenceDays.map((day) => {
                 <>
                   <div class="px-2 py-3 text-xs font-mono text-primary-500 dark:text-primary-400 flex items-center">{slot}</div>
                   {day.rooms.map((room) => {
+                    const roomBreak = day.timedBreaks.find((b) => b.room === room && breakSlot(b) === slot);
+                    if (roomBreak) {
+                      return (
+                        <div class="h-full rounded-lg border border-dashed border-primary-200 dark:border-primary-600 bg-primary-50 dark:bg-primary-800/40 flex items-center justify-center gap-2 text-sm font-medium text-primary-500 dark:text-primary-400 py-3 px-2 text-center">
+                          <span aria-hidden="true">{roomBreak.emoji}</span>
+                          <span>{roomBreak.label}</span>
+                        </div>
+                      );
+                    }
                     const cellSpeakers = speakersFor(day.daySpeakers, slot, room);
                     return (
                       <div class="h-full">
@@ -287,8 +300,8 @@ const days = conferenceDays.map((day) => {
                 <span class="text-sm font-mono text-primary-400 dark:text-primary-500 w-24 flex-shrink-0">{b.startTime}–{b.endTime}</span>
                 <span aria-hidden="true">{b.emoji}</span>
                 <span class="flex-1 text-sm font-medium text-primary-500 dark:text-primary-400">{b.label}</span>
-                {b.location && (
-                  <span class="text-xs text-primary-400 dark:text-primary-500 hidden sm:inline flex-shrink-0">{b.location}</span>
+                {(b.location || b.room) && (
+                  <span class="text-xs text-primary-400 dark:text-primary-500 hidden sm:inline flex-shrink-0">{b.location || b.room}</span>
                 )}
               </div>
             );
