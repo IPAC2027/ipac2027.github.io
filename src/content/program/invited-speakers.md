@@ -7,6 +7,6 @@ bannerText: "Invited Speakers"
 
 
 :::highlight
-The list of invited speakers will be announced soon. Please check back for updates.
+The list below reflects invited speakers confirmed so far. Additional speakers, talk titles, and the full schedule will be announced as the program is finalized.
 :::
 

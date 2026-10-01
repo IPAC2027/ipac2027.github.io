@@ -6,7 +6,7 @@ bannerText: "Synoptic Table"
 
 
 :::highlight
-The synoptic table will be available closer to the conference date.
+Browse the conference program by day below. Contributed presentations will be added as they are confirmed.
 :::
 
 
