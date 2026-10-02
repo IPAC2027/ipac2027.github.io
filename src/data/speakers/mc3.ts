@@ -5,6 +5,9 @@ export const mc3Speakers: Speaker[] = [
   {
     id: "samuel-barber",
     name: "Samuel Barber",
+    photo: "/images/speakers/samuel-barber.png",
+    photoAdjustment: { position: "center 10%", zoom: 1.1 },
+    bio: `Samuel (Sam) Barber is a research scientist in the Accelerator Technology and Applied Physics (ATAP) Division at Lawrence Berkeley National Laboratory (LBNL), where he works at the Berkeley Lab Laser Accelerator (BELLA) Center. His research focuses on laser-plasma acceleration (LPA) and the development of next-generation, compact light sources driven by high-brightness electron beams. His work explores the application of LPA technology to free-electron lasers (FELs), with the goal of making advanced X-ray and other photon sources more compact and accessible to the scientific community. Barber has made key contributions to improving accelerator stability, electron-beam quality, and the integration of plasma accelerators with undulator-based radiation sources. His research helped advance the demonstration of coherent gain in an LPA-driven free-electron laser, establishing an important milestone toward compact FEL technology. In recognition of his contributions, he received Berkeley Lab’s 2023 Director’s Award for Exceptional Early Scientific Career Achievement. Barber earned his B.S. in Astrophysics, M.S. in Physics, and Ph.D. in Physics from the University of California, Los Angeles.`,
     affiliation: `Lawrence Berkeley National Laboratory`,
     type: "invited",
     title: `Compact free-electron lasers driven by plasma-based accelerators`,

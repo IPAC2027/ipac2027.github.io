@@ -22,7 +22,9 @@ These achievements, together with the growing complexity and scientific ambition
   {
     id: "austin-hoover",
     name: "Austin Hoover",
-    bio: ` `,
+    photo: "/images/speakers/austin-hoover.png",
+    photoAdjustment: { position: "center 10%", zoom: 1.1 },
+    bio: `Austin Hoover is a Staff Scientist in the Accelerator Physics Group at Oak Ridge National Laboratory, where his research focuses on the measurement, prediction, and control of intense beams in high-power accelerators. His current interests include space charge effects in rings, phase space painting, and phase space reconstruction methods.`,
     affiliation: `Oak Ridge National Laboratory`,
     type: "invited",
     title: `Eigenpainting in hadron accumulator rings`,
