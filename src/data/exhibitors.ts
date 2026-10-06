@@ -461,6 +461,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C34",
     featured: true
   },
+  {  
+    id: "gold-031",
+    name: "JEMA sa",
+    logo: "/images/logos/exhibitors/gold/jema_sa.jpg",
+    website: "https://www.jema-power.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C30",
+    featured: true
+  },
 ];
 
 // Helper functions
