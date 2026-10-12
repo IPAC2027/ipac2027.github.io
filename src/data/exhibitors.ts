@@ -472,6 +472,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C30",
     featured: true
   },
+  {  
+    id: "gold-032",
+    name: "RI Research Instruments GmbH",
+    logo: "/images/logos/exhibitors/gold/ri.png",
+    website: "https://research-instruments.de/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C59",
+    featured: true
+  },
 ];
 
 // Helper functions

@@ -190,7 +190,7 @@ export const homeContent = {
           "Awards ceremony",
           "Awardee presentations",
         ],
-        link: "/program/scientific-program",
+        link: "/program/accelerator-prizes",
         color: "orange"
       },
     ]
@@ -235,6 +235,12 @@ export const homeContent = {
     title: "Latest Updates and Announcements",
     subtitle: "Stay informed about IPAC27 Announcements",
     articles: [
+      {
+        date: "Oct. 12, 2026",
+        title: "IEEE NPSS PAST award accepts nominations now",
+        excerpt: "The IEEE NPSS (PAST) Award recognizes outstanding contributions to the field. Nominations are now open for the 2027 award. Submit your nominations by the deadline of March 31, 2027.",
+        link: "/program/accelerator-prizes"
+      },
       {
         date: "Oct. 1, 2026",
         title: "Conference Registration and abstract submission opens",
