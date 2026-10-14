@@ -53,7 +53,7 @@ export const exhibitors: Exhibitor[] = [
   
   // Platinum Tier
   {
-    id: "platinum-1",
+    id: "platinum-01",
     name: "INSTRUMENTATION TECHNOLOGIES",
     logo: "/images/logos/exhibitors/platinum/Instrumentation_tech.png",
     website: "https://www.i-tech.si/",
@@ -64,7 +64,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
    {
-    id: "platinum-2",
+    id: "platinum-02",
     name: "SIGMAPHI",
     logo: "/images/logos/exhibitors/platinum/SigmaPhi.png",
     website: "https://www.sigmaphi.com/",
@@ -75,7 +75,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
   {
-    id: "platinum-3",
+    id: "platinum-03",
     name: "SAES Getters SpA",
     logo: "/images/logos/exhibitors/platinum/SAES_Getters.png",
     website: "https://www.saesgetters.com/",
@@ -86,7 +86,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
   {
-    id: "platinum-4",
+    id: "platinum-04",
     name: "Ridgway Machines Ltd",
     logo: "/images/logos/exhibitors/platinum/Ridgeway.png",
     website: "https://www.ridgwayeng.com/",
@@ -97,7 +97,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
   {
-    id: "platinum-5",
+    id: "platinum-05",
     name: "ELS Instruments",
     logo: "/images/logos/exhibitors/platinum/ELS_instruments.png",
     website: "https://www.els-instruments.com/",
@@ -108,7 +108,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
    {
-    id: "platinum-6",
+    id: "platinum-06",
     name: "JEMA Energy",
     logo: "/images/logos/exhibitors/platinum/jema.jpg",
     website: "https://www.jemaenergy.com/en/",
@@ -118,8 +118,8 @@ export const exhibitors: Exhibitor[] = [
     booth: "B16",
     featured: true
   },
-    {
-    id: "platinum-7",
+  {
+    id: "platinum-07",
     name: "ZANON Research & Innovation",
     logo: "/images/logos/exhibitors/platinum/zanon.jpg",
     website: "https://www.zanonresearch.com/",
@@ -127,6 +127,17 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "platinum",
     booth: "B8",
+    featured: true
+  },
+  {
+    id: "platinum-08",
+    name: "KAFAT",
+    logo: "/images/logos/exhibitors/platinum/kafat.png",
+    website: "https://www.kafat.org/eng/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B6",
     featured: true
   },
   
