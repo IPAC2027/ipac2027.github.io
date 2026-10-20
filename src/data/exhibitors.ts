@@ -494,6 +494,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C59",
     featured: true
   },
+    {  
+    id: "gold-033",
+    name: "CAYLAR",
+    logo: "/images/logos/exhibitors/gold/caylar.png",
+    website: "https://caylar.net/en/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C38",
+    featured: true
+  },
 ];
 
 // Helper functions
