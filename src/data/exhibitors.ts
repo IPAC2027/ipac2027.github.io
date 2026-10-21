@@ -516,6 +516,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C84",
     featured: true
   },
+  {  
+    id: "gold-035",
+    name: "Best Cyclotron Systems",
+    logo: "/images/logos/exhibitors/gold/teambest.png",
+    website: "https://www.teambest.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C16",
+    featured: true
+  },
 ];
 
 // Helper functions
