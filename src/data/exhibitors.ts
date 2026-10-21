@@ -505,6 +505,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C38",
     featured: true
   },
+     {  
+    id: "gold-034",
+    name: "HVP High Voltage Products GmbH",
+    logo: "/images/logos/exhibitors/gold/hvp.png",
+    website: "https://www.hvproducts.de/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C84",
+    featured: true
+  },
 ];
 
 // Helper functions
