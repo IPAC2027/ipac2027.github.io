@@ -299,7 +299,7 @@ export const exhibitors: Exhibitor[] = [
   {  
     id: "gold-015",
     name: "Avalanche Energy",
-    logo: "/images/logos/exhibitors/gold/Avalanche.png",
+    logo: "/images/logos/exhibitors/gold/avalanche-white.png",
     website: "https://www.avalanchefusion.com/",
     description: "",
     category: "Industry Partner",
