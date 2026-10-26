@@ -131,7 +131,7 @@ export const exhibitors: Exhibitor[] = [
   },
   {
     id: "platinum-08",
-    name: "KAFAT",
+    name: "The Korean Pavilion",
     logo: "/images/logos/exhibitors/platinum/kafat.png",
     website: "https://www.kafat.org/eng/",
     description: "",
