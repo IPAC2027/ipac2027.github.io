@@ -527,6 +527,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C16",
     featured: true
   },
+  {  
+    id: "gold-036",
+    name: "D-Pace, Inc.",
+    logo: "/images/logos/exhibitors/gold/dpace.png",
+    website: "https://www.d-pace.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C22",
+    featured: true
+  },
 ];
 
 // Helper functions
