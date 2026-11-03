@@ -1,0 +1,278 @@
+---
+// "Program at a Glance": one row per time block, one column per day.
+// Everything is derived from the same data as the Synoptic Table (speaker
+// talks + schedule blocks), so the two pages can't disagree.
+import { speakers } from '../data/speakers';
+import { conferenceDays, scheduleBreaks, programBlocks, tracks, getTrack } from '../data/synopticSchedule';
+import type { ProgramBlock } from '../data/synopticSchedule';
+
+type ItemKind = 'plenary' | 'parallel' | 'oral' | 'break';
+
+interface Talk {
+  time: string;
+  name: string;
+  lastName: string;
+  title: string;
+  /** Short room tag (e.g. "A"), only set for parallel sessions */
+  room?: string;
+  /** Full room name, used to order parallel talks consistently */
+  roomFull?: string;
+  /** Plenary or track tint */
+  bgClass?: string;
+}
+
+interface CellItem {
+  kind: ItemKind;
+  label: string;
+  emoji?: string;
+  /** Only set when the item doesn't fill the whole block, e.g. "12:30–13:00" */
+  time?: string;
+  start: number;
+  /** Talks grouped by start time. Parallel slots hold one entry per room, in room order (null = no talk there) */
+  slots?: (Talk | null)[][];
+}
+
+interface Cell {
+  items: CellItem[];
+  span: number;
+}
+
+function toMinutes(t: string): number {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+// Plenary talks have no track, so they get their own (neutral) tint
+const PLENARY_BG = 'bg-primary-500/15 dark:bg-primary-400/20';
+
+const SESSION_LABELS: Record<Exclude<ItemKind, 'break'>, string> = {
+  plenary: 'Plenary Session',
+  parallel: 'Parallel Oral Sessions',
+  oral: 'Oral Session',
+};
+
+function cellItems(date: string, block: ProgramBlock): CellItem[] {
+  const blockStart = toMinutes(block.startTime);
+  const blockEnd = toMinutes(block.endTime);
+  const items: CellItem[] = [];
+
+  // Talks are grouped by the block they start in
+  const talks = speakers.filter((s) => {
+    if (s.schedule?.date !== date || !s.schedule.startTime) return false;
+    const start = toMinutes(s.schedule.startTime);
+    return start >= blockStart && start < blockEnd;
+  });
+  if (talks.length > 0) {
+    const rooms = new Set(talks.map((s) => s.schedule?.room));
+    const kind = talks.every((s) => s.type === 'plenary') ? 'plenary' : rooms.size > 1 ? 'parallel' : 'oral';
+    const roomOrder = [...rooms].filter((r): r is string => !!r).sort();
+    const start = Math.min(...talks.map((s) => toMinutes(s.schedule!.startTime!)));
+    const talkList: Talk[] = talks
+      .map((s) => {
+        const room = s.schedule!.room;
+        return {
+          time: s.schedule!.startTime!,
+          name: s.name,
+          // Last word of the name, e.g. "Jun Ho Ko" -> "Ko"
+          lastName: s.name.trim().split(/\s+/).pop()!,
+          title: s.title,
+          // Last word of the room name, e.g. "Grand Riverview Ballroom A" -> "A"
+          room: kind === 'parallel' && room ? room.split(' ').pop() : undefined,
+          roomFull: room,
+          bgClass: s.type === 'plenary' ? PLENARY_BG : getTrack(s.classification)?.bgClass,
+        };
+      })
+      .sort((a, b) => a.time.localeCompare(b.time) || (a.roomFull ?? '').localeCompare(b.roomFull ?? ''));
+    // Talks starting at the same time share a slot and are shown side by side
+    const times = [...new Set(talkList.map((t) => t.time))];
+    const slots = times.map((time) => {
+      const atTime = talkList.filter((t) => t.time === time);
+      return kind === 'parallel' ? roomOrder.map((r) => atTime.find((t) => t.roomFull === r) ?? null) : atTime;
+    });
+    items.push({ kind, label: SESSION_LABELS[kind], start, slots });
+  }
+
+  // Breaks, ceremonies and social events that overlap the block
+  for (const b of scheduleBreaks) {
+    if (!b.dates.includes(date) || !b.startTime || !b.endTime) continue;
+    const start = toMinutes(b.startTime);
+    const end = toMinutes(b.endTime);
+    if (start >= blockEnd || end <= blockStart) continue;
+    const fillsBlock = start <= blockStart && end >= blockEnd;
+    items.push({ kind: 'break', label: b.label, emoji: b.emoji, time: fillsBlock ? undefined : `${b.startTime}–${b.endTime}`, start });
+  }
+
+  return items.sort((a, b) => a.start - b.start);
+}
+
+// Neighbouring days with identical content share one cell
+function cellKey(items: CellItem[]): string {
+  return JSON.stringify(items.map(({ kind, label, time, slots }) => [kind, label, time, slots]));
+}
+
+const rows = programBlocks.map((block) => {
+  const cells: Cell[] = [];
+  for (const day of conferenceDays) {
+    const items = cellItems(day.date, block);
+    const prev = cells[cells.length - 1];
+    if (prev && cellKey(prev.items) === cellKey(items)) prev.span += 1;
+    else cells.push({ items, span: 1 });
+  }
+  return { label: block.label ?? `${block.startTime}–${block.endTime}`, cells };
+});
+
+// The colour legend fills the first run of empty cells in the last day's column (Friday afternoon)
+const LEGEND = [
+  { label: 'Plenary', bgClass: PLENARY_BG },
+  ...tracks.map((t) => ({ label: `${t.code} · ${t.label}`, bgClass: t.bgClass })),
+];
+const isFree = (cell: Cell) => cell.items.length === 0 && cell.span === 1;
+const lastCells = rows.map((row) => row.cells[row.cells.length - 1]);
+const legendStart = lastCells.findIndex(isFree);
+let legendRows = 0;
+while (legendStart >= 0 && legendStart + legendRows < rows.length && isFree(lastCells[legendStart + legendRows])) legendRows++;
+
+// Days without talks (e.g. Sunday) get a narrow column, leaving more room for the busy days
+const talkDates = new Set(speakers.map((s) => s.schedule?.date));
+
+const KIND_CLASSES: Record<ItemKind, string> = {
+  plenary: 'text-primary-600 dark:text-primary-300 font-semibold',
+  parallel: 'text-primary-600 dark:text-primary-300 font-semibold',
+  oral: 'text-primary-600 dark:text-primary-300 font-semibold',
+  break: 'border border-dashed border-primary-200 dark:border-primary-600 bg-primary-50 dark:bg-primary-800/40 text-primary-500 dark:text-primary-400',
+};
+
+// A cell's look follows its main (first non-break) item, if any
+function cellClass(items: CellItem[]): string {
+  if (items.length === 0) return '';
+  const main = items.find((i) => i.kind !== 'break') ?? items[0];
+  return KIND_CLASSES[main.kind];
+}
+---
+
+<div class="my-8 overflow-x-auto rounded-xl border border-primary-200 dark:border-primary-700 shadow-sm">
+  <table id="po-table" class="w-full min-w-[1040px] table-fixed border-collapse text-sm">
+    <colgroup>
+      <col class="w-24" />
+      {conferenceDays.map((day) => <col class={talkDates.has(day.date) ? undefined : 'w-24'} />)}
+    </colgroup>
+    <thead>
+      <tr class="bg-gradient-to-r from-primary-700 to-primary-800 dark:from-primary-800 dark:to-primary-900 text-white">
+        <th scope="col" class="px-2 py-3 text-left font-semibold">Time</th>
+        {conferenceDays.map((day) => (
+          <th scope="col" class="px-2 py-3 text-center font-semibold align-top">
+            <span class="block">{day.dayOfWeek}</span>
+            <span class="block text-xs font-normal opacity-80">{day.displayDate}</span>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="bg-white dark:bg-primary-800">
+      {rows.map((row, r) => (
+        <tr class="border-t border-primary-100 dark:border-primary-700">
+          <th scope="row" class="px-2 py-3 text-left text-xs font-mono font-normal text-primary-500 dark:text-primary-400 whitespace-nowrap">{row.label}</th>
+          {row.cells.map((cell, c) => c === row.cells.length - 1 && r >= legendStart && r < legendStart + legendRows ? (
+            r === legendStart && (
+              <td rowspan={legendRows} class="p-1 align-top">
+                <div class="rounded-lg border border-primary-200 dark:border-primary-600 p-1.5 flex flex-col gap-1">
+                  <span class="text-[10px] uppercase tracking-wide font-semibold text-center text-primary-600 dark:text-primary-300">Legend</span>
+                  {LEGEND.map((entry) => (
+                    <span class={`rounded-md px-1.5 py-0.5 text-[10px] leading-tight text-primary-900 dark:text-primary-100 ${entry.bgClass}`}>{entry.label}</span>
+                  ))}
+                </div>
+              </td>
+            )
+          ) : (
+            <td colspan={cell.span} class="p-1 h-px align-top">
+              {cell.items.length > 0 && (
+                <div class={`h-full min-h-[2.75rem] rounded-lg p-1.5 flex flex-col gap-1 text-center leading-snug ${cell.items.some((i) => i.slots) ? 'justify-start' : 'justify-center'} ${cellClass(cell.items)}`}>
+                  {cell.items.map((item) => item.slots ? (
+                    <>
+                      <span class="text-[10px] uppercase tracking-wide opacity-75">{item.label}</span>
+                      {item.slots.map((slot) => (
+                        <div class="flex gap-1">
+                          {slot.map((talk) => talk ? (
+                            <div class={`flex-1 min-w-0 rounded-md px-1.5 py-1 text-left font-normal shadow-sm ${talk.bgClass ?? 'bg-white dark:bg-primary-900/50'}`} data-talk data-name={talk.name} data-title={talk.title} data-where={[talk.time, talk.roomFull].filter(Boolean).join(' · ')}>
+                              <span class="block text-[10px] font-mono text-primary-500 dark:text-primary-400">
+                                {talk.time}{talk.room && ` · ${talk.room}`}
+                              </span>
+                              <span class="block break-words text-xs font-medium text-primary-900 dark:text-primary-100">{talk.lastName}</span>
+                            </div>
+                          ) : (
+                            <div class="flex-1 min-w-0"></div>
+                          ))}
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <span class={item.kind === 'break' && cell.items.some((i) => i.kind !== 'break') ? 'text-xs font-normal text-primary-500 dark:text-primary-400' : ''}>
+                      {item.emoji && <span aria-hidden="true">{item.emoji} </span>}
+                      {item.label}
+                      {item.time && <span class="block text-[11px] font-normal opacity-80">{item.time}</span>}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<!-- Tooltip (fixed, so the table's scroll container doesn't clip it) -->
+<div
+  id="po-tooltip"
+  class="fixed z-50 hidden pointer-events-none bg-white dark:bg-primary-800 border border-gray-200 dark:border-primary-600 rounded-lg shadow-xl px-3 py-2 text-sm"
+  style="max-width: 260px;"
+>
+  <div id="po-tip-name" class="font-bold text-gray-900 dark:text-white"></div>
+  <div id="po-tip-title" class="text-primary-700 dark:text-primary-200 mt-0.5 leading-tight"></div>
+  <div id="po-tip-where" class="text-gray-400 dark:text-gray-500 text-xs mt-1"></div>
+</div>
+
+<script>
+  const table = document.getElementById('po-table');
+  const tooltip = document.getElementById('po-tooltip');
+  const tipName = document.getElementById('po-tip-name');
+  const tipTitle = document.getElementById('po-tip-title');
+  const tipWhere = document.getElementById('po-tip-where');
+
+  if (table && tooltip && tipName && tipTitle && tipWhere) {
+    const hide = () => tooltip.classList.add('hidden');
+
+    const update = (e: MouseEvent) => {
+      const talk = (e.target as Element).closest<HTMLElement>('[data-talk]');
+      if (!talk) {
+        hide();
+        return;
+      }
+
+      tipName.textContent = talk.dataset.name ?? '';
+      tipTitle.textContent = talk.dataset.title ?? '';
+      tipWhere.textContent = talk.dataset.where ?? '';
+
+      // Keep tooltip inside the viewport
+      tooltip.classList.remove('hidden');
+      const tw = tooltip.offsetWidth;
+      const th = tooltip.offsetHeight;
+      let x = e.clientX + 14;
+      let y = e.clientY + 14;
+      if (x + tw > window.innerWidth - 4) x = e.clientX - tw - 14;
+      if (y + th > window.innerHeight - 4) y = e.clientY - th - 14;
+
+      tooltip.style.left = `${Math.max(4, x)}px`;
+      tooltip.style.top = `${Math.max(4, y)}px`;
+    };
+
+    table.addEventListener('mousemove', update);
+    table.addEventListener('mouseleave', hide);
+    // Touch screens have no hover: tap a talk to show it, tap elsewhere to close
+    table.addEventListener('click', update);
+    document.addEventListener('click', (e) => {
+      if (!table.contains(e.target as Node)) hide();
+    });
+    document.addEventListener('scroll', hide, { passive: true, capture: true });
+  }
+</script>

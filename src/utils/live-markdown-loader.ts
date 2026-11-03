@@ -378,6 +378,9 @@ function parseDirective(type: string, content: string, props: Record<string, str
       case 'floorplan':
         return { type: 'floorplan', content: '' };
 
+      case 'programoverview':
+        return { type: 'programoverview', content: '' };
+
       case 'collapsible':
         // Check if the content contains nested directives
         const trimmedContent = content.trim();

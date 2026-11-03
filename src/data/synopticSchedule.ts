@@ -30,19 +30,20 @@ export interface TrackInfo {
   gradientClass: string;
   textClass: string;
   borderClass: string;
+  /** Translucent tint, so it works on top of any background */
   bgClass: string;
 }
 
 // Main Classifications (MC1-MC8), matching src/content/authors/classification.md
 export const tracks: TrackInfo[] = [
-  { code: "MC1", label: "Colliders & Related Accelerators", dotClass: "bg-blue-500", gradientClass: "bg-gradient-to-r from-blue-700 to-blue-300", textClass: "text-blue-700 dark:text-blue-300", borderClass: "border-blue-300 dark:border-blue-700", bgClass: "bg-blue-50 dark:bg-blue-900/30" },
-  { code: "MC2", label: "Photon Sources & Electron Accelerators", dotClass: "bg-emerald-500", gradientClass: "bg-gradient-to-r from-emerald-700 to-emerald-300", textClass: "text-emerald-700 dark:text-emerald-300", borderClass: "border-emerald-300 dark:border-emerald-700", bgClass: "bg-emerald-50 dark:bg-emerald-900/30" },
-  { code: "MC3", label: "Advanced Acceleration Techniques & Novel Sources", dotClass: "bg-amber-500", gradientClass: "bg-gradient-to-r from-amber-700 to-amber-300", textClass: "text-amber-700 dark:text-amber-300", borderClass: "border-amber-300 dark:border-amber-700", bgClass: "bg-amber-50 dark:bg-amber-900/30" },
-  { code: "MC4", label: "Hadron Accelerators", dotClass: "bg-rose-500", gradientClass: "bg-gradient-to-r from-rose-700 to-rose-300", textClass: "text-rose-700 dark:text-rose-300", borderClass: "border-rose-300 dark:border-rose-700", bgClass: "bg-rose-50 dark:bg-rose-900/30" },
-  { code: "MC5", label: "Beam Dynamics & EM Fields", dotClass: "bg-purple-500", gradientClass: "bg-gradient-to-r from-purple-700 to-purple-300", textClass: "text-purple-700 dark:text-purple-300", borderClass: "border-purple-300 dark:border-purple-700", bgClass: "bg-purple-50 dark:bg-purple-900/30" },
-  { code: "MC6", label: "Beam Instrumentation, Controls & Operations", dotClass: "bg-cyan-500", gradientClass: "bg-gradient-to-r from-cyan-700 to-cyan-300", textClass: "text-cyan-700 dark:text-cyan-300", borderClass: "border-cyan-300 dark:border-cyan-700", bgClass: "bg-cyan-50 dark:bg-cyan-900/30" },
-  { code: "MC7", label: "Accelerator Technology & Sustainability", dotClass: "bg-orange-500", gradientClass: "bg-gradient-to-r from-orange-700 to-orange-300", textClass: "text-orange-700 dark:text-orange-300", borderClass: "border-orange-300 dark:border-orange-700", bgClass: "bg-orange-50 dark:bg-orange-900/30" },
-  { code: "MC8", label: "Applications, Industry & Outreach", dotClass: "bg-fuchsia-500", gradientClass: "bg-gradient-to-r from-fuchsia-700 to-fuchsia-300", textClass: "text-fuchsia-700 dark:text-fuchsia-300", borderClass: "border-fuchsia-300 dark:border-fuchsia-700", bgClass: "bg-fuchsia-50 dark:bg-fuchsia-900/30" },
+  { code: "MC1", label: "Colliders & Related Accelerators", dotClass: "bg-blue-500", gradientClass: "bg-gradient-to-r from-blue-700 to-blue-300", textClass: "text-blue-700 dark:text-blue-300", borderClass: "border-blue-300 dark:border-blue-700", bgClass: "bg-blue-500/15 dark:bg-blue-400/20" },
+  { code: "MC2", label: "Photon Sources & Electron Accelerators", dotClass: "bg-emerald-500", gradientClass: "bg-gradient-to-r from-emerald-700 to-emerald-300", textClass: "text-emerald-700 dark:text-emerald-300", borderClass: "border-emerald-300 dark:border-emerald-700", bgClass: "bg-emerald-500/15 dark:bg-emerald-400/20" },
+  { code: "MC3", label: "Advanced Acceleration Techniques & Novel Sources", dotClass: "bg-amber-500", gradientClass: "bg-gradient-to-r from-amber-700 to-amber-300", textClass: "text-amber-700 dark:text-amber-300", borderClass: "border-amber-300 dark:border-amber-700", bgClass: "bg-amber-500/15 dark:bg-amber-400/20" },
+  { code: "MC4", label: "Hadron Accelerators", dotClass: "bg-rose-500", gradientClass: "bg-gradient-to-r from-rose-700 to-rose-300", textClass: "text-rose-700 dark:text-rose-300", borderClass: "border-rose-300 dark:border-rose-700", bgClass: "bg-rose-500/15 dark:bg-rose-400/20" },
+  { code: "MC5", label: "Beam Dynamics & EM Fields", dotClass: "bg-purple-500", gradientClass: "bg-gradient-to-r from-purple-700 to-purple-300", textClass: "text-purple-700 dark:text-purple-300", borderClass: "border-purple-300 dark:border-purple-700", bgClass: "bg-purple-500/15 dark:bg-purple-400/20" },
+  { code: "MC6", label: "Beam Instrumentation, Controls & Operations", dotClass: "bg-cyan-500", gradientClass: "bg-gradient-to-r from-cyan-700 to-cyan-300", textClass: "text-cyan-700 dark:text-cyan-300", borderClass: "border-cyan-300 dark:border-cyan-700", bgClass: "bg-cyan-500/15 dark:bg-cyan-400/20" },
+  { code: "MC7", label: "Accelerator Technology & Sustainability", dotClass: "bg-orange-500", gradientClass: "bg-gradient-to-r from-orange-700 to-orange-300", textClass: "text-orange-700 dark:text-orange-300", borderClass: "border-orange-300 dark:border-orange-700", bgClass: "bg-orange-500/15 dark:bg-orange-400/20" },
+  { code: "MC8", label: "Applications, Industry & Outreach", dotClass: "bg-fuchsia-500", gradientClass: "bg-gradient-to-r from-fuchsia-700 to-fuchsia-300", textClass: "text-fuchsia-700 dark:text-fuchsia-300", borderClass: "border-fuchsia-300 dark:border-fuchsia-700", bgClass: "bg-fuchsia-500/15 dark:bg-fuchsia-400/20" },
 ];
 
 export function getTrack(code?: string): TrackInfo | undefined {
@@ -67,6 +68,28 @@ export interface ScheduleBreak {
   /** ISO dates (matching ConferenceDay.date) this break applies to */
   dates: string[];
 }
+
+/**
+ * Rows (time blocks) of the "Program at a Glance" table on the Scientific
+ * Program page. Cells are filled automatically from the speakers' talks and
+ * the schedule blocks below, so the overview always matches the Synoptic Table.
+ */
+export interface ProgramBlock {
+  startTime: string;
+  endTime: string;
+  /** Shown instead of the time range, e.g. "Evening" */
+  label?: string;
+}
+
+export const programBlocks: ProgramBlock[] = [
+  { startTime: "09:00", endTime: "10:30" },
+  { startTime: "10:30", endTime: "11:00" },
+  { startTime: "11:00", endTime: "12:30" },
+  { startTime: "12:30", endTime: "14:00" },
+  { startTime: "14:00", endTime: "16:00" },
+  { startTime: "16:00", endTime: "18:00" },
+  { startTime: "18:00", endTime: "23:00", label: "Evening" },
+];
 
 const MON_THU = ["2027-05-24", "2027-05-25", "2027-05-26", "2027-05-27"];
 const MON_FRI = [...MON_THU, "2027-05-28"];

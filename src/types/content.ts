@@ -22,7 +22,8 @@ export type ContentBlockType =
   | 'pdfpreview'
   | 'table'
   | 'video'
-  | 'floorplan';
+  | 'floorplan'
+  | 'programoverview';
 
 /**
  * Status options for status blocks
@@ -177,10 +178,16 @@ export type ContentBlock =
   | PdfPreviewContentBlock
   | TableContentBlock
   | VideoContentBlock
-  | FloorPlanContentBlock;
+  | FloorPlanContentBlock
+  | ProgramOverviewContentBlock;
 
 export interface FloorPlanContentBlock extends BaseContentBlock {
   type: 'floorplan';
+  content: string;
+}
+
+export interface ProgramOverviewContentBlock extends BaseContentBlock {
+  type: 'programoverview';
   content: string;
 }
 

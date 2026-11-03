@@ -7,7 +7,7 @@ bannerText: "Scientific Program"
 
 
 :::highlight
-The scientific program for IPAC'27 will be announced closer to the conference date. Please check back regularly for updates.
+The program at a glance is shown below. For talk titles, speakers and rooms, see the detailed schedule in the [Synoptic Table](/program/synoptic-table). The program is preliminary and may change.
 :::
 
 ## Program Overview
@@ -32,10 +32,7 @@ Interactive sessions for detailed discussions of research work.
 :::
 :::
 
-:::info
-Full program details will be announced soon.
-:::
+## Program at a Glance
 
-:::status{type="coming-soon"}
-Program Schedule
+:::programoverview
 :::

@@ -3,6 +3,7 @@ import type { ContentBlock, CollapsibleContent, NestedListItem } from '../types/
 import CollapsibleContentComponent from './content/CollapsibleContent.astro';
 import ConferenceCalendar from './content/ConferenceCalendar.astro';
 import ExhibitorFloorPlan from './ExhibitorFloorPlan.astro';
+import ProgramOverview from './ProgramOverview.astro';
 import katex from 'katex';
 
 export interface Props {
@@ -468,6 +469,9 @@ const renderNestedListHtml = (items: NestedListItem[], className = 'content-list
           <ExhibitorFloorPlan />
         </div>
       );
+
+    case 'programoverview':
+      return <ProgramOverview />;
 
     default:
       return null;
