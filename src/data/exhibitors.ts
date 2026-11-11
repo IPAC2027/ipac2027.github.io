@@ -538,6 +538,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C22",
     featured: true
   },
+    {  
+    id: "gold-037",
+    name: "RadiaSoft LLC",
+    logo: "/images/logos/exhibitors/gold/radiasoft.png",
+    website: "https://www.radiasoft.net/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C5",
+    featured: true
+  },
 ];
 
 // Helper functions

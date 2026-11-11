@@ -5,6 +5,10 @@ bannerText: "Accommodation"
 bannerBackground: "/images/banners/Travel/accomodation.png"
 ---
 
+:::warning
+**Beware of phishing.** IPAC'27 organizers will never send you emails with links to pay, register or book a hotel, and will never contact you to offer hotel reservations. Book your room only through the official link on this page. If you receive a suspicious email, do not click any links; forward it to info@ipac27.org.
+:::
+
 :::highlight
 A special room block is available at the conference hotel for IPAC'27 attendees.
 :::

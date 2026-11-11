@@ -11,6 +11,10 @@ IPAC'27 will be an in-person only event.
 Registration for IPAC'27 opens now. Please register before February 27th, 2027 to receive the early-bird rate.
 :::
 
+:::warning
+**Beware of phishing.** IPAC'27 organizers will never send you emails with links to pay, register or book a hotel, and will never contact you to offer hotel reservations. Book your room only through the official link on the [Accommodation](/travel/accommodation) page. If you receive a suspicious email, do not click any links; forward it to info@ipac27.org.
+:::
+
 ## Registration Information
 
 IPAC’27 is an **in-person conference**. Registration is required for all participants, including scientific attendees, students and exhibitor personnel.

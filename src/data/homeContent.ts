@@ -236,6 +236,12 @@ export const homeContent = {
     subtitle: "Stay informed about IPAC27 Announcements",
     articles: [
       {
+        date: "Nov. 6, 2026",
+        title: "Beware of phishing emails",
+        excerpt: "IPAC'27 organizers will never send you emails with links to pay, register or book a hotel, and will never contact you to offer hotel reservations. Book only through the official link on our Accommodation page.",
+        link: "/travel/accommodation"
+      },
+      {
         date: "Oct. 12, 2026",
         title: "IEEE NPSS PAST award accepts nominations now",
         excerpt: "The IEEE NPSS (PAST) Award recognizes outstanding contributions to the field. Nominations are now open for the 2027 award. Submit your nominations by the deadline of March 31, 2027.",
