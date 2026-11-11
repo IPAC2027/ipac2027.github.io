@@ -549,6 +549,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C5",
     featured: true
   },
+     {  
+    id: "gold-037",
+    name: "RadiaBeam Technologies, LLC",
+    logo: "/images/logos/exhibitors/gold/radiabeam.png",
+    website: "https://www.radiabeam.com/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C4",
+    featured: true
+  },
 ];
 
 // Helper functions
