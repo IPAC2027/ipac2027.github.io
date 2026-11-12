@@ -42,8 +42,8 @@ function toMinutes(t: string): number {
   return h * 60 + m;
 }
 
-// Plenary talks have no track, so they get their own (neutral) tint
-const PLENARY_BG = 'bg-primary-500/15 dark:bg-primary-400/20';
+// Plenary talks have no track; official IPAC'27 plenary colour
+const PLENARY_BG = 'bg-[#c9fbfb] dark:bg-[#c9fbfb]/25';
 
 const SESSION_LABELS: Record<Exclude<ItemKind, 'break'>, string> = {
   plenary: 'Plenary Session',
@@ -193,7 +193,7 @@ function cellClass(items: CellItem[]): string {
                         <div class="flex gap-1">
                           {slot.map((talk) => talk ? (
                             <div class={`flex-1 min-w-0 rounded-md px-1.5 py-1 text-left font-normal shadow-sm ${talk.bgClass ?? 'bg-white dark:bg-primary-900/50'}`} data-talk data-name={talk.name} data-title={talk.title} data-where={[talk.time, talk.roomFull].filter(Boolean).join(' · ')}>
-                              <span class="block text-[10px] font-mono text-primary-500 dark:text-primary-400">
+                              <span class="block text-[10px] font-mono text-primary-700 dark:text-primary-300">
                                 {talk.time}{talk.room && ` · ${talk.room}`}
                               </span>
                               <span class="block break-words text-xs font-medium text-primary-900 dark:text-primary-100">{talk.lastName}</span>

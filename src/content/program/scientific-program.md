@@ -7,7 +7,7 @@ bannerText: "Scientific Program"
 
 
 :::highlight
-The program at a glance is shown below. For talk titles, speakers and rooms, see the detailed schedule in the [Synoptic Table](/program/synoptic-table). The program is preliminary and may change.
+The program at a glance is shown below. For talk titles, speakers and rooms, see the detailed schedule in the [Timetable](/program/synoptic-table). The program is preliminary and may change.
 :::
 
 ## Program Overview
@@ -32,7 +32,7 @@ Interactive sessions for detailed discussions of research work.
 :::
 :::
 
-## Program at a Glance
+## Synoptic Table
 
 :::programoverview
 :::

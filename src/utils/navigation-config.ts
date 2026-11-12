@@ -31,7 +31,7 @@ export const navigationConfig: NavigationSection[] = [
     name: 'Program',
     submenu: [
       { name: 'Scientific Program', href: '/program/scientific-program' },
-      { name: 'Synoptic Table', href: '/program/synoptic-table' },
+      { name: 'Timetable', href: '/program/synoptic-table' },
       { name: 'Invited Speakers', href: '/program/invited-speakers' },
       { name: 'Satellite Events', href: '/program/satellite-events' },
       { name: 'Student Program', href: '/program/student-program' },

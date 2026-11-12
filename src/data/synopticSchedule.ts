@@ -25,25 +25,29 @@ export const conferenceDays: ConferenceDay[] = [
 export interface TrackInfo {
   code: string;
   label: string;
+  /** Small colour dot; the ring keeps pale colours visible on white */
   dotClass: string;
   /** Gradient variant of `dotClass`, same hue, for larger accent areas (e.g. speaker card top bar) */
   gradientClass: string;
   textClass: string;
   borderClass: string;
-  /** Translucent tint, so it works on top of any background */
+  /** Block background (e.g. talks in the Program at a Glance) */
   bgClass: string;
 }
 
-// Main Classifications (MC1-MC8), matching src/content/authors/classification.md
+// Main Classifications (MC1-MC8), matching src/content/authors/classification.md.
+// Colours follow the official IPAC'27 MC colour code: fills use the official
+// colour as-is; text and borders use a darker shade of the same hue so they
+// stay readable on white.
 export const tracks: TrackInfo[] = [
-  { code: "MC1", label: "Colliders & Related Accelerators", dotClass: "bg-blue-500", gradientClass: "bg-gradient-to-r from-blue-700 to-blue-300", textClass: "text-blue-700 dark:text-blue-300", borderClass: "border-blue-300 dark:border-blue-700", bgClass: "bg-blue-500/15 dark:bg-blue-400/20" },
-  { code: "MC2", label: "Photon Sources & Electron Accelerators", dotClass: "bg-emerald-500", gradientClass: "bg-gradient-to-r from-emerald-700 to-emerald-300", textClass: "text-emerald-700 dark:text-emerald-300", borderClass: "border-emerald-300 dark:border-emerald-700", bgClass: "bg-emerald-500/15 dark:bg-emerald-400/20" },
-  { code: "MC3", label: "Advanced Acceleration Techniques & Novel Sources", dotClass: "bg-amber-500", gradientClass: "bg-gradient-to-r from-amber-700 to-amber-300", textClass: "text-amber-700 dark:text-amber-300", borderClass: "border-amber-300 dark:border-amber-700", bgClass: "bg-amber-500/15 dark:bg-amber-400/20" },
-  { code: "MC4", label: "Hadron Accelerators", dotClass: "bg-rose-500", gradientClass: "bg-gradient-to-r from-rose-700 to-rose-300", textClass: "text-rose-700 dark:text-rose-300", borderClass: "border-rose-300 dark:border-rose-700", bgClass: "bg-rose-500/15 dark:bg-rose-400/20" },
-  { code: "MC5", label: "Beam Dynamics & EM Fields", dotClass: "bg-purple-500", gradientClass: "bg-gradient-to-r from-purple-700 to-purple-300", textClass: "text-purple-700 dark:text-purple-300", borderClass: "border-purple-300 dark:border-purple-700", bgClass: "bg-purple-500/15 dark:bg-purple-400/20" },
-  { code: "MC6", label: "Beam Instrumentation, Controls & Operations", dotClass: "bg-cyan-500", gradientClass: "bg-gradient-to-r from-cyan-700 to-cyan-300", textClass: "text-cyan-700 dark:text-cyan-300", borderClass: "border-cyan-300 dark:border-cyan-700", bgClass: "bg-cyan-500/15 dark:bg-cyan-400/20" },
-  { code: "MC7", label: "Accelerator Technology & Sustainability", dotClass: "bg-orange-500", gradientClass: "bg-gradient-to-r from-orange-700 to-orange-300", textClass: "text-orange-700 dark:text-orange-300", borderClass: "border-orange-300 dark:border-orange-700", bgClass: "bg-orange-500/15 dark:bg-orange-400/20" },
-  { code: "MC8", label: "Applications, Industry & Outreach", dotClass: "bg-fuchsia-500", gradientClass: "bg-gradient-to-r from-fuchsia-700 to-fuchsia-300", textClass: "text-fuchsia-700 dark:text-fuchsia-300", borderClass: "border-fuchsia-300 dark:border-fuchsia-700", bgClass: "bg-fuchsia-500/15 dark:bg-fuchsia-400/20" },
+  { code: "MC1", label: "Colliders & Related Accelerators", dotClass: "bg-[#4fc4a5] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#1f7c63] to-[#4fc4a5]", textClass: "text-[#1f7c63] dark:text-[#4fc4a5]", borderClass: "border-[#1f7c63]/40 dark:border-[#4fc4a5]/50", bgClass: "bg-[#4fc4a5] dark:bg-[#4fc4a5]/30" },
+  { code: "MC2", label: "Photon Sources & Electron Accelerators", dotClass: "bg-[#a6c9ec] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#2871ba] to-[#a6c9ec]", textClass: "text-[#2871ba] dark:text-[#a6c9ec]", borderClass: "border-[#2871ba]/40 dark:border-[#a6c9ec]/50", bgClass: "bg-[#a6c9ec] dark:bg-[#a6c9ec]/30" },
+  { code: "MC3", label: "Advanced Acceleration Techniques & Novel Sources", dotClass: "bg-[#fffba4] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#767100] to-[#fffba4]", textClass: "text-[#767100] dark:text-[#fffba4]", borderClass: "border-[#767100]/40 dark:border-[#fffba4]/50", bgClass: "bg-[#fffba4] dark:bg-[#fffba4]/30" },
+  { code: "MC4", label: "Hadron Accelerators", dotClass: "bg-[#ffd983] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#926500] to-[#ffd983]", textClass: "text-[#926500] dark:text-[#ffd983]", borderClass: "border-[#926500]/40 dark:border-[#ffd983]/50", bgClass: "bg-[#ffd983] dark:bg-[#ffd983]/30" },
+  { code: "MC5", label: "Beam Dynamics & EM Fields", dotClass: "bg-[#bbb2e4] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#705ad6] to-[#bbb2e4]", textClass: "text-[#705ad6] dark:text-[#bbb2e4]", borderClass: "border-[#705ad6]/40 dark:border-[#bbb2e4]/50", bgClass: "bg-[#bbb2e4] dark:bg-[#bbb2e4]/30" },
+  { code: "MC6", label: "Beam Instrumentation, Controls & Operations", dotClass: "bg-[#f2ceef] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#bb2faf] to-[#f2ceef]", textClass: "text-[#bb2faf] dark:text-[#f2ceef]", borderClass: "border-[#bb2faf]/40 dark:border-[#f2ceef]/50", bgClass: "bg-[#f2ceef] dark:bg-[#f2ceef]/30" },
+  { code: "MC7", label: "Accelerator Technology & Sustainability", dotClass: "bg-[#f1a983] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#b94e15] to-[#f1a983]", textClass: "text-[#b94e15] dark:text-[#f1a983]", borderClass: "border-[#b94e15]/40 dark:border-[#f1a983]/50", bgClass: "bg-[#f1a983] dark:bg-[#f1a983]/30" },
+  { code: "MC8", label: "Applications, Industry & Outreach", dotClass: "bg-[#daf2d0] ring-1 ring-black/20", gradientClass: "bg-gradient-to-r from-[#3b7d1f] to-[#daf2d0]", textClass: "text-[#3b7d1f] dark:text-[#daf2d0]", borderClass: "border-[#3b7d1f]/40 dark:border-[#daf2d0]/50", bgClass: "bg-[#daf2d0] dark:bg-[#daf2d0]/30" },
 ];
 
 export function getTrack(code?: string): TrackInfo | undefined {

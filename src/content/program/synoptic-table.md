@@ -1,7 +1,7 @@
 ---
-title: "Synoptic Table"
-description: "Synoptic table of the IPAC'27 conference program"
-bannerText: "Synoptic Table"
+title: "Timetable"
+description: "Timetable of the IPAC'27 conference program"
+bannerText: "Timetable"
 ---
 
 
