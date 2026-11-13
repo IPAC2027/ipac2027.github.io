@@ -7,7 +7,7 @@ bannerText: "Scientific Program"
 
 
 :::highlight
-The program at a glance is shown below. For talk titles, speakers and rooms, see the detailed schedule in the [Timetable](/program/synoptic-table). The program is preliminary and may change.
+The program at a glance is shown below. For talk titles, speakers and rooms, see the detailed schedule in the [Timetable](/program/timetable). The program is preliminary and may change.
 :::
 
 ## Program Overview
@@ -35,4 +35,7 @@ Interactive sessions for detailed discussions of research work.
 ## Synoptic Table
 
 :::programoverview
+:::
+
+:::button{url="/downloads/IPAC27-Scientific-Program.pdf" text="Download Scientific Program (PDF)"}
 :::

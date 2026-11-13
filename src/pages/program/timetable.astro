@@ -5,14 +5,14 @@ import SynopticTableSection from '../../components/SynopticTableSection.astro';
 import { getEntry } from 'astro:content';
 
 // Get content from the markdown file using Astro content collections
-const entry = await getEntry('program', 'synoptic-table');
+const entry = await getEntry('program', 'timetable');
 if (!entry) {
   throw new Error('Page content not found');
 }
 
 // Use the live markdown-loader to process the content with custom directives
 import { loadPageContent } from '../../utils/live-markdown-loader';
-const pageContent = loadPageContent('program/synoptic-table');
+const pageContent = loadPageContent('program/timetable');
 
 // Extract level 2 headers for table of contents
 const headings = pageContent?.blocks

@@ -54,6 +54,9 @@ export function getTrack(code?: string): TrackInfo | undefined {
   return tracks.find(t => t.code === code);
 }
 
+/** Block background for plenary talks (they have no MC track); official IPAC'27 plenary colour */
+export const plenaryBgClass = "bg-[#c9fbfb] dark:bg-[#c9fbfb]/25";
+
 /**
  * Non-program schedule blocks (lunch, coffee, poster sessions) shown in the
  * Synoptic Table alongside speaker talks. `startTime`/`endTime` are omitted
@@ -107,4 +110,20 @@ export const scheduleBreaks: ScheduleBreak[] = [
   { id: "awards", label: "Award Session", emoji: "🏆", startTime: "14:00", endTime: "16:00", room: "Grand Riverview Ballroom B", dates: ["2027-05-27"] },
   { id: "closing", label: "Closing Remarks", emoji: "🎤", startTime: "12:30", endTime: "13:00", room: "Grand Riverview Ballroom B", dates: ["2027-05-28"] },
   { id: "banquet", label: "Conference Banquet", emoji: "🍽️", startTime: "19:00", endTime: "23:00", location: "Marriott at the Renaissance Center", dates: ["2027-05-27"] },
+];
+
+/**
+ * Session chairs, shown at the top of each session in the printable programme
+ * (PDF). `startTime` is the start of the session's first talk; omit `room` for
+ * a session that uses every room.
+ */
+export interface SessionChair {
+  date: string;
+  startTime: string;
+  room?: string;
+  chair: string;
+}
+
+export const sessionChairs: SessionChair[] = [
+  // { date: "2027-05-25", startTime: "09:00", room: "Grand Riverview Ballroom A", chair: "Jane Doe" },
 ];

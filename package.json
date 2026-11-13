@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/build-program-pdf.mjs",
+    "build:pdf": "node scripts/build-program-pdf.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -14,5 +15,8 @@
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.0"
   }
 }

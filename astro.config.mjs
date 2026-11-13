@@ -8,6 +8,10 @@ import rehypeKatex from 'rehype-katex';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://www.ipac27.org',
+  // Keep old links working after pages are renamed
+  redirects: {
+    '/program/synoptic-table': '/program/timetable',
+  },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],

@@ -3,7 +3,7 @@
 // Everything is derived from the same data as the Synoptic Table (speaker
 // talks + schedule blocks), so the two pages can't disagree.
 import { speakers } from '../data/speakers';
-import { conferenceDays, scheduleBreaks, programBlocks, tracks, getTrack } from '../data/synopticSchedule';
+import { conferenceDays, scheduleBreaks, programBlocks, tracks, getTrack, plenaryBgClass } from '../data/synopticSchedule';
 import type { ProgramBlock } from '../data/synopticSchedule';
 
 type ItemKind = 'plenary' | 'parallel' | 'oral' | 'break';
@@ -42,9 +42,6 @@ function toMinutes(t: string): number {
   return h * 60 + m;
 }
 
-// Plenary talks have no track; official IPAC'27 plenary colour
-const PLENARY_BG = 'bg-[#c9fbfb] dark:bg-[#c9fbfb]/25';
-
 const SESSION_LABELS: Record<Exclude<ItemKind, 'break'>, string> = {
   plenary: 'Plenary Session',
   parallel: 'Parallel Oral Sessions',
@@ -79,7 +76,7 @@ function cellItems(date: string, block: ProgramBlock): CellItem[] {
           // Last word of the room name, e.g. "Grand Riverview Ballroom A" -> "A"
           room: kind === 'parallel' && room ? room.split(' ').pop() : undefined,
           roomFull: room,
-          bgClass: s.type === 'plenary' ? PLENARY_BG : getTrack(s.classification)?.bgClass,
+          bgClass: s.type === 'plenary' ? plenaryBgClass : getTrack(s.classification)?.bgClass,
         };
       })
       .sort((a, b) => a.time.localeCompare(b.time) || (a.roomFull ?? '').localeCompare(b.roomFull ?? ''));
@@ -123,7 +120,7 @@ const rows = programBlocks.map((block) => {
 
 // The colour legend fills the first run of empty cells in the last day's column (Friday afternoon)
 const LEGEND = [
-  { label: 'Plenary', bgClass: PLENARY_BG },
+  { label: 'Plenary', bgClass: plenaryBgClass },
   ...tracks.map((t) => ({ label: `${t.code} · ${t.label}`, bgClass: t.bgClass })),
 ];
 const isFree = (cell: Cell) => cell.items.length === 0 && cell.span === 1;

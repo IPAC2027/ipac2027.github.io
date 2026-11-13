@@ -1,0 +1,460 @@
+---
+// Printable one-page scientific program (A4 landscape), in the style of the
+// programme sheets of previous IPACs: time rows, one column per day and room,
+// talks coloured by MC. scripts/build-program-pdf.mjs saves it as
+// /downloads/IPAC27-Scientific-Program.pdf after every build. Not linked from
+// the menu. Built from the same data as the Timetable, so the two always agree.
+import { speakers } from '../../data/speakers';
+import { conferenceDays, scheduleBreaks, sessionChairs, tracks, getTrack, plenaryBgClass } from '../../data/synopticSchedule';
+import { homeContent } from '../../data/homeContent';
+
+interface Slot {
+  date: string;
+  start: string;
+  end: string;
+  room?: string;
+}
+
+interface Item {
+  kind: 'talk' | 'break' | 'chair';
+  /** First grid column and number of columns */
+  col: number;
+  span: number;
+  /** Grid lines the item starts and ends at */
+  row: number;
+  rowEnd: number;
+  bgClass?: string;
+  title?: string;
+  name?: string;
+  affiliation?: string;
+  /** Room, only shown when a talk widens over several room columns */
+  room?: string;
+  label?: string;
+  detail?: string;
+}
+
+const { dates, location, venue } = homeContent.hero.conferenceDetails;
+const version = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Detroit' });
+
+function toMinutes(t: string): number {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function overlaps(a: Slot, b: Slot): boolean {
+  return toMinutes(a.start) < toMinutes(b.end) && toMinutes(b.start) < toMinutes(a.end);
+}
+
+const talks = speakers.filter((s) => s.schedule?.date && s.schedule.startTime && s.schedule.endTime);
+const breaks = scheduleBreaks.filter((b) => b.startTime && b.endTime);
+
+// Everything tied to one room, used to decide whether a block can widen to the whole day
+const roomSlots: Slot[] = [
+  ...talks.map((s) => ({ date: s.schedule!.date!, start: s.schedule!.startTime!, end: s.schedule!.endTime!, room: s.schedule!.room })),
+  ...breaks.filter((b) => b.room).flatMap((b) => b.dates.map((date) => ({ date, start: b.startTime!, end: b.endTime!, room: b.room }))),
+];
+
+// Columns: time, then each day; days with talks get one column per room
+const ROOMS = [...new Set(talks.map((s) => s.schedule!.room).filter((r): r is string => !!r))].sort();
+const talkDates = new Set(talks.map((s) => s.schedule!.date));
+let nextCol = 2;
+const days = conferenceDays.map((d) => {
+  const rooms = talkDates.has(d.date) ? ROOMS : [];
+  const day = { ...d, rooms, col: nextCol, span: Math.max(rooms.length, 1) };
+  nextCol += day.span;
+  return day;
+});
+const gridColumns = [
+  'var(--time-col)',
+  ...days.flatMap((d) => (d.rooms.length ? d.rooms.map(() => 'minmax(0, 1fr)') : ['var(--quiet-col)'])),
+].join(' ');
+
+// Rows: one per interval between consecutive start/end times, plus a
+// session-chair row wherever a chaired session starts
+const HEADER_ROWS = 2;
+const times = [...new Set([
+  ...talks.flatMap((s) => [s.schedule!.startTime!, s.schedule!.endTime!]),
+  ...breaks.flatMap((b) => [b.startTime!, b.endTime!]),
+])].sort();
+const chairTimes = new Set(sessionChairs.map((c) => c.startTime));
+const rows: { start: string; end?: string }[] = [];
+/** First grid line at a time (the chair row, if there is one) */
+const lineAt = new Map<string, number>();
+/** Grid line where the time interval starting at a time begins */
+const intervalLineAt = new Map<string, number>();
+times.forEach((t, i) => {
+  lineAt.set(t, HEADER_ROWS + rows.length + 1);
+  if (i === times.length - 1) return;
+  if (chairTimes.has(t)) rows.push({ start: t });
+  intervalLineAt.set(t, HEADER_ROWS + rows.length + 1);
+  rows.push({ start: t, end: times[i + 1] });
+});
+// Rows are at least as tall as their content; spare height is shared out to fill the page
+const gridRows = ['max-content', 'max-content', ...rows.map((r) => (r.end ? 'minmax(min-content, auto)' : 'max-content'))].join(' ');
+/** Minimum row height, so longer intervals look a little longer even when empty */
+const minHeight = (r: { start: string; end?: string }) => (r.end ? Math.min(toMinutes(r.end) - toMinutes(r.start), 60) * 0.08 : 0);
+
+function columns(day: (typeof days)[number], slot: Slot): { col: number; span: number } {
+  const roomIdx = slot.room ? day.rooms.indexOf(slot.room) : -1;
+  const shared = roomIdx >= 0 && roomSlots.some((o) => o.date === day.date && o.room !== slot.room && overlaps(o, slot));
+  return shared ? { col: day.col + roomIdx, span: 1 } : { col: day.col, span: day.span };
+}
+
+const items: Item[] = [];
+
+for (const s of talks) {
+  const { date, startTime, endTime, room } = s.schedule!;
+  const day = days.find((d) => d.date === date);
+  if (!day) continue;
+  const { col, span } = columns(day, { date: date!, start: startTime!, end: endTime!, room });
+  items.push({
+    kind: 'talk',
+    col,
+    span,
+    row: intervalLineAt.get(startTime!)!,
+    rowEnd: lineAt.get(endTime!)!,
+    bgClass: s.type === 'plenary' ? plenaryBgClass : getTrack(s.classification)?.bgClass ?? 'bg-white',
+    title: s.title,
+    name: s.name,
+    affiliation: s.affiliation,
+    room: span > 1 && ROOMS.length > 1 ? room : undefined,
+  });
+}
+
+// Breaks that fill neighbouring days share one wide block
+for (const b of breaks) {
+  let run: Item | undefined;
+  for (const day of days) {
+    if (!b.dates.includes(day.date)) {
+      run = undefined;
+      continue;
+    }
+    const { col, span } = columns(day, { date: day.date, start: b.startTime!, end: b.endTime!, room: b.room });
+    const wholeDay = span === day.span;
+    if (run && wholeDay && run.col + run.span === col) {
+      run.span += span;
+      continue;
+    }
+    const item: Item = {
+      kind: 'break',
+      col,
+      span,
+      row: intervalLineAt.get(b.startTime!)!,
+      rowEnd: lineAt.get(b.endTime!)!,
+      label: b.label,
+      detail: [b.location, `${b.startTime}–${b.endTime}`].filter(Boolean).join(' · '),
+    };
+    items.push(item);
+    run = wholeDay ? item : undefined;
+  }
+}
+
+for (const c of sessionChairs) {
+  const day = days.find((d) => d.date === c.date);
+  if (!day || !intervalLineAt.has(c.startTime)) continue;
+  const roomIdx = c.room ? day.rooms.indexOf(c.room) : -1;
+  const line = lineAt.get(c.startTime)!;
+  items.push({
+    kind: 'chair',
+    col: roomIdx >= 0 ? day.col + roomIdx : day.col,
+    span: roomIdx >= 0 ? 1 : day.span,
+    row: line,
+    rowEnd: line + 1,
+    label: `Chair: ${c.chair}`,
+  });
+}
+
+const LEGEND = [
+  { label: 'Plenary', bgClass: plenaryBgClass },
+  ...tracks.map((t) => ({ label: `${t.code} – ${t.label}`, bgClass: t.bgClass })),
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>IPAC' 27 Scientific Program</title>
+    <link rel="icon" type="image/png" href="/images/logos/ipac27.png" />
+  </head>
+  <body>
+    <div id="sheet" class="sheet">
+      <header class="sheet-header">
+        <img src="/images/logos/ipac27.png" alt="IPAC'27" class="logo" />
+        <div class="heading">
+          <h1>IPAC' 27 Scientific Program</h1>
+          <p>{homeContent.hero.subtitle} · {venue}, {location} · {dates}</p>
+        </div>
+        <p class="version">
+          Preliminary, subject to change<br />
+          Version: {version}<br />
+          Latest timetable: www.ipac27.org/program/timetable
+        </p>
+      </header>
+
+      <div id="sheet-body" class="sheet-body">
+      <div id="grid" class="grid" style={`grid-template-columns: ${gridColumns}; grid-template-rows: ${gridRows};`}>
+        <div class="head" style="grid-row: 1 / 3; grid-column: 1">Time</div>
+        {days.map((d) => (
+          <div class="head" style={`grid-row: ${d.rooms.length ? '1' : '1 / 3'}; grid-column: ${d.col} / span ${d.span}`}>
+            <strong>{d.dayOfWeek}</strong>
+            <span>{d.displayDate}</span>
+          </div>
+        ))}
+        {days.flatMap((d) => d.rooms.map((room, i) => (
+          <div class="head room-head" style={`grid-row: 2; grid-column: ${d.col + i}`}>{room}</div>
+        )))}
+
+        {rows.map((row, r) => (
+          <>
+            <div class="cell time" style={`grid-row: ${HEADER_ROWS + r + 1}; grid-column: 1; min-height: ${minHeight(row)}mm`}>{row.end && `${row.start}–${row.end}`}</div>
+            {days.flatMap((d) => Array.from({ length: d.span }, (_, i) => (
+              <div class={`cell${i === 0 ? ' day-start' : ''}`} style={`grid-row: ${HEADER_ROWS + r + 1}; grid-column: ${d.col + i}`}></div>
+            )))}
+          </>
+        ))}
+
+        {items.map((item) => (
+          <div class={`item ${item.kind} ${item.bgClass ?? ''}`} style={`grid-row: ${item.row} / ${item.rowEnd}; grid-column: ${item.col} / span ${item.span}`}>
+            {item.kind === 'talk' ? (
+              <>
+                <strong>{item.title}</strong>, {item.name}, {item.affiliation}
+                {item.room && <span class="room">{item.room}</span>}
+              </>
+            ) : item.kind === 'break' ? (
+              <>
+                <strong>{item.label}</strong>
+                <span class="detail">{item.detail}</span>
+              </>
+            ) : (
+              item.label
+            )}
+          </div>
+        ))}
+      </div>
+
+      <aside class="legend">
+        <strong class="legend-title">Legend</strong>
+        {LEGEND.map((entry) => (
+          <span class={`legend-item ${entry.bgClass}`}>{entry.label}</span>
+        ))}
+      </aside>
+      </div>
+    </div>
+
+    <script is:inline>
+      // Shrink the text until the timetable fits on one page; zoom out as a last resort
+      (function () {
+        var sheet = document.getElementById('sheet');
+        var body = document.getElementById('sheet-body');
+        var grid = document.getElementById('grid');
+        var size = 8;
+        while (grid.scrollHeight > grid.clientHeight + 1 && size > 5) {
+          size -= 0.25;
+          sheet.style.setProperty('--fs', size + 'pt');
+        }
+        if (grid.scrollHeight > grid.clientHeight + 1) {
+          var pageHeight = sheet.offsetHeight;
+          sheet.style.height = 'auto';
+          body.style.flex = 'none';
+          grid.style.overflow = 'visible';
+          sheet.style.zoom = String(pageHeight / sheet.offsetHeight);
+        }
+        document.documentElement.dataset.ready = 'true';
+      })();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @page {
+    size: A4 landscape;
+    margin: 7mm;
+  }
+
+  html,
+  body {
+    margin: 0;
+    background: #fff;
+  }
+
+  /* A4 landscape minus the page margins */
+  .sheet {
+    --fs: 8pt;
+    box-sizing: border-box;
+    width: 283mm;
+    height: 195mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    font-family: Arial, 'Liberation Sans', Helvetica, sans-serif;
+    font-size: var(--fs);
+    line-height: 1.15;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @media screen {
+    body {
+      background: #e2e8f0;
+      padding: 10mm 0;
+    }
+
+    .sheet {
+      margin: 0 auto;
+      background: #fff;
+      outline: 7mm solid #fff;
+      box-shadow: 0 0 0 7mm #fff, 0 2px 24px 7mm rgb(0 0 0 / 0.15);
+    }
+  }
+
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+
+  .logo {
+    height: 11mm;
+    width: auto;
+  }
+
+  .heading {
+    flex: 1;
+  }
+
+  .heading h1 {
+    margin: 0;
+    font-size: 15pt;
+    font-weight: 700;
+  }
+
+  .heading p,
+  .version {
+    margin: 0.5mm 0 0;
+    font-size: 7.5pt;
+    color: #475569;
+  }
+
+  .version {
+    text-align: right;
+  }
+
+  /* Timetable grid with the legend to its right */
+  .sheet-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    gap: 2mm;
+  }
+
+  .grid {
+    --time-col: 6.6em;
+    --quiet-col: 15mm;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    display: grid;
+    border: 0.6pt solid #64748b;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8mm 0.5mm;
+    background: #334155;
+    color: #fff;
+    text-align: center;
+    border-left: 0.4pt solid #64748b;
+  }
+
+  .room-head {
+    background: #64748b;
+    border-left-color: #94a3b8;
+    font-size: 0.85em;
+  }
+
+  .cell {
+    border-top: 0.3pt solid #e2e8f0;
+    border-left: 0.3pt solid #e2e8f0;
+  }
+
+  .cell.day-start {
+    border-left: 0.6pt solid #94a3b8;
+  }
+
+  .cell.time {
+    display: flex;
+    align-items: center;
+    padding: 0.4mm 0.8mm;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.9em;
+    white-space: nowrap;
+  }
+
+  .item {
+    position: relative;
+    z-index: 1;
+    margin: 0.25mm;
+    padding: 0.5mm 0.7mm;
+    border-radius: 0.6mm;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .item.talk {
+    box-shadow: inset 0 0 0 0.3pt rgb(0 0 0 / 0.15);
+  }
+
+  .item.break {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #334155;
+    text-align: center;
+  }
+
+  .item.chair {
+    padding: 0.3mm 0.7mm;
+    color: #334155;
+    font-style: italic;
+  }
+
+  .item .detail,
+  .item .room {
+    display: block;
+    font-size: 0.9em;
+    color: #475569;
+  }
+
+  .item .room {
+    font-style: italic;
+  }
+
+  .legend {
+    flex: none;
+    width: 30mm;
+    display: flex;
+    flex-direction: column;
+    gap: 1mm;
+    font-size: 6.5pt;
+  }
+
+  .legend-title {
+    font-size: 7.5pt;
+  }
+
+  .legend-item {
+    padding: 1.2mm 1.5mm;
+    border-radius: 0.6mm;
+    box-shadow: inset 0 0 0 0.3pt rgb(0 0 0 / 0.15);
+  }
+</style>
