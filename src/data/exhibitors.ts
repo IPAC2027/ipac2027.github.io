@@ -550,7 +550,7 @@ export const exhibitors: Exhibitor[] = [
     featured: true
   },
      {  
-    id: "gold-037",
+    id: "gold-038",
     name: "RadiaBeam Technologies, LLC",
     logo: "/images/logos/exhibitors/gold/radiabeam.png",
     website: "https://www.radiabeam.com/",
@@ -558,6 +558,17 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "gold",
     booth: "C4",
+    featured: true
+  },
+   {  
+    id: "gold-039",
+    name: "PARTZSCH Elektromotoren GmbH",
+    logo: "/images/logos/exhibitors/gold/partzsch.png",
+    website: "https://en.partzsch.de/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C93",
     featured: true
   },
 ];

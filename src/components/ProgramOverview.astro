@@ -23,6 +23,8 @@ interface Talk {
 
 interface CellItem {
   kind: ItemKind;
+  /** Schedule block id, set for breaks */
+  id?: string;
   label: string;
   emoji?: string;
   /** Only set when the item doesn't fill the whole block, e.g. "12:30–13:00" */
@@ -35,6 +37,9 @@ interface CellItem {
 interface Cell {
   items: CellItem[];
   span: number;
+  rowspan: number;
+  /** Index of the last day the cell covers */
+  lastDay: number;
 }
 
 function toMinutes(t: string): number {
@@ -96,38 +101,47 @@ function cellItems(date: string, block: ProgramBlock): CellItem[] {
     const end = toMinutes(b.endTime);
     if (start >= blockEnd || end <= blockStart) continue;
     const fillsBlock = start <= blockStart && end >= blockEnd;
-    items.push({ kind: 'break', label: b.label, emoji: b.emoji, time: fillsBlock ? undefined : `${b.startTime}–${b.endTime}`, start });
+    items.push({ kind: 'break', id: b.id, label: b.label, emoji: b.emoji, time: fillsBlock ? undefined : `${b.startTime}–${b.endTime}`, start });
   }
 
   return items.sort((a, b) => a.start - b.start);
 }
 
-// Neighbouring days with identical content share one cell
 function cellKey(items: CellItem[]): string {
   return JSON.stringify(items.map(({ kind, label, time, slots }) => [kind, label, time, slots]));
 }
 
-const rows = programBlocks.map((block) => {
+// Neighbouring days with identical content share one cell, and an event that
+// runs on through the next blocks (e.g. an afternoon tour) gets one tall cell
+const covered = programBlocks.map(() => conferenceDays.map(() => false));
+const rows = programBlocks.map((block, r) => {
   const cells: Cell[] = [];
-  for (const day of conferenceDays) {
-    const items = cellItems(day.date, block);
+  conferenceDays.forEach((day, d) => {
+    if (covered[r][d]) return;
+    const ids = new Set(cellItems(day.date, block).map((i) => i.id));
+    let rowspan = 1;
+    while (r + rowspan < programBlocks.length) {
+      const next = cellItems(day.date, programBlocks[r + rowspan]);
+      if (next.length === 0 || !next.every((i) => i.id && ids.has(i.id))) break;
+      covered[r + rowspan][d] = true;
+      rowspan++;
+    }
+    const items = cellItems(day.date, { startTime: block.startTime, endTime: programBlocks[r + rowspan - 1].endTime });
     const prev = cells[cells.length - 1];
-    if (prev && cellKey(prev.items) === cellKey(items)) prev.span += 1;
-    else cells.push({ items, span: 1 });
-  }
+    if (prev && prev.lastDay === d - 1 && prev.rowspan === rowspan && cellKey(prev.items) === cellKey(items)) {
+      prev.span += 1;
+      prev.lastDay = d;
+    } else {
+      cells.push({ items, span: 1, rowspan, lastDay: d });
+    }
+  });
   return { label: block.label ?? `${block.startTime}–${block.endTime}`, cells };
 });
 
-// The colour legend fills the first run of empty cells in the last day's column (Friday afternoon)
 const LEGEND = [
   { label: 'Plenary', bgClass: plenaryBgClass },
   ...tracks.map((t) => ({ label: `${t.code} · ${t.label}`, bgClass: t.bgClass })),
 ];
-const isFree = (cell: Cell) => cell.items.length === 0 && cell.span === 1;
-const lastCells = rows.map((row) => row.cells[row.cells.length - 1]);
-const legendStart = lastCells.findIndex(isFree);
-let legendRows = 0;
-while (legendStart >= 0 && legendStart + legendRows < rows.length && isFree(lastCells[legendStart + legendRows])) legendRows++;
 
 // Days without talks (e.g. Sunday) get a narrow column, leaving more room for the busy days
 const talkDates = new Set(speakers.map((s) => s.schedule?.date));
@@ -147,7 +161,7 @@ function cellClass(items: CellItem[]): string {
 }
 ---
 
-<div class="my-8 overflow-x-auto rounded-xl border border-primary-200 dark:border-primary-700 shadow-sm">
+<div class="mt-8 overflow-x-auto rounded-xl border border-primary-200 dark:border-primary-700 shadow-sm">
   <table id="po-table" class="w-full min-w-[1040px] table-fixed border-collapse text-sm">
     <colgroup>
       <col class="w-24" />
@@ -165,22 +179,11 @@ function cellClass(items: CellItem[]): string {
       </tr>
     </thead>
     <tbody class="bg-white dark:bg-primary-800">
-      {rows.map((row, r) => (
+      {rows.map((row) => (
         <tr class="border-t border-primary-100 dark:border-primary-700">
           <th scope="row" class="px-2 py-3 text-left text-xs font-mono font-normal text-primary-500 dark:text-primary-400 whitespace-nowrap">{row.label}</th>
-          {row.cells.map((cell, c) => c === row.cells.length - 1 && r >= legendStart && r < legendStart + legendRows ? (
-            r === legendStart && (
-              <td rowspan={legendRows} class="p-1 align-top">
-                <div class="rounded-lg border border-primary-200 dark:border-primary-600 p-1.5 flex flex-col gap-1">
-                  <span class="text-[10px] uppercase tracking-wide font-semibold text-center text-primary-600 dark:text-primary-300">Legend</span>
-                  {LEGEND.map((entry) => (
-                    <span class={`rounded-md px-1.5 py-0.5 text-[10px] leading-tight text-primary-900 dark:text-primary-100 ${entry.bgClass}`}>{entry.label}</span>
-                  ))}
-                </div>
-              </td>
-            )
-          ) : (
-            <td colspan={cell.span} class="p-1 h-px align-top">
+          {row.cells.map((cell) => (
+            <td colspan={cell.span} rowspan={cell.rowspan} class="p-1 h-px align-top">
               {cell.items.length > 0 && (
                 <div class={`h-full min-h-[2.75rem] rounded-lg p-1.5 flex flex-col gap-1 text-center leading-snug ${cell.items.some((i) => i.slots) ? 'justify-start' : 'justify-center'} ${cellClass(cell.items)}`}>
                   {cell.items.map((item) => item.slots ? (
@@ -216,6 +219,13 @@ function cellClass(items: CellItem[]): string {
       ))}
     </tbody>
   </table>
+</div>
+
+<!-- Colour legend -->
+<div class="mt-3 mb-8 flex flex-wrap justify-center gap-1.5">
+  {LEGEND.map((entry) => (
+    <span class={`rounded-md px-2 py-0.5 text-xs text-primary-900 dark:text-primary-100 ${entry.bgClass}`}>{entry.label}</span>
+  ))}
 </div>
 
 <!-- Tooltip (fixed, so the table's scroll container doesn't clip it) -->
