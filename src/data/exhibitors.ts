@@ -140,6 +140,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "B6",
     featured: true
   },
+   {
+    id: "platinum-09",
+    name: "Brookhaven National Laboratory",
+    logo: "/images/logos/exhibitors/platinum/bnl.jpg",
+    website: "https://www.bnl.gov/",
+    description: "",
+    category: "Industry Partner",
+    tier: "platinum",
+    booth: "B9",
+    featured: true
+  },
   
   // Gold Tier
   {
