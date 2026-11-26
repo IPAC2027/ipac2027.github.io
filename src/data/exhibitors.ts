@@ -5,7 +5,8 @@ export interface Exhibitor {
   website?: string;
   description: string;
   category: string;
-  tier: 'diamond' | 'platinum' | 'gold';
+  /** 'sponsor' = sponsorship without a booth (e.g. conference bag sponsor) */
+  tier: 'diamond' | 'platinum' | 'gold' | 'sponsor';
   contact?: {
     email?: string;
     phone?: string;
@@ -580,6 +581,19 @@ export const exhibitors: Exhibitor[] = [
     category: "Industry Partner",
     tier: "gold",
     booth: "C93",
+    featured: true
+  },
+
+  // Sponsorship without Booth: sponsors who don't exhibit. Put the sponsored
+  // item in `description` and leave out `booth`. Template:
+  {
+    id: "sponsor-01",
+    name: "Shanghai MagWin Machinery Technology Co.,Ltd.",
+    logo: "/images/logos/exhibitors/sponsor/magwin.png",
+    website: "https://www.shmagwin.com/",
+    description: "Conference Bag Sponsor",
+    category: "Industry Partner",
+    tier: "sponsor",
     featured: true
   },
 ];

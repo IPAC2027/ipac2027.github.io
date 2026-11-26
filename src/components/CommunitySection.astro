@@ -50,7 +50,8 @@ const createWeightedExhibitorList = (exhibitors: Exhibitor[]) => {
   const weights = {
     diamond: 3,    // Highest probability
     platinum: 2,   // Medium probability
-    gold: 1        // Lowest probability
+    gold: 1,       // Lowest probability
+    sponsor: 1     // Sponsorship without booth, same as gold
   };
   
   // Dynamic count based on number of exhibitors (2x), with a minimum buffer of 50 logos
@@ -101,6 +102,7 @@ const getTierScale = (tier: string) => {
     case 'platinum':
       return '0.9';
     case 'gold':
+    case 'sponsor':
       return '0.8';
     default:
       return '1';
