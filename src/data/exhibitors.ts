@@ -583,6 +583,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C93",
     featured: true
   },
+    {  
+    id: "gold-040",
+    name: "SEF-Technologies",
+    logo: "/images/logos/exhibitors/gold/SEF.jpg",
+    website: "https://www.sef-technologies.com/en/",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C12",
+    featured: true
+  },
 
   // Sponsorship without Booth: sponsors who don't exhibit. Put the sponsored
   // item in `description` and leave out `booth`. Template:
