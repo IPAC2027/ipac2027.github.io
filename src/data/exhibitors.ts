@@ -594,6 +594,17 @@ export const exhibitors: Exhibitor[] = [
     booth: "C12",
     featured: true
   },
+  {  
+    id: "gold-041",
+    name: "Accelerator Science and Technology Applications",
+    logo: "/images/logos/exhibitors/gold/ASTA.jpg",
+    website: "https://www.sciencedirect.com/journal/accelerator-science-technology-and-applications",
+    description: "",
+    category: "Industry Partner",
+    tier: "gold",
+    booth: "C62",
+    featured: true
+  },
 
   // Sponsorship without Booth: sponsors who don't exhibit. Put the sponsored
   // item in `description` and leave out `booth`. Template:
