@@ -597,7 +597,7 @@ export const exhibitors: Exhibitor[] = [
   {  
     id: "gold-041",
     name: "Accelerator Science and Technology Applications",
-    logo: "/images/logos/exhibitors/gold/ASTA.jpg",
+    logo: "/images/logos/exhibitors/gold/ASTA.png",
     website: "https://www.sciencedirect.com/journal/accelerator-science-technology-and-applications",
     description: "",
     category: "Industry Partner",
